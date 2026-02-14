@@ -1037,3 +1037,23 @@ textarea {
         height: 140px;
     }
 }
+
+/* ===== HERO FIX: stop container flex from breaking hero-layout ===== */
+.hero-container {
+    display: block !important;
+    /* يلغي flex اللي عامل مشكلة */
+}
+
+/* Desktop two-column layout (text left, profile right) */
+.hero-layout {
+    display: grid !important;
+    grid-template-columns: 1.35fr 0.85fr;
+    gap: 28px;
+    align-items: start;
+}
+
+.hero-right {
+    justify-self: end;
+    max-width: 420px;
+    width: 100%;
+}
