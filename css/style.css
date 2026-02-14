@@ -868,3 +868,172 @@ textarea {
         height: 76px;
     }
 }
+
+/* =========================================
+   PREMIUM MOBILE + TABLET RESPONSIVE FIXES
+   (Paste at END of style.css)
+   ========================================= */
+
+/* 1) Small phones (360–480) */
+@media (max-width: 480px) {
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero-title {
+        font-size: 20px;
+        line-height: 1.35;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .hero-image img {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Make pills not overflow */
+    .quick-links {
+        gap: 8px;
+    }
+
+    .pill {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    /* PDF viewers */
+    .pdf-viewer iframe {
+        height: 560px;
+    }
+}
+
+/* 2) Mobile + Tablet (<=768) */
+@media (max-width: 768px) {
+
+    /* HERO: stack + clean spacing */
+    .hero-layout {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+    }
+
+    /* Keep hero text first */
+    .hero-left {
+        order: 1;
+    }
+
+    .hero-right {
+        order: 2;
+        justify-self: start !important;
+        max-width: 100% !important;
+    }
+
+    /* Buttons become full width */
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Profile card: nicer on mobile */
+    .profile-card {
+        padding: 16px !important;
+        border-radius: 16px !important;
+    }
+
+    /* Center photo on mobile */
+    .hero-image {
+        display: flex;
+        justify-content: center !important;
+        margin-bottom: 10px !important;
+    }
+
+    .hero-image img {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* Quick info list: tighter + readable */
+    .meta-mini {
+        padding-left: 16px !important;
+    }
+
+    .meta-mini li {
+        margin: 7px 0 !important;
+    }
+
+    /* Hero metrics: stack */
+    .hero-metrics {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 16px !important;
+    }
+
+    /* Reduce section padding a bit */
+    .section {
+        padding: 46px 0 !important;
+    }
+
+    /* Grids: turn into single column */
+    .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* Certificates cards grid */
+    .cert-cards {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* PDF viewers: better height */
+    .pdf-viewer iframe {
+        height: 640px;
+    }
+
+    /* Header: avoid crowding (if needed) */
+    .header-inner {
+        gap: 10px;
+    }
+}
+
+/* 3) Tablet landscape / small laptops (769–1024) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .hero-layout {
+        grid-template-columns: 1.2fr 0.9fr !important;
+        gap: 22px !important;
+    }
+
+    .hero-right {
+        max-width: 420px;
+    }
+
+    .hero-image img {
+        width: 140px;
+        height: 140px;
+    }
+}
