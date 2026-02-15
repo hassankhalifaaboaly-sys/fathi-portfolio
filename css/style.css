@@ -1844,3 +1844,73 @@ body {
         margin: 14px auto 0;
     }
 }
+
+/* Global safety */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+/* ===== HERO IMAGE FIX (Desktop) ===== */
+@media (min-width: 992px) {
+
+    /* Keep hero columns balanced */
+    .hero-layout {
+        display: grid !important;
+        grid-template-columns: 1.25fr 0.75fr !important;
+        align-items: center !important;
+        gap: 32px !important;
+    }
+
+    /* Do not let the right column grow too wide */
+    .hero-right {
+        justify-self: end !important;
+        width: 100% !important;
+        max-width: 460px !important;
+    }
+
+    /* IMPORTANT: lock the photo box size */
+    .profile-card .hero-image {
+        width: min(420px, 100%) !important;
+        aspect-ratio: 4 / 5 !important;
+        max-height: 520px !important;
+        overflow: hidden !important;
+        border-radius: 18px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Make the image fill the box without becoming huge */
+    .profile-card .hero-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        transform: none !important;
+    }
+}
+
+/* ===== HERO IMAGE FIX (Mobile) ===== */
+@media (max-width: 768px) {
+    .profile-card .hero-image {
+        width: 220px !important;
+        max-width: 70vw !important;
+        aspect-ratio: 1 / 1 !important;
+        overflow: hidden !important;
+        border-radius: 16px !important;
+        margin: 14px auto 0 !important;
+    }
+
+    .profile-card .hero-image img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center top !important;
+        transform: none !important;
+    }
+}
