@@ -1705,3 +1705,52 @@ html[dir="rtl"] .two-col,
         grid-template-columns: 1fr;
     }
 }
+
+/* ===== FIX: Hero/Profile image too big on desktop ===== */
+/* Paste at END of style.css */
+
+.hero-image,
+.hero-image img {
+    max-width: 100%;
+}
+
+.hero-image {
+    /* Prevent container from stretching */
+    width: clamp(160px, 22vw, 360px);
+    margin-inline: auto;
+}
+
+.hero-image img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1;
+    /* keeps it square */
+    object-fit: cover !important;
+    object-position: center !important;
+
+    /* Optional: keep the same style */
+    border-radius: 50%;
+}
+
+/* Hard cap on large screens (desktop/laptop) */
+@media (min-width: 1024px) {
+    .hero-image {
+        width: 340px;
+    }
+
+    /* change 340 -> 300/320/360 as you like */
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .hero-image {
+        width: 280px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .hero-image {
+        width: 180px;
+    }
+}
