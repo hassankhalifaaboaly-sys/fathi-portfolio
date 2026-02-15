@@ -71,24 +71,21 @@
             <p class="kicker" data-i18n="hero_kicker">Professional Portfolio</p>
 
             <h1 class="hero-title">
-              <span class="name" data-i18n="name_full">FATHI KHALIFA MOHAMED</span>
-              <span class="title" data-i18n="hero_title">
-                PLANNING ENGINEER | ROAD ENGINEER | SAFETY-ORIENTED | POWER BI & DATA ANALYSIS
-              </span>
+              <span class="name" data-i18n="name_full">FATHI KHALIFA</span>
+              <div class="typing-container">
+                <span class="typing-text">Planning Engineer | Data Specialist</span>
+              </div>
             </h1>
+            <div class="hero-divider"></div>
 
-            <p class="hero-subtitle" data-i18n="hero_intro">
-              Civil Engineer specialized in road infrastructure planning and project control, with a strong background
-              in
-              data analysis,
-              schedule, and cost performance management. I support sustainable construction by integrating technology,
-              data analytics,
-              and smart planning into road projects to improve efficiency, reduce environmental impact, and deliver
-              inclusive infrastructure.
-            </p>
+            <ul class="hero-bullets">
+              <li>Infrastructure Planning & Scheduling</li>
+              <li>Cost & Schedule Performance Control</li>
+              <li>Power BI & Data-Driven Decision Making</li>
+            </ul>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#experience" data-i18n="hero_cta_exp">View Experience</a>
+              <a class="btn btn-primary" href="#projects" data-i18n="hero_cta_proj">View Projects</a>
               <a class="btn btn-secondary" href="#contact" data-i18n="hero_cta_contact">Contact Me</a>
               <a class="btn btn-ghost" href="assets/cv/Fathy-Khalifa-CV.pdf" download
                 data-i18n="hero_cta_download">Download CV</a>
@@ -148,6 +145,107 @@
       </div>
 
       <div class="hero-bg" aria-hidden="true"></div>
+    </section>
+
+    <!-- KPI SECTION -->
+    <section class="section kpi-section" id="kpi">
+      <div class="container kpi-grid">
+        <div class="kpi-card reveal">
+          <span class="kpi-number">5+</span>
+          <span class="kpi-label">Years Experience</span>
+        </div>
+        <div class="kpi-card reveal">
+          <span class="kpi-number">20+</span>
+          <span class="kpi-label">Projects</span>
+        </div>
+        <div class="kpi-card reveal">
+          <span class="kpi-number">15+</span>
+          <span class="kpi-label">Certifications</span>
+        </div>
+        <div class="kpi-card reveal">
+          <span class="kpi-number">100%</span>
+          <span class="kpi-label">On-Time Reporting</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="serv_title">What I Do</h2>
+          <p class="section-sub" data-i18n="serv_sub">Delivering value through precision planning and data intelligence.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <div class="service-card reveal">
+            <div class="serv-icon">📅</div>
+            <h3>Planning & Scheduling</h3>
+            <p>Expert in Primavera P6, establishing baselines, and monitoring critical paths for complex infrastructure.
+            </p>
+          </div>
+          <div class="service-card reveal">
+            <div class="serv-icon">📊</div>
+            <h3>Data Analytics & BI</h3>
+            <p>Transforming raw site data into actionable Power BI dashboards and executive reports.</p>
+          </div>
+          <div class="service-card reveal">
+            <div class="serv-icon">📈</div>
+            <h3>Performance Reporting</h3>
+            <p>Comprehensive EVM analysis, cost control, and delay analysis to keep projects on track.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="proj_title">Featured Projects</h2>
+          <p class="section-sub">A selection of my work in infrastructure and data visualization.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card reveal">
+            <div class="proj-content">
+              <h3>Road Infrastructure Upgrade</h3>
+              <p>Managed scheduling and resource allocation for a 50km highway expansion project.</p>
+              <div class="proj-tags">
+                <span>Primavera P6</span>
+                <span>Excel</span>
+              </div>
+              <a href="#" class="btn btn-sm">View Details</a>
+            </div>
+          </article>
+          <!-- Project 2 -->
+          <article class="project-card reveal">
+            <div class="proj-content">
+              <h3>Project Control Dashboard</h3>
+              <p>Developed an interactive Power BI dashboard to track EVM metrics and forecast costs.</p>
+              <div class="proj-tags">
+                <span>Power BI</span>
+                <span>SQL</span>
+              </div>
+              <a href="#" class="btn btn-sm">View Dashboard</a>
+            </div>
+          </article>
+          <!-- Project 3 -->
+          <article class="project-card reveal">
+            <div class="proj-content">
+              <h3>Automated Reporting System</h3>
+              <p>Automated daily site reporting using Python scripts and n8n workflows.</p>
+              <div class="proj-tags">
+                <span>Python</span>
+                <span>n8n</span>
+              </div>
+              <a href="#" class="btn btn-sm">View Script</a>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
     <!-- ABOUT -->
@@ -256,15 +354,32 @@
 
           <article class="card reveal">
             <h3 data-i18n="s3">Databases & Automation</h3>
-            <ul class="chips">
-              <li data-i18n="s3_1">SQL Server</li>
-              <li data-i18n="s3_2">Data Extraction & Cleaning</li>
-              <li data-i18n="s3_3">Python Automation</li>
-              <li data-i18n="s3_4">Workflow Automation (n8n)</li>
-              <li data-i18n="s3_5">Web Scraping</li>
-              <li data-i18n="s3_6">AI Tools for Forecasting & Decision Support</li>
-              <li data-i18n="s3_7">System Integration</li>
-            </ul>
+            <div class="skill-bar-container">
+              <div class="skill-item">
+                <div class="skill-info"><span>Power BI</span><span>90%</span></div>
+                <div class="progress-bar">
+                  <div class="fill" style="width:90%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Primavera P6</span><span>85%</span></div>
+                <div class="progress-bar">
+                  <div class="fill" style="width:85%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>SQL Server</span><span>75%</span></div>
+                <div class="progress-bar">
+                  <div class="fill" style="width:75%"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <div class="skill-info"><span>Python</span><span>70%</span></div>
+                <div class="progress-bar">
+                  <div class="fill" style="width:70%"></div>
+                </div>
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -564,6 +679,10 @@
   </footer>
 
   <script src="js/script.js"></script>
+  <!-- Floating Contact Button (Mobile) -->
+  <a href="#contact" class="floating-contact-btn" aria-label="Contact Me">
+    💬
+  </a>
 </body>
 
 </html>
