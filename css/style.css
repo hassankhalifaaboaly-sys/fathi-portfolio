@@ -1200,3 +1200,88 @@ textarea {
     }
 
 }
+
+/* =========================
+   FIX 1: HERO LAYOUT (IMPORTANT)
+   ========================= */
+
+/* ✅ خَلّي container عادي مش flex */
+.hero-container {
+    display: block !important;
+}
+
+/* ✅ خلي ترتيب الهيرو Grid على الديسكتوب */
+.hero-layout {
+    display: grid !important;
+    grid-template-columns: 1.35fr .65fr !important;
+    gap: 40px !important;
+    align-items: start !important;
+}
+
+/* خلي الكروت اللي تحت تظهر تحت الهيرو */
+.hero-metrics {
+    margin-top: 18px !important;
+}
+
+
+/* =========================
+   FIX 2: MOBILE HERO (<=768px)
+   ========================= */
+@media (max-width: 768px) {
+
+    /* حجم الهيدر أصغر */
+    :root {
+        --header-h: 64px;
+    }
+
+    /* الهيرو عمود واحد */
+    .hero-layout {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+    }
+
+    /* النص الأول ثم الكارت */
+    .hero-left {
+        order: 1 !important;
+    }
+
+    .hero-right {
+        order: 2 !important;
+    }
+
+    /* الصورة وسط وحجم مناسب */
+    .hero-image {
+        display: flex !important;
+        justify-content: center !important;
+        margin-bottom: 10px !important;
+    }
+
+    .hero-image img {
+        width: 140px !important;
+        height: 140px !important;
+    }
+
+    /* الأزرار Full width */
+    .hero-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .hero-actions .btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+
+/* =========================
+   FIX 3: REVEAL BUG (لو الصفحة بتبان فاضية)
+   ========================= */
+/* على الموبايل خليه يبان حتى لو سكريبت الـ reveal ماشتغلش */
+@media (max-width: 768px) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
