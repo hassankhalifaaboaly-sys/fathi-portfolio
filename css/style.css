@@ -283,7 +283,26 @@ a:hover {
 /* Hero */
 .hero {
     position: relative;
-    padding-top: clamp(4rem, 6vw, 6rem);
+    padding-top: clamp(6rem, 10vw, 8rem);
+    /* More breathing room */
+    padding-bottom: 2rem;
+    /* Fade-in Animation */
+    animation: fadeIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    opacity: 0;
+    /* Start hidden for animation */
+}
+
+/* Fade In Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-bg {
@@ -305,22 +324,31 @@ a:hover {
 .hero-title .name {
     display: block;
     font-weight: 950;
-    font-size: clamp(2.1rem, 5vw, 3.35rem);
+    /* Responsive font size using clamp */
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    /* Subtle modern glow effect */
+    text-shadow: 0 0 40px rgba(31, 170, 89, 0.3);
 }
 
 .hero-title .title {
     display: block;
-    margin-top: .55rem;
+    margin-top: 1rem;
     font-weight: 900;
-    font-size: clamp(1.05rem, 2.4vw, 1.45rem);
-    color: color-mix(in srgb, var(--text) 80%, var(--muted));
+    /* Responsive font size */
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    line-height: 1.5;
+    color: color-mix(in srgb, var(--text) 85%, var(--muted));
 }
 
 .hero-subtitle {
-    margin: 0 0 1.35rem;
+    margin: 1.5rem 0 2rem;
     color: var(--muted);
-    font-size: 1.05rem;
-    max-width: 68ch;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.7;
+    max-width: 60ch;
+    /* Limit width for readability */
 }
 
 .hero-actions {
