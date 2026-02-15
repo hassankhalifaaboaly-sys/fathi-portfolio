@@ -1057,3 +1057,79 @@ textarea {
     max-width: 420px;
     width: 100%;
 }
+
+/* ===== Mobile Hero Fix: show image/info first ===== */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 22px !important;
+    }
+
+    /* Make hero layout stack and bring right card to top */
+    .hero-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+    }
+
+    .hero-right {
+        order: -1 !important;
+    }
+
+    /* <-- show photo/info first */
+    .hero-left {
+        order: 1 !important;
+    }
+
+    /* Tighter typography on mobile */
+    .hero-title .name {
+        font-size: 1.75rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .hero-title .title {
+        font-size: 1.05rem !important;
+        line-height: 1.35 !important;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* Profile image size */
+    .hero-image img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Buttons full width */
+    .hero-actions {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .hero-actions .btn {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-role {
+        display: none !important;
+    }
+
+    /* اخفاء السطر الصغير تحت الاسم */
+    .brand-mark {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .site-header {
+        height: 66px !important;
+    }
+
+    :root {
+        --header-h: 66px;
+    }
+}
