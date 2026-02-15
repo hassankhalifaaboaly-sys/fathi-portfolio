@@ -368,21 +368,26 @@ a:hover {
 .hero-name {
     margin: 0;
     font-weight: 800;
-    font-size: clamp(2.5rem, 5vw, 3.8rem);
-    line-height: 1.1;
+    /* Reduced by ~15% for more refined look */
+    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    line-height: 1.15;
     color: var(--text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
 }
 
 .hero-role {
-    margin: -0.5rem 0 0;
-    font-weight: 400;
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    margin: -0.25rem 0 0;
+    /* Tighter vertical rhythm */
+    font-weight: 500;
+    /* Slightly smaller, more controlled */
+    font-size: clamp(1rem, 2vw, 1.25rem);
     color: var(--text-secondary);
+    letter-spacing: 0.01em;
 }
 
 .hero-tagline {
-    font-size: 1.15rem;
+    /* Responsive scaling for tagline */
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
     line-height: 1.6;
     color: var(--text-secondary);
     border-left: 3px solid var(--accent);
@@ -393,10 +398,11 @@ a:hover {
 .hero-bullets {
     list-style: none;
     padding: 0;
-    margin: 0.5rem 0 1.5rem;
+    margin: 0.75rem 0 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.6rem;
+    /* Slightly tighter gap */
 }
 
 .hero-bullets li {
@@ -405,6 +411,9 @@ a:hover {
     gap: 0.75rem;
     color: var(--text-primary);
     font-weight: 500;
+    /* Refined size */
+    font-size: 0.95rem;
+    line-height: 1.4;
 }
 
 .hero-bullets li::before {
@@ -438,27 +447,28 @@ a:hover {
     transform: translateY(-5px);
 }
 
+/* Responsive Profile Image */
 .profile-image-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .profile-img {
-    width: 170px;
-    max-width: 75%;
+    width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    border-radius: 50%;
     display: block;
     margin: 0 auto;
 
-    border-radius: 50%;
-    /* Subtle Elegant Border using Theme Accent */
-    border: 3px solid rgba(31, 170, 89, 0.25);
+    /* Base Mobile Style (≤ 767px): 160px-220px */
+    max-width: 220px;
 
-    /* Soft Professional Shadow */
+    /* Executive Styling */
+    border: 3px solid rgba(31, 170, 89, 0.25);
     box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.35),
         0 0 25px rgba(31, 170, 89, 0.08);
@@ -474,17 +484,17 @@ a:hover {
         0 0 30px rgba(31, 170, 89, 0.15);
 }
 
-/* Desktop Styles */
-@media (min-width: 992px) {
+/* Tablet (768px - 1023px): 260px-320px */
+@media (min-width: 768px) {
     .profile-img {
-        width: 200px;
+        max-width: 320px;
     }
 }
 
-/* Large Screens */
-@media (min-width: 1400px) {
+/* Desktop (≥ 1024px): 320px-380px */
+@media (min-width: 1024px) {
     .profile-img {
-        width: 220px;
+        max-width: 380px;
     }
 }
 
