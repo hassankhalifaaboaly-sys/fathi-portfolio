@@ -294,14 +294,13 @@ a:hover {
     z-index: -1;
 }
 
-.hero-layout {
-    display: grid;
-    grid-template-columns: 1.2fr 0.9fr;
-    gap: 40px;
+.hero-container {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
 }
-
-
 
 .hero-title .name {
     display: block;
@@ -871,73 +870,113 @@ textarea {
 }
 
 /* =========================================
-   PREMIUM MOBILE + TABLET RESPONSIVE FIXES
-   (Paste at END of style.css)
+   MOBILE RESPONSIVENESS & LAYOUT PATCH
    ========================================= */
 
-/* 1) Small phones (360–480) */
-@media (max-width: 480px) {
-    .container {
-        padding-left: 16px;
-        padding-right: 16px;
+/* 1. Global Overflow Fixes */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* 2. Hero Layout (Desktop Base) */
+.hero-container {
+    display: block;
+    /* Overrides conflicting flex rules */
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+}
+
+/* 3. Mobile Adjustments (Tablet & Mobile) */
+@media (max-width: 900px) {
+
+    /* Header: Fix Crowding */
+    .header-inner {
+        gap: 0.5rem;
+        padding-right: 0.5rem;
+        /* Ensure space for toggle */
     }
 
-    .hero-title {
-        font-size: 20px;
-        line-height: 1.35;
+    .brand {
+        min-width: 0;
+        /* Allow shrinking */
+        flex: 1;
+        /* Take available space */
+        gap: 0.5rem;
     }
 
-    .hero-subtitle {
-        font-size: 14px;
-        line-height: 1.6;
+    .brand-mark {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
     }
 
-    .hero-image img {
-        width: 120px;
-        height: 120px;
+    .brand-name {
+        font-size: 0.9rem;
+        line-height: 1.2;
     }
 
-    /* Make pills not overflow */
-    .quick-links {
-        gap: 8px;
+    .brand-role {
+        display: none;
+        /* Hide subtitle to save space */
     }
 
-    .pill {
-        padding: 8px 10px;
-        font-size: 12px;
+    /* Actions: Scale down */
+    .header-actions .btn {
+        padding: 0.4rem;
     }
 
-    /* PDF viewers */
-    .pdf-viewer iframe {
-        height: 560px;
+    .btn-text {
+        display: none;
+        /* Hide text in header buttons, show only icons */
+    }
+
+    .nav-toggle {
+        width: 38px;
+        height: 38px;
+        flex-shrink: 0;
     }
 }
 
-/* 2) Mobile + Tablet (<=768) */
 @media (max-width: 768px) {
 
-    /* HERO: stack + clean spacing */
+    /* Hero: Single Column Layout */
     .hero-layout {
-        grid-template-columns: 1fr !important;
-        gap: 18px !important;
+        grid-template-columns: 100%;
+        gap: 2rem;
+        text-align: center;
     }
 
-    /* Keep hero text first */
+    /* Hero Order: Text -> Buttons -> Image */
     .hero-left {
         order: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .hero-right {
-        order: 2;
-        justify-self: start !important;
-        max-width: 100% !important;
+        order: 3;
+        /* Image after buttons */
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
-    /* Buttons become full width */
     .hero-actions {
-        display: flex;
+        order: 2;
+        /* Buttons inside hero-left are part of the flow */
         flex-direction: column;
-        gap: 10px;
+        width: 100%;
+        gap: 0.75rem;
     }
 
     .hero-actions .btn {
@@ -945,343 +984,35 @@ textarea {
         justify-content: center;
     }
 
-    /* Profile card: nicer on mobile */
+    /* Image Sizing */
+    .hero-image img {
+        width: 160px;
+        height: 160px;
+        max-width: 100%;
+    }
+
     .profile-card {
-        padding: 16px !important;
-        border-radius: 16px !important;
+        max-width: 100%;
+        margin-top: 1rem;
     }
 
-    /* Center photo on mobile */
-    .hero-image {
-        display: flex;
-        justify-content: center !important;
-        margin-bottom: 10px !important;
-    }
-
-    .hero-image img {
-        width: 130px;
-        height: 130px;
-    }
-
-    /* Quick info list: tighter + readable */
-    .meta-mini {
-        padding-left: 16px !important;
-    }
-
-    .meta-mini li {
-        margin: 7px 0 !important;
-    }
-
-    /* Hero metrics: stack */
-    .hero-metrics {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-top: 16px !important;
-    }
-
-    /* Reduce section padding a bit */
-    .section {
-        padding: 46px 0 !important;
-    }
-
-    /* Grids: turn into single column */
-    .grid-3 {
-        display: grid;
-        grid-template-columns: 1fr !important;
-        gap: 14px !important;
-    }
-
-    .about-grid {
-        display: grid;
-        grid-template-columns: 1fr !important;
-        gap: 14px !important;
-    }
-
-    .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr !important;
-        gap: 14px !important;
-    }
-
-    /* Certificates cards grid */
-    .cert-cards {
-        display: grid;
-        grid-template-columns: 1fr !important;
-        gap: 14px !important;
-    }
-
-    /* PDF viewers: better height */
-    .pdf-viewer iframe {
-        height: 640px;
-    }
-
-    /* Header: avoid crowding (if needed) */
-    .header-inner {
-        gap: 10px;
-    }
-}
-
-/* 3) Tablet landscape / small laptops (769–1024) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .hero-layout {
-        grid-template-columns: 1.2fr 0.9fr !important;
-        gap: 22px !important;
-    }
-
-    .hero-right {
-        max-width: 420px;
-    }
-
-    .hero-image img {
-        width: 140px;
-        height: 140px;
-    }
-}
-
-/* ===== HERO FIX: stop container flex from breaking hero-layout ===== */
-.hero-container {
-    display: block !important;
-    /* يلغي flex اللي عامل مشكلة */
-}
-
-/* Desktop two-column layout (text left, profile right) */
-.hero-layout {
-    display: grid !important;
-    grid-template-columns: 1.35fr 0.85fr;
-    gap: 28px;
-    align-items: start;
-}
-
-.hero-right {
-    justify-self: end;
-    max-width: 420px;
-    width: 100%;
-}
-
-/* ===== Mobile Hero Fix: show image/info first ===== */
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 22px !important;
-    }
-
-    /* Make hero layout stack and bring right card to top */
-    .hero-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 14px !important;
-    }
-
-    .hero-right {
-        order: -1 !important;
-    }
-
-    /* <-- show photo/info first */
-    .hero-left {
-        order: 1 !important;
-    }
-
-    /* Tighter typography on mobile */
-    .hero-title .name {
-        font-size: 1.75rem !important;
-        line-height: 1.15 !important;
-    }
-
-    .hero-title .title {
-        font-size: 1.05rem !important;
-        line-height: 1.35 !important;
-    }
-
-    .hero-subtitle {
-        font-size: 0.95rem !important;
-        margin-bottom: 12px !important;
-    }
-
-    /* Profile image size */
-    .hero-image img {
-        width: 120px !important;
-        height: 120px !important;
-    }
-
-    /* Buttons full width */
-    .hero-actions {
-        flex-direction: column !important;
-        gap: 10px !important;
-    }
-
-    .hero-actions .btn {
-        width: 100% !important;
-        justify-content: center !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .brand-role {
-        display: none !important;
-    }
-
-    /* اخفاء السطر الصغير تحت الاسم */
-    .brand-mark {
-        width: 36px !important;
-        height: 36px !important;
-    }
-
-    .site-header {
-        height: 66px !important;
-    }
-
-    :root {
-        --header-h: 66px;
-    }
-}
-
-/* ================= HEADER MOBILE FIX ================= */
-
-@media (max-width:768px) {
-
-    .site-header {
-        height: auto;
-        padding: 8px 0;
-    }
-
-    .header-inner {
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .brand {
-        min-width: auto;
-        gap: 8px;
-    }
-
-    .brand-name {
-        font-size: 14px;
-        line-height: 1.2;
-    }
-
-    .brand-role {
-        display: none;
-    }
-
-    .header-actions {
-        gap: 6px;
-    }
-
-    .btn {
-        padding: 6px 10px;
-        font-size: 13px;
-    }
-
-}
-
-@media (max-width:768px) {
-
-    .hero-layout {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-left {
-        order: 1;
-    }
-
-    .hero-right {
-        order: 2;
-    }
-
-    .hero-image {
-        display: flex;
-        justify-content: center;
-    }
-
-    .hero-image img {
-        width: 130px;
-        height: 130px;
-    }
-
-}
-
-/* =========================
-   FIX 1: HERO LAYOUT (IMPORTANT)
-   ========================= */
-
-/* ✅ خَلّي container عادي مش flex */
-.hero-container {
-    display: block !important;
-}
-
-/* ✅ خلي ترتيب الهيرو Grid على الديسكتوب */
-.hero-layout {
-    display: grid !important;
-    grid-template-columns: 1.35fr .65fr !important;
-    gap: 40px !important;
-    align-items: start !important;
-}
-
-/* خلي الكروت اللي تحت تظهر تحت الهيرو */
-.hero-metrics {
-    margin-top: 18px !important;
-}
-
-
-/* =========================
-   FIX 2: MOBILE HERO (<=768px)
-   ========================= */
-@media (max-width: 768px) {
-
-    /* حجم الهيدر أصغر */
-    :root {
-        --header-h: 64px;
-    }
-
-    /* الهيرو عمود واحد */
-    .hero-layout {
-        grid-template-columns: 1fr !important;
-        gap: 18px !important;
-    }
-
-    /* النص الأول ثم الكارت */
-    .hero-left {
-        order: 1 !important;
-    }
-
-    .hero-right {
-        order: 2 !important;
-    }
-
-    /* الصورة وسط وحجم مناسب */
-    .hero-image {
-        display: flex !important;
-        justify-content: center !important;
-        margin-bottom: 10px !important;
-    }
-
-    .hero-image img {
-        width: 140px !important;
-        height: 140px !important;
-    }
-
-    /* الأزرار Full width */
-    .hero-actions {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
-    }
-
-    .hero-actions .btn {
-        width: 100% !important;
-        justify-content: center !important;
-    }
-}
-
-
-/* =========================
-   FIX 3: REVEAL BUG (لو الصفحة بتبان فاضية)
-   ========================= */
-/* على الموبايل خليه يبان حتى لو سكريبت الـ reveal ماشتغلش */
-@media (max-width: 768px) {
+    /* Disable Hide Animations */
     .reveal {
         opacity: 1 !important;
         transform: none !important;
+        visibility: visible !important;
+        transition: none !important;
+    }
+
+    /* Section Spacing */
+    .section {
+        padding: 3rem 0;
+        overflow: hidden;
+        /* Contain children */
+    }
+
+    /* Reduce Header Height */
+    :root {
+        --header-h: 60px;
     }
 }
