@@ -1747,73 +1747,100 @@ html[dir="rtl"] .two-col,
 }
 
 /* ===== FIX: Mobile Typography (≤ 768px) ===== */
+/* ===== FIX: Mobile Typography (Final Refinement) ===== */
 @media (max-width: 768px) {
 
-    /* Mapped from user's request: ".hero-title" -> ".hero-name" */
-    .hero-name {
-        font-size: clamp(1.8rem, 6vw, 2.4rem);
+    /* Main Name */
+    .hero-name,
+    .hero-title {
+        font-size: clamp(1.6rem, 6vw, 2rem) !important;
+        line-height: 1.2;
     }
 
-    /* Mapped from user's request: ".hero-subtitle" -> ".hero-role" and ".hero-tagline" */
-    .hero-role {
-        font-size: 1rem;
+    /* Subtitle / Roles */
+    .hero-role,
+    .hero-subtitle {
+        font-size: clamp(1rem, 4.5vw, 1.2rem) !important;
+        letter-spacing: 0.5px;
     }
 
-    .hero-tagline {
-        font-size: 0.95rem;
-    }
-
-    p {
+    /* Tagline / Description */
+    .hero-tagline,
+    .hero-description {
         font-size: 0.95rem;
         line-height: 1.6;
     }
 
-    .btn {
-        font-size: 0.9rem;
+    /* Section Titles */
+    h2,
+    .section-title {
+        font-size: clamp(1.2rem, 5vw, 1.5rem);
+    }
+
+    /* Paragraph Text */
+    p,
+    .hero-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    /* Buttons */
+    .btn,
+    button {
+        font-size: 0.95rem;
         padding: 10px 18px;
     }
 }
 
-/* ===== FIX: Hero Image & Layout (Step 161) ===== */
+/* ===== FIX: Hero Image Sizing (Final Strict) ===== */
 html,
 body {
     overflow-x: hidden;
 }
 
+/* 1) Global Reset for Profile Image */
+.hero-visual img,
+.profile-card-minimal img,
+.profile-img {
+    transform: none !important;
+    scale: 1 !important;
+    max-width: 100% !important;
+}
+
 /* 2) Desktop Rules (min-width: 992px) */
 @media (min-width: 992px) {
 
+    /* Override parent container heights */
     .hero-visual,
-    .profile-card-minimal {
+    .profile-card-minimal,
+    .profile-image-wrapper {
         height: auto !important;
         min-height: unset !important;
-        align-self: center;
+        align-self: center !important;
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
+    /* Strict Image Limits */
     .profile-img {
-        width: 100%;
-        max-width: 420px;
-        max-height: 520px;
-        height: auto;
+        width: auto !important;
+        max-width: 380px !important;
+        max-height: 480px !important;
+        height: auto !important;
         object-fit: cover;
-        border-radius: 18px;
-        /* User requested change from circle to rounded rect */
+        border-radius: 16px;
         display: block;
         margin: 0 auto;
-        transform: none !important;
     }
 }
 
 /* 3) Mobile Rules (max-width: 768px) */
 @media (max-width: 768px) {
     .profile-img {
-        width: 220px;
+        width: 200px;
         max-width: 70vw;
         height: auto;
-        object-fit: cover;
         margin: 14px auto 0;
-        transform: none !important;
     }
 }
