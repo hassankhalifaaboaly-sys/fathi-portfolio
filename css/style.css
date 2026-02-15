@@ -1706,80 +1706,42 @@ html[dir="rtl"] .two-col,
     }
 }
 
-/* ===== FIX: Hero/Profile image too big on desktop ===== */
-/* Paste at END of style.css */
-
-.hero-image,
-.hero-image img {
-    max-width: 100%;
-}
-
-.hero-image {
-    /* Prevent container from stretching */
-    width: clamp(160px, 22vw, 360px);
-    margin-inline: auto;
-}
-
-.hero-image img {
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: 1 / 1;
-    /* keeps it square */
-    object-fit: cover !important;
-    object-position: center !important;
-
-    /* Optional: keep the same style */
-    border-radius: 50%;
-}
-
-/* Hard cap on large screens (desktop/laptop) */
+/* ===== FIX: Desktop Hero Layout & Image ===== */
 @media (min-width: 1024px) {
-    .hero-image {
-        width: 340px;
-    }
-
-    /* change 340 -> 300/320/360 as you like */
-}
-
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1023px) {
-    .hero-image {
-        width: 280px;
-    }
-}
-
-/* Mobile */
-@media (max-width: 767px) {
-    .hero-image {
-        width: 180px;
-    }
-}
-
-/* ===== FIX HERO IMAGE SIZE ON DESKTOP ===== */
-
-/* خلي توزيع الأعمدة متوازن */
-@media (min-width: 1024px) {
-
-    .hero-layout {
+    .hero-container {
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
-        /* النص أكبر – الصورة أصغر */
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .hero-visual {
+        display: flex;
+        justify-content: center;
         align-items: center;
     }
 
-    .hero-image {
+    .profile-card-minimal {
+        width: 100%;
+        max-width: 400px;
+        /* Ensure card doesn't stretch too wide */
+    }
+
+    .profile-image-wrapper {
         display: flex;
         justify-content: center;
+        width: 100%;
+        margin-bottom: 2rem;
     }
 
-    .hero-image img {
-        width: 320px;
-        /* تحكم فعلي في حجم الصورة */
-        max-width: 100%;
+    .profile-img {
+        max-width: 300px !important;
+        width: 100%;
         height: auto;
         object-fit: cover;
-        border-radius: 16px;
-        /* شكل احترافي بدل ما تكون ضخمة */
+        border-radius: 50%;
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.35),
+            0 0 25px rgba(31, 170, 89, 0.08);
     }
-
 }
