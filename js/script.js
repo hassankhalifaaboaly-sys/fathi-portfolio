@@ -444,14 +444,76 @@ document.addEventListener('DOMContentLoaded', () => {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target); // Animate once
+                revealObserver.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* =========================================
+       5. CUSTOM ANIMATIONS (KPIs & Skills)
+       ========================================= */
+
+    // --- SKILLS PROGRESS ---
+    // 1. Reset widths to 0 initially
+    const progressBars = document.querySelectorAll('.fill');
+    progressBars.forEach(bar => {
+        bar.dataset.width = bar.style.width; // Store original width
+        bar.style.width = '0';
+    });
+
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                bar.style.width = bar.dataset.width; // Restore width to trigger transition
+                skillObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    progressBars.forEach(bar => skillObserver.observe(bar));
+
+    // --- KPI COUNTERS ---
+    const counters = document.querySelectorAll('.kpi-number');
+
+    const kpiObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const targetText = counter.innerText;
+                const targetValue = parseInt(targetText.replace(/\D/g, '')); // Extract number
+                const suffix = targetText.replace(/[0-9]/g, ''); // Extract suffix (+, %)
+
+                let start = 0;
+                const duration = 2000;
+                const startTime = performance.now();
+
+                const animateCount = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeOut = 1 - Math.pow(1 - progress, 3); // Cubic ease out
+
+                    const currentVal = Math.floor(easeOut * targetValue);
+                    counter.innerText = currentVal + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(animateCount);
+                    } else {
+                        counter.innerText = targetText; // Ensure exact final value
+                    }
+                };
+
+                requestAnimationFrame(animateCount);
+                kpiObserver.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => kpiObserver.observe(counter));
 });
