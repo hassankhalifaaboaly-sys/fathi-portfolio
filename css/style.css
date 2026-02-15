@@ -870,10 +870,10 @@ textarea {
 }
 
 /* =========================================
-   MOBILE RESPONSIVENESS & LAYOUT PATCH
+   REFINED MOBILE & DESKTOP PATCH (FINAL)
    ========================================= */
 
-/* 1. Global Overflow Fixes */
+/* 1. Global Reset & Overflow Protection */
 html,
 body {
     overflow-x: hidden;
@@ -881,12 +881,15 @@ body {
     position: relative;
 }
 
-/* 2. Hero Layout (Desktop Base) */
+/* 2. Hero Structure: Stack Layout + Metrics Vertically */
 .hero-container {
-    display: block;
-    /* Overrides conflicting flex rules */
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    /* Space between Main Hero and Skill Cards */
 }
 
+/* Main Hero Grid: Text Left, Image Right */
 .hero-layout {
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
@@ -895,21 +898,27 @@ body {
     width: 100%;
 }
 
-/* 3. Mobile Adjustments (Tablet & Mobile) */
-@media (max-width: 900px) {
+/* 3. Header Improvements */
+.header-inner {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping on small screens */
+    height: auto;
+    /* Allow height to grow */
+    min-height: var(--header-h);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    gap: 1rem;
+}
 
-    /* Header: Fix Crowding */
-    .header-inner {
-        gap: 0.5rem;
-        padding-right: 0.5rem;
-        /* Ensure space for toggle */
-    }
+/* 4. Mobile Responsiveness (Tablets & Mobile <= 860px) */
+@media (max-width: 860px) {
 
+    /* --- HEADER --- */
     .brand {
+        flex: 1 1 auto;
+        /* Allow growing/shrinking */
         min-width: 0;
-        /* Allow shrinking */
-        flex: 1;
-        /* Take available space */
         gap: 0.5rem;
     }
 
@@ -920,7 +929,7 @@ body {
     }
 
     .brand-name {
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         line-height: 1.2;
     }
 
@@ -929,35 +938,31 @@ body {
         /* Hide subtitle to save space */
     }
 
-    /* Actions: Scale down */
+    .header-actions {
+        gap: 0.25rem;
+    }
+
     .header-actions .btn {
-        padding: 0.4rem;
+        padding: 0.5rem;
+        /* Smaller buttons */
     }
 
     .btn-text {
         display: none;
-        /* Hide text in header buttons, show only icons */
+        /* Hide text, show icons only */
     }
 
-    .nav-toggle {
-        width: 38px;
-        height: 38px;
-        flex-shrink: 0;
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* Hero: Single Column Layout */
+    /* --- HERO LAYOUT --- */
     .hero-layout {
-        grid-template-columns: 100%;
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        /* Single Column */
         text-align: center;
+        gap: 2rem;
     }
 
-    /* Hero Order: Text -> Buttons -> Image */
     .hero-left {
         order: 1;
+        /* Text first */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -965,7 +970,7 @@ body {
 
     .hero-right {
         order: 3;
-        /* Image after buttons */
+        /* Profile Card last */
         width: 100%;
         display: flex;
         justify-content: center;
@@ -973,9 +978,10 @@ body {
 
     .hero-actions {
         order: 2;
-        /* Buttons inside hero-left are part of the flow */
-        flex-direction: column;
+        /* Buttons in middle */
         width: 100%;
+        flex-direction: column;
+        /* Stack buttons */
         gap: 0.75rem;
     }
 
@@ -984,19 +990,24 @@ body {
         justify-content: center;
     }
 
-    /* Image Sizing */
     .hero-image img {
-        width: 160px;
-        height: 160px;
-        max-width: 100%;
+        width: 140px;
+        height: 140px;
     }
 
     .profile-card {
         max-width: 100%;
-        margin-top: 1rem;
+        margin-top: 0;
     }
 
-    /* Disable Hide Animations */
+    /* Ensure Metrics Stack Below */
+    .hero-metrics {
+        grid-template-columns: 1fr;
+        /* Stack skill cards */
+        width: 100%;
+    }
+
+    /* Reveal Animation Fix */
     .reveal {
         opacity: 1 !important;
         transform: none !important;
@@ -1004,15 +1015,17 @@ body {
         transition: none !important;
     }
 
-    /* Section Spacing */
-    .section {
-        padding: 3rem 0;
-        overflow: hidden;
-        /* Contain children */
-    }
-
-    /* Reduce Header Height */
+    /* Reduce Header Height Variable */
     :root {
-        --header-h: 60px;
+        --header-h: auto;
+        /* Let content dictate height */
     }
+}
+
+/* 5. RTL Fixes for Lists */
+html[dir="rtl"] .meta-mini,
+html[dir="rtl"] .two-col,
+html[dir="rtl"] .timeline {
+    padding-left: 0;
+    padding-right: 1.2rem;
 }
