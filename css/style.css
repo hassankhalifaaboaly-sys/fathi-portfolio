@@ -2261,3 +2261,25 @@ body {
         margin-top: 10px;
     }
 }
+
+/* ===== MOBILE NAV LIGHT STYLE ===== */
+@media (max-width: 860px) {
+
+    .nav-menu a {
+        color: rgba(230, 234, 240, 0.65);
+        /* لون هادي */
+        font-weight: 500;
+        transition: all 0.25s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        color: var(--text);
+        /* يرجع أبيض عند التفاعل */
+    }
+
+    /* لو عايز تأثير أخف أكتر */
+    .nav-menu {
+        background: rgba(10, 25, 50, 0.95);
+    }
+}
