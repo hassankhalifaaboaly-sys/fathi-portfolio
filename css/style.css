@@ -3483,3 +3483,54 @@ body.theme-light .site-header .btn {
     color: #0F172A !important;
     /* أزرق داكن راقي */
 }
+
+/* =========================================
+   DARK MODE TEXT CONTRAST BOOST (FINAL)
+   Put at VERY END of CSS
+   ========================================= */
+
+body.theme-dark {
+    /* ارفع تباين النصوص الثانوية */
+    --text-secondary: #D7DEE9 !important;
+    --text-muted: #B9C6D8 !important;
+    --muted: var(--text-secondary) !important;
+}
+
+/* امنع أي نص مطفي بسبب opacity */
+body.theme-dark p,
+body.theme-dark li,
+body.theme-dark .muted,
+body.theme-dark .section-sub,
+body.theme-dark .hero-subtitle,
+body.theme-dark .proj-desc,
+body.theme-dark .proj-meta,
+body.theme-dark .detail-label,
+body.theme-dark .detail-row,
+body.theme-dark .vision-text,
+body.theme-dark .timeline-card ul,
+body.theme-dark .timeline-card li {
+    opacity: 1 !important;
+    color: var(--text-secondary) !important;
+}
+
+/* العناوين جوه الكروت تبقى أوضح */
+body.theme-dark .profile-card-minimal h1,
+body.theme-dark .profile-card-minimal h2,
+body.theme-dark .profile-card-minimal h3,
+body.theme-dark .project-card h3,
+body.theme-dark .service-card h3,
+body.theme-dark .timeline-card h3 {
+    color: var(--text-primary) !important;
+}
+
+/* كلمات زي: "الدور" و "الأدوات" غالبًا كانت باهتة */
+body.theme-dark strong,
+body.theme-dark .proj-label,
+body.theme-dark .detail-value {
+    color: var(--text-primary) !important;
+}
+
+/* لو عندك بلوك اقتباس/Impact داخل الكارد وكان غامق */
+body.theme-dark .proj-impact {
+    color: var(--text-primary) !important;
+}
