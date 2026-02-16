@@ -3574,3 +3574,14 @@ body.theme-dark .proj-title,
 body.theme-dark strong {
     color: var(--text) !important;
 }
+
+.hero,
+.hero * {
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.hero::before,
+.hero::after {
+    display: none !important;
+}
