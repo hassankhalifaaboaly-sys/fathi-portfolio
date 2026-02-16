@@ -3360,3 +3360,31 @@ body.theme-dark .detail-value {
 body.theme-dark .proj-impact {
     color: var(--text-primary) !important;
 }
+
+/* ================================
+   REMOVE SQUARE BACKGROUND
+   ================================ */
+
+/* امسح أي خلفية أو إطار حوالين الصورة */
+.hero-image {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+
+    width: 240px !important;
+    height: 240px !important;
+
+    border-radius: 50% !important;
+    overflow: hidden !important;
+}
+
+/* الصورة نفسها */
+.hero-image img,
+.profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 6% !important;
+    border-radius: 50% !important;
+}
