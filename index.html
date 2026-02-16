@@ -63,88 +63,51 @@
   <main>
     <!-- HERO -->
     <section class="hero section" id="hero">
-      <div class="container hero-container">
-
+      <div class="container">
         <div class="hero-layout">
-          <!-- LEFT COLUMN: Headline + Actions -->
-          <div class="hero-left reveal">
-            <p class="kicker" data-i18n="hero_kicker">Professional Portfolio</p>
 
+          <div class="hero-left">
             <h1 class="hero-title">
               <span class="name" data-i18n="name_full">FATHI KHALIFA</span>
-              <div class="typing-container">
-                <span class="typing-text">Planning Engineer | Data Specialist</span>
-              </div>
+              <span class="title" data-i18n="title_short">Planning Engineer | Infrastructure & Data</span>
             </h1>
-            <div class="hero-divider"></div>
 
-            <ul class="hero-bullets">
-              <li>Infrastructure Planning & Scheduling</li>
-              <li>Cost & Schedule Performance Control</li>
-              <li>Power BI & Data-Driven Decision Making</li>
-            </ul>
+            <p class="hero-subtitle" data-i18n="hero_intro">
+              Delivering smarter infrastructure through planning & data.
+              Infrastructure Planning • Cost Control • Data-Driven Decision Support
+            </p>
 
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#projects" data-i18n="hero_cta_proj">View Projects</a>
-              <a class="btn btn-secondary" href="#contact" data-i18n="hero_cta_contact">Contact Me</a>
-              <a class="btn btn-ghost" href="assets/cv/Fathy-Khalifa-CV.pdf" download
+              <a href="#projects" class="btn btn-primary" data-i18n="hero_cta_proj">View Projects</a>
+              <a href="assets/cv/Fathy-Khalifa-CV.pdf" class="btn btn-secondary" download
                 data-i18n="hero_cta_download">Download CV</a>
             </div>
           </div>
 
-          <!-- RIGHT COLUMN: Profile Block inside Card -->
-          <div class="hero-right reveal">
-            <div class="profile-card quick-info">
+          <div class="hero-right">
+            <div class="profile-card">
               <div class="hero-image">
-                <img src="assets/images/profile.png" alt="Fathi Khalifa">
-              </div>
-
-              <div class="profile-meta">
-                <h2 data-i18n="quick_title">Quick Info</h2>
-
-                <ul class="meta-mini">
-                  <li><strong data-i18n="loc_lbl">Location:</strong> <span>Makkah, Kingdom of Saudi Arabia</span></li>
-                  <li><strong data-i18n="email_lbl">Email:</strong> <a
-                      href="mailto:hassankhalifaaboaly@gmail.com">hassankhalifaaboaly@gmail.com</a></li>
-                  <li><strong data-i18n="wa_lbl">WhatsApp (KSA):</strong> <a target="_blank" rel="noopener"
-                      href="https://wa.me/966549096646">+966 54 909 6646</a></li>
-                  <li><strong>LinkedIn:</strong> <a target="_blank" rel="noopener"
-                      href="https://www.linkedin.com/in/fathi-khalifa-mohammed-3922a7230">Profile</a></li>
-                </ul>
-
-                <div class="quick-links">
-                  <a class="pill" href="#cv" data-i18n="pill_cv">CV in site</a>
-                  <a class="pill" href="#certificates" data-i18n="pill_cert">Certificates</a>
-                  <a class="pill" href="#contact" data-i18n="pill_contact">Contact</a>
-                </div>
-
-                <p class="micro" data-i18n="availability">
-                  Available for planning support, project control, performance reporting, and data-driven decision
-                  support.
-                </p>
+                <img src="assets/images/profile.png" alt="Fathi Khalifa" class="profile-img">
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 3. Skill Cards (Bottom Row) -->
-        <div class="hero-metrics reveal" role="list">
-          <div class="metric" role="listitem">
-            <span class="metric-value">Primavera P6</span>
-            <span class="metric-label" data-i18n="m1">Planning & Scheduling</span>
-          </div>
-          <div class="metric" role="listitem">
-            <span class="metric-value">Power BI • Excel</span>
-            <span class="metric-label" data-i18n="m2">Dashboards & Reporting</span>
-          </div>
-          <div class="metric" role="listitem">
-            <span class="metric-value">SQL Server • Python • n8n</span>
-            <span class="metric-label" data-i18n="m3">Data + Automation</span>
-          </div>
         </div>
       </div>
+    </section>
 
-      <div class="hero-bg" aria-hidden="true"></div>
+    <!-- QUICK INFO SECTION -->
+    <section class="quick-info section">
+      <div class="container">
+        <h2 data-i18n="info_title">Quick Info</h2>
+        <ul class="info-list">
+          <li><strong>Location:</strong> <span data-i18n="p_addr_v">Makkah, KSA</span></li>
+          <li><strong>Experience:</strong> <span data-i18n="exp_yrs">5+ Years</span></li>
+          <li><strong>Email:</strong> <a href="mailto:hassankhalifaaboaly@gmail.com">hassankhalifaaboaly@gmail.com</a>
+          </li>
+          <li><strong>WhatsApp:</strong> <a href="https://wa.me/966549096646">+966 54 909 6646</a></li>
+        </ul>
+      </div>
     </section>
 
     <!-- KPI SECTION -->
@@ -203,45 +166,70 @@
     <section class="section" id="projects">
       <div class="container">
         <div class="section-head reveal">
-          <h2 data-i18n="proj_title">Featured Projects</h2>
-          <p class="section-sub">A selection of my work in infrastructure and data visualization.</p>
+          <h2 data-i18n="proj_title">Selected Projects</h2>
+          <p class="section-sub">A portfolio of infrastructure planning and data visualization.</p>
         </div>
 
         <div class="projects-grid">
           <!-- Project 1 -->
           <article class="project-card reveal">
-            <div class="proj-content">
-              <h3>Road Infrastructure Upgrade</h3>
-              <p>Managed scheduling and resource allocation for a 50km highway expansion project.</p>
-              <div class="proj-tags">
-                <span>Primavera P6</span>
-                <span>Excel</span>
+            <div class="proj-body">
+              <h3 class="proj-title">Road Infrastructure Upgrade</h3>
+              <p class="proj-desc">Managed detailed scheduling and resource allocation for a 50km highway expansion
+                project.</p>
+
+              <div class="proj-meta">
+                <span class="proj-label">Role:</span> Planning Engineer
+                <span class="proj-label">Tools:</span> Primavera P6 • Excel
               </div>
-              <a href="#" class="btn btn-sm">View Details</a>
+
+              <div class="proj-impact">
+                <strong>Impact:</strong> Delivered project 2 weeks ahead of schedule through critical path optimization.
+              </div>
+            </div>
+            <div class="proj-footer">
+              <a href="#" class="btn-link">View Details &rarr;</a>
             </div>
           </article>
+
           <!-- Project 2 -->
           <article class="project-card reveal">
-            <div class="proj-content">
-              <h3>Project Control Dashboard</h3>
-              <p>Developed an interactive Power BI dashboard to track EVM metrics and forecast costs.</p>
-              <div class="proj-tags">
-                <span>Power BI</span>
-                <span>SQL</span>
+            <div class="proj-body">
+              <h3 class="proj-title">Project Control Dashboard</h3>
+              <p class="proj-desc">Developed an interactive Power BI dashboard to track EVM metrics and forecast costs.
+              </p>
+
+              <div class="proj-meta">
+                <span class="proj-label">Role:</span> Data Analyst
+                <span class="proj-label">Tools:</span> Power BI • SQL
               </div>
-              <a href="#" class="btn btn-sm">View Dashboard</a>
+
+              <div class="proj-impact">
+                <strong>Impact:</strong> Improved reporting efficiency by 40% and enabled real-time cost tracking.
+              </div>
+            </div>
+            <div class="proj-footer">
+              <a href="#" class="btn-link">View Dashboard &rarr;</a>
             </div>
           </article>
+
           <!-- Project 3 -->
           <article class="project-card reveal">
-            <div class="proj-content">
-              <h3>Automated Reporting System</h3>
-              <p>Automated daily site reporting using Python scripts and n8n workflows.</p>
-              <div class="proj-tags">
-                <span>Python</span>
-                <span>n8n</span>
+            <div class="proj-body">
+              <h3 class="proj-title">Automated Reporting System</h3>
+              <p class="proj-desc">Automated daily site reporting using Python scripts and n8n workflows.</p>
+
+              <div class="proj-meta">
+                <span class="proj-label">Role:</span> Automation Lead
+                <span class="proj-label">Tools:</span> Python • n8n
               </div>
-              <a href="#" class="btn btn-sm">View Script</a>
+
+              <div class="proj-impact">
+                <strong>Impact:</strong> Reduced manual data entry hours by 15h/week and eliminated human error.
+              </div>
+            </div>
+            <div class="proj-footer">
+              <a href="#" class="btn-link">View Script &rarr;</a>
             </div>
           </article>
         </div>
@@ -290,25 +278,21 @@
             </div>
           </div>
 
-          <aside class="card reveal">
-            <h3 data-i18n="vision_title">Professional Vision</h3>
-            <p class="muted" data-i18n="vision_body">
-              I seek an opportunity in a professional environment where I can continuously develop my engineering and
-              technical skills,
-              apply data-driven and sustainable approaches to infrastructure projects, work with integrity and technical
-              excellence,
-              and contribute to delivering smart, sustainable, and resilient infrastructure.
+          <aside class="vision-box reveal">
+            <h3 class="vision-title" data-i18n="vision_title">Executive Vision</h3>
+            <p class="vision-text" data-i18n="vision_body">
+              To drive infrastructure excellence by bridging confidence in planning with precision in data. I am
+              committed to delivering sustainable, high-impact projects that uphold rigorous engineering standards and
+              optimize resource efficiency.
             </p>
 
             <div class="divider" role="separator"></div>
 
-            <h3 data-i18n="sust_title">Sustainability & Inclusive Road Networks</h3>
-            <ul class="muted">
-              <li data-i18n="sust_1">Serve all users (vehicles, pedestrians, public transport, people with
-                disabilities).</li>
-              <li data-i18n="sust_2">Integrate green spaces and environmentally responsible solutions.</li>
-              <li data-i18n="sust_3">Reduce long-term operational and environmental costs.</li>
-              <li data-i18n="sust_4">Enhance urban livability and safety.</li>
+            <h3 class="vision-subtitle" data-i18n="sust_title">Core Values</h3>
+            <ul class="vision-list">
+              <li data-i18n="sust_1"><strong>Integrity:</strong> Uncompromising data accuracy & ethical reporting.</li>
+              <li data-i18n="sust_2"><strong>Efficiency:</strong> Reducing waste through optimized scheduling.</li>
+              <li data-i18n="sust_3"><strong>Sustainability:</strong> Planning for long-term community value.</li>
             </ul>
           </aside>
         </div>
@@ -319,68 +303,84 @@
     <section class="section" id="skills">
       <div class="container">
         <div class="section-head reveal">
-          <h2 data-i18n="skills_title">Technical Skills</h2>
-          <p class="section-sub" data-i18n="skills_sub">A practical skill set built for execution, control, and
-            decision-grade reporting.</p>
+          <h2 data-i18n="skills_title">Technical Expertise</h2>
+          <p class="section-sub" data-i18n="skills_sub">
+            Precision tools for planning, control, and data intelligence.
+          </p>
         </div>
 
-        <div class="grid-3">
-          <article class="card reveal">
-            <h3 data-i18n="s1">Planning & Project Control</h3>
-            <ul class="chips">
-              <li data-i18n="s1_1">Primavera P6</li>
-              <li data-i18n="s1_2">Microsoft Project</li>
-              <li data-i18n="s1_3">Project Control & Progress Tracking</li>
-              <li data-i18n="s1_4">Performance Analysis</li>
-              <li data-i18n="s1_5">Cost Control</li>
-              <li data-i18n="s1_6">BOQ Management</li>
-              <li data-i18n="s1_7">Interim & Final Payments</li>
-              <li data-i18n="s1_8">Professional Documentation</li>
-            </ul>
-          </article>
-
-          <article class="card reveal">
-            <h3 data-i18n="s2">Data Analysis & Reporting</h3>
-            <ul class="chips">
-              <li data-i18n="s2_1">Excel (Advanced)</li>
-              <li data-i18n="s2_2">Power BI</li>
-              <li data-i18n="s2_3">Dashboard Development</li>
-              <li data-i18n="s2_4">Data Visualization</li>
-              <li data-i18n="s2_5">Data Validation & Accuracy Control</li>
-              <li data-i18n="s2_6">Planned vs Actual KPIs</li>
-              <li data-i18n="s2_7">EVM Analysis</li>
-            </ul>
-          </article>
-
-          <article class="card reveal">
-            <h3 data-i18n="s3">Databases & Automation</h3>
-            <div class="skill-bar-container">
-              <div class="skill-item">
-                <div class="skill-info"><span>Power BI</span><span>90%</span></div>
-                <div class="progress-bar">
-                  <div class="fill" style="width:90%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Primavera P6</span><span>85%</span></div>
-                <div class="progress-bar">
-                  <div class="fill" style="width:85%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>SQL Server</span><span>75%</span></div>
-                <div class="progress-bar">
-                  <div class="fill" style="width:75%"></div>
-                </div>
-              </div>
-              <div class="skill-item">
-                <div class="skill-info"><span>Python</span><span>70%</span></div>
-                <div class="progress-bar">
-                  <div class="fill" style="width:70%"></div>
-                </div>
-              </div>
+        <div class="skills-grid reveal">
+          <!-- Skill 1 -->
+          <div class="skill-card">
+            <div class="skill-icon">📅</div>
+            <div class="skill-info">
+              <h3>Primavera P6</h3>
+              <p>Advanced scheduling, baselines & critical path analysis.</p>
             </div>
-          </article>
+          </div>
+
+          <!-- Skill 2 -->
+          <div class="skill-card">
+            <div class="skill-icon">📊</div>
+            <div class="skill-info">
+              <h3>Power BI</h3>
+              <p>Interactive executive dashboards & data storytelling.</p>
+            </div>
+          </div>
+
+          <!-- Skill 3 -->
+          <div class="skill-card">
+            <div class="skill-icon">📉</div>
+            <div class="skill-info">
+              <h3>Earned Value (EVM)</h3>
+              <p>Cost performance index (CPI) & schedule forecasting.</p>
+            </div>
+          </div>
+
+          <!-- Skill 4 -->
+          <div class="skill-card">
+            <div class="skill-icon">📑</div>
+            <div class="skill-info">
+              <h3>Cost Control</h3>
+              <p>Budget monitoring, cash flow & variance analysis.</p>
+            </div>
+          </div>
+
+          <!-- Skill 5 -->
+          <div class="skill-card">
+            <div class="skill-icon">💾</div>
+            <div class="skill-info">
+              <h3>SQL Server</h3>
+              <p>Complex queries, data extraction & relational databases.</p>
+            </div>
+          </div>
+
+          <!-- Skill 6 -->
+          <div class="skill-card">
+            <div class="skill-icon">🐍</div>
+            <div class="skill-info">
+              <h3>Python & n8n</h3>
+              <p>Automating daily reports & workflow efficiency.</p>
+            </div>
+          </div>
+
+          <!-- Skill 7 -->
+          <div class="skill-card">
+            <div class="skill-icon">📋</div>
+            <div class="skill-info">
+              <h3>Contract Admin</h3>
+              <p>BOQ management, modifications & payment certificates.</p>
+            </div>
+          </div>
+
+          <!-- Skill 8 -->
+          <div class="skill-card">
+            <div class="skill-icon">📈</div>
+            <div class="skill-info">
+              <h3>Advanced Excel</h3>
+              <p>Complex modeling, VBA macros & data validation.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
