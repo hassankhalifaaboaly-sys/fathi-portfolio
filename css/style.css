@@ -2283,3 +2283,69 @@ body {
         background: rgba(10, 25, 50, 0.95);
     }
 }
+
+/* =========================================
+   NAV MENU COLORS (Desktop + Mobile)
+   Put at the VERY END of CSS
+   ========================================= */
+
+/* 1) Default nav links: soft + elegant */
+.nav-menu a {
+    color: rgba(230, 234, 240, 0.65);
+    /* هادي */
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color .25s ease, transform .25s ease;
+}
+
+/* 2) Hover: brighter (not neon) */
+.nav-menu a:hover {
+    color: rgba(230, 234, 240, 0.92);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+/* 3) Active section: subtle accent */
+.nav-menu a.active {
+    color: var(--accent);
+}
+
+/* 4) Remove strong underline if you want it cleaner */
+.nav-menu a::after {
+    background: rgba(31, 170, 89, 0.55);
+    /* أخضر هادي */
+}
+
+/* =========================================
+   MOBILE MENU PANEL COLORS
+   ========================================= */
+@media (max-width: 860px) {
+
+    .nav-menu {
+        background: rgba(10, 25, 50, 0.95);
+        /* لوحة هادية */
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+    }
+
+    .nav-menu a {
+        padding: .75rem .9rem;
+        border-radius: 12px;
+    }
+
+    /* Hover/active background (soft highlight) */
+    .nav-menu a:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-menu a.active {
+        background: rgba(31, 170, 89, 0.10);
+        color: rgba(230, 234, 240, 0.95);
+        /* أو خلّيها var(--accent) لو تحب */
+    }
+
+    /* underline off in mobile (optional cleaner) */
+    .nav-menu a::after {
+        display: none;
+    }
+}
