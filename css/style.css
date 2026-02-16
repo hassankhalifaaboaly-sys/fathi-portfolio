@@ -3310,3 +3310,98 @@ body.theme-light .site-header .nav-menu a:hover {
     padding-bottom: 4px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
+
+/* =========================
+   HEADER FIX (LIGHT + DARK)
+   ========================= */
+
+/* ---------- DARK MODE ---------- */
+body.theme-dark .site-header {
+    background: linear-gradient(90deg, #0F172A, #0B1C33);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.theme-dark .site-header .brand-name,
+body.theme-dark .site-header .brand-role,
+body.theme-dark .nav-menu a {
+    color: #E6EDF5;
+}
+
+body.theme-dark .site-header .btn-ghost,
+body.theme-dark .nav-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #E6EDF5;
+}
+
+
+/* ---------- LIGHT MODE ---------- */
+body.theme-light .site-header {
+    background: linear-gradient(90deg, #F6F9FC, #EEF3F8);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.10);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+body.theme-light .site-header .brand-name {
+    color: #0F172A;
+}
+
+body.theme-light .site-header .brand-role {
+    color: #334155;
+}
+
+body.theme-light .nav-menu a {
+    color: #0F172A;
+}
+
+body.theme-light .site-header .btn-ghost,
+body.theme-light .nav-toggle {
+    background: rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    color: #0F172A;
+}
+
+
+/* ---------- Mobile Menu Overlay ---------- */
+body.theme-dark .nav-menu {
+    background: rgba(10, 20, 38, 0.95);
+}
+
+body.theme-light .nav-menu {
+    background: rgba(246, 249, 252, 0.98);
+}
+
+/* =========================
+   PROFILE IMAGE FIX
+   ========================= */
+
+.hero-image {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    outline: 4px solid rgba(31, 170, 89, 0.25);
+    outline-offset: 6px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* أهم سطر */
+    object-position: center 20%;
+    /* عدل الرقم لو عايز ترفع/تنزل الصورة */
+    border-radius: 50%;
+    display: block;
+}
+
+/* موبايل */
+@media (max-width: 480px) {
+    .hero-image {
+        width: 200px;
+        height: 200px;
+    }
+}
