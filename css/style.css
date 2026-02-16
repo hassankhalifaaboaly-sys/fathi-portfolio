@@ -3585,3 +3585,30 @@ body.theme-dark strong {
 .hero::after {
     display: none !important;
 }
+
+/* ===== FIX HERO TEXT IN LIGHT MODE (PUT AT END) ===== */
+body.theme-light {
+    --text-primary: #0F172A;
+    --text-secondary: #334155;
+    --muted: #475569;
+    --text: #0F172A;
+}
+
+/* اجبار نصوص الهيرو تاخد الألوان الصحيحة في اللايت */
+body.theme-light .hero-name,
+body.theme-light .hero-title .name,
+body.theme-light .brand-name,
+body.theme-light h1,
+body.theme-light h2,
+body.theme-light h3 {
+    color: var(--text-primary) !important;
+}
+
+body.theme-light .hero-role,
+body.theme-light .hero-tagline,
+body.theme-light .hero-subtitle,
+body.theme-light p,
+body.theme-light li {
+    color: var(--text-secondary) !important;
+    opacity: 1 !important;
+}
