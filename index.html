@@ -1,203 +1,641 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="en" dir="ltr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>م. فتحي خليفة - Portfolio</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Tajawal:wght@400;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description"
+        content="Fathi Khalifa Mohamed — Planning Engineer | Road Engineer | Safety-oriented | Power BI & Data Analysis." />
+    <title>Fathi Khalifa | Portfolio</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body>
+<body class="theme-dark">
+    <div class="top-accent" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="logo">
-        <span class="logo-text" data-i18n="name">م. فتحي خليفة</span>
-      </div>
+    <header class="site-header" id="top">
+        <div class="container header-inner">
+            <a class="brand" href="#hero" aria-label="Back to top">
+                <span class="brand-mark" aria-hidden="true">FK</span>
+                <span class="brand-text">
+                    <span class="brand-name" data-i18n="name_full">FATHI KHALIFA MOHAMED</span>
+                    <span class="brand-role" data-i18n="title_short">PLANNING ENGINEER | ROAD ENGINEER</span>
+                </span>
+            </a>
 
-      <div class="controls">
-        <button id="theme-btn" class="icon-btn" title="تغيير الثيم"><i class="fas fa-moon"></i></button>
-        <button id="lang-btn" class="lang-btn" title="تغيير اللغة">EN</button>
-        <button id="menu-toggle" class="icon-btn mobile-only"><i class="fas fa-bars"></i></button>
-      </div>
+            <nav class="nav" aria-label="Primary navigation">
+                <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
+                    <span class="sr-only">Open menu</span>
+                    <span class="nav-toggle-lines" aria-hidden="true"></span>
+                </button>
 
-      <nav id="nav-menu" class="nav-menu">
-        <a href="#home" data-i18n="nav_home" class="active">الرئيسية</a>
-        <a href="#experience" data-i18n="nav_exp">الخبرات</a>
-        <a href="#skills" data-i18n="nav_skills">المهارات</a>
-        <a href="#certificates" data-i18n="nav_certs">الشهادات</a>
-        <a href="#contact" data-i18n="nav_contact">تواصل معي</a>
-      </nav>
-    </div>
-  </header>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#about" data-i18n="nav_about">About</a></li>
+                    <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+                    <li><a href="#experience" data-i18n="nav_exp">Experience</a></li>
+                    <li><a href="#education" data-i18n="nav_edu">Education</a></li>
+                    <li><a href="#certificates" data-i18n="nav_cert">Certificates</a></li>
+                    <li><a href="#cv" data-i18n="nav_cv">CV</a></li>
+                    <li><a class="nav-cta" href="#contact" data-i18n="nav_contact">Contact</a></li>
+                </ul>
+            </nav>
 
-  <section id="home" class="hero-section">
-    <div class="container hero-grid">
-      <div class="hero-text">
-        <div class="badge" data-i18n="role_badge">Planning Engineer</div>
-        <h1 data-i18n="hero_title">مهندس تخطيط وبنية تحتية</h1>
-        <p data-i18n="hero_desc">مهندس مدني بخبرة تزيد عن 5 سنوات في تخطيط الطرق، التحكم بالمشاريع، وتحليل البيانات
-          المتقدم باستخدام Power BI و Primavera P6.</p>
+            <div class="header-actions">
+                <button id="langToggle" class="btn btn-ghost" type="button" aria-label="Toggle language">
+                    <span class="btn-icon" aria-hidden="true">🌐</span>
+                    <span class="btn-text">AR</span>
+                </button>
 
-        <ul class="quick-info">
-          <li><i class="fas fa-map-marker-alt"></i> <span data-i18n="loc">مكة المكرمة، السعودية</span></li>
-          <li><i class="fas fa-envelope"></i> <span>hassankhalifaaboaly@gmail.com</span></li>
-          <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/fathi-khalifa-mohammed-3922a7230"
-              target="_blank">LinkedIn Profile</a></li>
-        </ul>
-
-        <div class="hero-btns">
-          <a href="cv.pdf" download class="btn-primary">
-            <span data-i18n="download_cv">تحميل السيرة الذاتية</span>
-            <i class="fas fa-download"></i>
-          </a>
-          <a href="#contact" class="btn-outline" data-i18n="contact_btn">تواصل معي</a>
+                <button id="themeToggle" class="btn btn-ghost" type="button" aria-label="Toggle theme">
+                    <span class="btn-icon" aria-hidden="true">🌓</span>
+                    <span class="btn-text" data-i18n="theme_btn">Theme</span>
+                </button>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <div class="hero-visual">
-        <div class="img-frame">
-          <img src="profile.jpg" alt="Fathi Khalifa" class="profile-img">
+    <main>
+        <!-- HERO -->
+        <section class="hero section" id="hero">
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-left">
+                        <h1 class="hero-title">
+                            <span class="name" data-i18n="name_full">FATHI KHALIFA</span>
+                            <span class="title" data-i18n="title_short">Planning Engineer | Infrastructure & Data</span>
+                        </h1>
+
+                        <p class="hero-subtitle" data-i18n="hero_intro">
+                            Delivering smarter infrastructure through planning & data.
+                            Infrastructure Planning • Cost Control • Data-Driven Decision Support
+                        </p>
+
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary" data-i18n="hero_cta_proj">View Projects</a>
+                            <a href="assets/cv/Fathy-Khalifa-CV.pdf" class="btn btn-secondary" download
+                                data-i18n="hero_cta_download">Download CV</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-right">
+                        <div class="profile-card">
+                            <div class="hero-image">
+                                <img src="assets/images/profile.png" alt="Fathi Khalifa" class="profile-img" />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- QUICK INFO -->
+        <section class="quick-info section">
+            <div class="container">
+                <h2 data-i18n="info_title">Quick Info</h2>
+                <ul class="info-list">
+                    <li><strong>Location:</strong> <span data-i18n="p_addr_v">Makkah, KSA</span></li>
+                    <li><strong>Experience:</strong> <span data-i18n="exp_yrs">5+ Years</span></li>
+                    <li><strong>Email:</strong> <a
+                            href="mailto:hassankhalifaaboaly@gmail.com">hassankhalifaaboaly@gmail.com</a></li>
+                    <li><strong>WhatsApp:</strong> <a href="https://wa.me/966549096646">+966 54 909 6646</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- KPI -->
+        <section class="section kpi-section" id="kpi">
+            <div class="container kpi-grid">
+                <div class="kpi-card reveal"><span class="kpi-number">5+</span><span class="kpi-label">Years
+                        Experience</span></div>
+                <div class="kpi-card reveal"><span class="kpi-number">20+</span><span class="kpi-label">Projects</span>
+                </div>
+                <div class="kpi-card reveal"><span class="kpi-number">15+</span><span
+                        class="kpi-label">Certifications</span></div>
+                <div class="kpi-card reveal"><span class="kpi-number">100%</span><span class="kpi-label">On-Time
+                        Reporting</span></div>
+            </div>
+        </section>
+
+        <!-- SERVICES -->
+        <section class="section" id="services">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="serv_title">What I Do</h2>
+                    <p class="section-sub" data-i18n="serv_sub">Delivering value through precision planning and data
+                        intelligence.</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="service-card reveal">
+                        <div class="serv-icon">📅</div>
+                        <h3>Planning & Scheduling</h3>
+                        <p>Expert in Primavera P6, establishing baselines, and monitoring critical paths for complex
+                            infrastructure.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="serv-icon">📊</div>
+                        <h3>Data Analytics & BI</h3>
+                        <p>Transforming raw site data into actionable Power BI dashboards and executive reports.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="serv-icon">📈</div>
+                        <h3>Performance Reporting</h3>
+                        <p>Comprehensive EVM analysis, cost control, and delay analysis to keep projects on track.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="proj_title">Selected Projects</h2>
+                    <p class="section-sub">A portfolio of infrastructure planning and data visualization.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <article class="project-card reveal">
+                        <div class="proj-body">
+                            <h3 class="proj-title">Road Infrastructure Upgrade</h3>
+                            <p class="proj-desc">Managed detailed scheduling and resource allocation for a 50km highway
+                                expansion project.</p>
+                            <div class="proj-meta">
+                                <span class="proj-label">Role:</span> Planning Engineer
+                                <span class="proj-label">Tools:</span> Primavera P6 • Excel
+                            </div>
+                            <div class="proj-impact"><strong>Impact:</strong> Delivered project 2 weeks ahead of
+                                schedule through critical path optimization.</div>
+                        </div>
+                        <div class="proj-footer"><a href="#" class="btn-link">View Details &rarr;</a></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="proj-body">
+                            <h3 class="proj-title">Project Control Dashboard</h3>
+                            <p class="proj-desc">Developed an interactive Power BI dashboard to track EVM metrics and
+                                forecast costs.</p>
+                            <div class="proj-meta">
+                                <span class="proj-label">Role:</span> Data Analyst
+                                <span class="proj-label">Tools:</span> Power BI • SQL
+                            </div>
+                            <div class="proj-impact"><strong>Impact:</strong> Improved reporting efficiency by 40% and
+                                enabled real-time cost tracking.</div>
+                        </div>
+                        <div class="proj-footer"><a href="#" class="btn-link">View Dashboard &rarr;</a></div>
+                    </article>
+
+                    <article class="project-card reveal">
+                        <div class="proj-body">
+                            <h3 class="proj-title">Automated Reporting System</h3>
+                            <p class="proj-desc">Automated daily site reporting using Python scripts and n8n workflows.
+                            </p>
+                            <div class="proj-meta">
+                                <span class="proj-label">Role:</span> Automation Lead
+                                <span class="proj-label">Tools:</span> Python • n8n
+                            </div>
+                            <div class="proj-impact"><strong>Impact:</strong> Reduced manual data entry hours by
+                                15h/week and eliminated human error.</div>
+                        </div>
+                        <div class="proj-footer"><a href="#" class="btn-link">View Script &rarr;</a></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="about_title">Profile Summary</h2>
+                    <p class="section-sub" data-i18n="about_sub">Planning discipline + data clarity + safety mindset —
+                        focused on reliable project delivery.</p>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-card card reveal">
+                        <p data-i18n="about_body">
+                            I am a Civil Engineer specialized in road infrastructure planning and project control, with
+                            a strong background in data analysis,
+                            schedule, and cost performance management. I aim to support sustainable construction by
+                            integrating technology, data analytics,
+                            and smart planning into road projects to improve efficiency, reduce environmental impact,
+                            and deliver inclusive infrastructure that serves all users.
+                            I believe that project success depends on the commitment and collaboration of all
+                            stakeholders, not only operational or construction teams.
+                            Likewise, environmental responsibility is a shared effort that extends beyond the
+                            construction sector to include planners, regulators,
+                            decision-makers, and the community.
+                        </p>
+
+                        <div class="about-highlights">
+                            <div class="highlight">
+                                <span class="highlight-title" data-i18n="h1_t">Core Focus</span>
+                                <span class="highlight-desc" data-i18n="h1_d">Roads & Infrastructure • Planning •
+                                    Project Control</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-title" data-i18n="h2_t">Data Stack</span>
+                                <span class="highlight-desc" data-i18n="h2_d">Power BI • Excel • SQL Server • Python •
+                                    n8n</span>
+                            </div>
+                            <div class="highlight">
+                                <span class="highlight-title" data-i18n="h3_t">Mindset</span>
+                                <span class="highlight-desc" data-i18n="h3_d">Safety • Quality • Documentation •
+                                    Continuous improvement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="vision-box reveal">
+                        <h3 class="vision-title" data-i18n="vision_title">Executive Vision</h3>
+                        <p class="vision-text" data-i18n="vision_body">
+                            To drive infrastructure excellence by bridging confidence in planning with precision in
+                            data. I am committed to delivering sustainable,
+                            high-impact projects that uphold rigorous engineering standards and optimize resource
+                            efficiency.
+                        </p>
+
+                        <div class="divider" role="separator"></div>
+
+                        <h3 class="vision-subtitle" data-i18n="sust_title">Core Values</h3>
+                        <ul class="vision-list">
+                            <li data-i18n="sust_1"><strong>Integrity:</strong> Uncompromising data accuracy & ethical
+                                reporting.</li>
+                            <li data-i18n="sust_2"><strong>Efficiency:</strong> Reducing waste through optimized
+                                scheduling.</li>
+                            <li data-i18n="sust_3"><strong>Sustainability:</strong> Planning for long-term community
+                                value.</li>
+                        </ul>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="skills_title">Technical Expertise</h2>
+                    <p class="section-sub" data-i18n="skills_sub">Precision tools for planning, control, and data
+                        intelligence.</p>
+                </div>
+
+                <div class="skills-grid reveal">
+                    <div class="skill-card">
+                        <div class="skill-icon">📅</div>
+                        <div class="skill-info">
+                            <h3>Primavera P6</h3>
+                            <p>Advanced scheduling, baselines & critical path analysis.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📊</div>
+                        <div class="skill-info">
+                            <h3>Power BI</h3>
+                            <p>Interactive executive dashboards & data storytelling.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📉</div>
+                        <div class="skill-info">
+                            <h3>Earned Value (EVM)</h3>
+                            <p>Cost performance index (CPI) & schedule forecasting.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📑</div>
+                        <div class="skill-info">
+                            <h3>Cost Control</h3>
+                            <p>Budget monitoring, cash flow & variance analysis.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">💾</div>
+                        <div class="skill-info">
+                            <h3>SQL Server</h3>
+                            <p>Complex queries, data extraction & relational databases.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🐍</div>
+                        <div class="skill-info">
+                            <h3>Python & n8n</h3>
+                            <p>Automating daily reports & workflow efficiency.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📋</div>
+                        <div class="skill-info">
+                            <h3>Contract Admin</h3>
+                            <p>BOQ management, modifications & payment certificates.</p>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">📈</div>
+                        <div class="skill-info">
+                            <h3>Advanced Excel</h3>
+                            <p>Complex modeling, VBA macros & data validation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="exp_title">Professional Experience</h2>
+                    <p class="section-sub" data-i18n="exp_sub">Roles and responsibilities based on your CV content.</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <h3 data-i18n="exp1_title">Abo Azzam Company — Site Engineer / Planning Engineer</h3>
+                                <span class="timeline-date" data-i18n="exp1_date">Jan 2025 – Apr 2025 • Taif, Saudi
+                                    Arabia</span>
+                            </div>
+                            <ul>
+                                <li data-i18n="exp1_d1">Supervised construction activities and coordinated site works
+                                    according to approved drawings.</li>
+                                <li data-i18n="exp1_d2">Prepared daily and weekly reports for quantities, manpower, and
+                                    progress.</li>
+                                <li data-i18n="exp1_d3">Ensured compliance with safety regulations and quality
+                                    standards.</li>
+                                <li data-i18n="exp1_d4">Coordinated labor, subcontractors, and suppliers to support
+                                    schedule requirements.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <h3 data-i18n="exp2_title">Al-Saqr Al-Abyad Contracting Company — Planning Engineer
+                                    (Roads & Infrastructure)</h3>
+                                <span class="timeline-date" data-i18n="exp2_date">Jun 2024 – Nov 2024 • Egypt</span>
+                            </div>
+                            <ul>
+                                <li data-i18n="exp2_d1">Prepared and updated detailed project schedules using Primavera
+                                    P6.</li>
+                                <li data-i18n="exp2_d2">Monitored progress and analyzed schedule deviations and
+                                    productivity rates.</li>
+                                <li data-i18n="exp2_d3">Developed Power BI dashboards to track project performance
+                                    indicators.</li>
+                                <li data-i18n="exp2_d4">Coordinated with surveying and site teams for layer handover and
+                                    progress verification.</li>
+                                <li data-i18n="exp2_d5">Supported PM team in reporting, planning updates, and decision
+                                    support.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <h3 data-i18n="exp3_title">General Contracting Company — Project Control & Planning
+                                    Engineer (Roads Projects)</h3>
+                                <span class="timeline-date" data-i18n="exp3_date">Jan 2023 – Feb 2024 • Egypt</span>
+                            </div>
+                            <ul>
+                                <li data-i18n="exp3_d1">Planned and monitored road project schedules using Primavera P6
+                                    aligned with milestones.</li>
+                                <li data-i18n="exp3_d2">Supervised execution of road layers (subgrade, base course,
+                                    asphalt) with site & technical teams.</li>
+                                <li data-i18n="exp3_d3">Analyzed delays and variances between planned and actual
+                                    progress to support corrective actions.</li>
+                                <li data-i18n="exp3_d4">Updated BOQ quantities based on actual progress and prepared
+                                    progress reports.</li>
+                                <li data-i18n="exp3_d5">Analyzed project data using SQL Server and built Power BI
+                                    dashboards to track KPIs.</li>
+                                <li data-i18n="exp3_d6">Supported cost control and performance analysis to improve
+                                    project efficiency.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item reveal">
+                        <div class="timeline-dot" aria-hidden="true"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-top">
+                                <h3 data-i18n="exp4_title">Engineering Contracting Office — Site Engineer (Construction
+                                    Projects)</h3>
+                                <span class="timeline-date" data-i18n="exp4_date">Apr 2021 – Dec 2022 • Egypt</span>
+                            </div>
+                            <ul>
+                                <li data-i18n="exp4_d1">Supervised works in accordance with structural and architectural
+                                    drawings.</li>
+                                <li data-i18n="exp4_d2">Followed reinforced concrete works (formwork, reinforcement,
+                                    concrete casting).</li>
+                                <li data-i18n="exp4_d3">Coordinated drawings and site activities to ensure quality
+                                    compliance.</li>
+                                <li data-i18n="exp4_d4">Prepared daily and weekly quantity and progress reports.</li>
+                                <li data-i18n="exp4_d5">Ensured compliance with quality and safety requirements on site.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section" id="education">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="edu_title">Education & Details</h2>
+                    <p class="section-sub" data-i18n="edu_sub">Education, languages, and personal details.</p>
+                </div>
+
+                <div class="grid-3">
+                    <article class="card reveal">
+                        <h3 data-i18n="edu_block_title">Education</h3>
+                        <p class="muted">
+                            <strong data-i18n="edu_degree">Bachelor’s Degree in Civil Engineering</strong><br />
+                            <span data-i18n="edu_year">Graduation Year: <strong>2021</strong></span><br />
+                            <span data-i18n="edu_uni">New Cairo Academy for Engineering and Technology</span><br />
+                            <span data-i18n="edu_dept">Department: Civil Engineering</span><br />
+                            <span data-i18n="edu_proj">Graduation Project: Recycling of Concrete Materials — Grade:
+                                <strong>Excellent</strong></span>
+                        </p>
+                    </article>
+
+                    <article class="card reveal">
+                        <h3 data-i18n="lang_title">Languages</h3>
+                        <ul class="muted">
+                            <li data-i18n="lang_1">Arabic: Native</li>
+                            <li data-i18n="lang_2">English: Conversational</li>
+                            <li data-i18n="lang_3">German: Basic</li>
+                        </ul>
+                    </article>
+
+                    <article class="card reveal">
+                        <h3 data-i18n="personal_title">Personal Details</h3>
+                        <ul class="muted">
+                            <li><strong data-i18n="p_addr">Address:</strong> <span data-i18n="p_addr_v">Makkah, Kingdom
+                                    of Saudi Arabia</span></li>
+                            <li><strong data-i18n="p_dob">Date of Birth:</strong> 10-11-1992</li>
+                            <li><strong data-i18n="p_ms">Marital Status:</strong> <span data-i18n="p_ms_v">Single</span>
+                            </li>
+                            <li><strong data-i18n="p_mil">Military Status:</strong> <span
+                                    data-i18n="p_mil_v">Completed</span></li>
+                            <li><strong data-i18n="p_cit">Citizenship:</strong> <span
+                                    data-i18n="p_cit_v">Egyptian</span></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES -->
+        <section id="certificates" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="cert_title">Professional Certificates</h2>
+                    <p class="section-sub" data-i18n="cert_desc">Certificates embedded as a PDF inside the website. You
+                        can open or download the full file.</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="assets/certificates/course.pdf" target="_blank" rel="noopener"
+                            data-i18n="cert_open">Open Certificates PDF</a>
+                        <a class="btn btn-ghost" href="assets/certificates/course.pdf" download
+                            data-i18n="cert_download">Download PDF</a>
+                    </div>
+                </div>
+
+                <div class="grid-3 cert-cards">
+                    <article class="card reveal">
+                        <h3 data-i18n="cert1_t">Introduction to OSHA: Safety Standards and Compliance</h3>
+                        <p class="muted" data-i18n="cert1_d">Coursera • Issue Date: Jan 2026 • Credential ID:
+                            FZFCVTIGY3FS</p>
+                    </article>
+
+                    <article class="card reveal">
+                        <h3 data-i18n="cert2_t">Project Management: Foundations for Success</h3>
+                        <p class="muted" data-i18n="cert2_d">University of California, Irvine • Credential ID:
+                            PYPLWEJPZ22X</p>
+                    </article>
+
+                    <article class="card reveal">
+                        <h3 data-i18n="cert3_t">Project Management: Control using the Earned Value and Risk</h3>
+                        <p class="muted" data-i18n="cert3_d">Politecnico di Milano • Issue Date: Jan 2026 • Credential
+                            ID: C8FJ7WAQRCXI</p>
+                    </article>
+                </div>
+
+                <div class="pdf-viewer reveal" style="margin-top:14px;">
+                    <iframe title="Certificates PDF" src="assets/certificates/course.pdf#view=FitH"
+                        loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- CV -->
+        <section id="cv" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="cv_title">CV</h2>
+                    <p class="section-sub" data-i18n="cv_desc">View my CV inside the website or download it.</p>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="assets/cv/Fathy-Khalifa-CV.pdf" download
+                            data-i18n="cv_download">Download CV</a>
+                        <a class="btn btn-ghost" href="assets/cv/Fathy-Khalifa-CV.pdf" target="_blank" rel="noopener"
+                            data-i18n="cv_open">Open in new tab</a>
+                    </div>
+                </div>
+
+                <div class="cv-wrapper">
+                    <div class="pdf-viewer reveal">
+                        <iframe title="Fathi Khalifa CV" src="assets/cv/Fathy-Khalifa-CV.pdf#view=FitH"
+                            loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section" id="contact">
+            <div class="container">
+                <div class="section-head reveal">
+                    <h2 data-i18n="contact_title">Contact</h2>
+                    <p class="section-sub" data-i18n="contact_sub">WhatsApp and email are the fastest ways to reach me.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <form class="card form reveal" action="#" method="post" aria-label="Contact form">
+                        <div class="form-row">
+                            <label for="fullName" data-i18n="f_name">Full Name</label>
+                            <input id="fullName" name="name" type="text" placeholder="Your name" required />
+                        </div>
+
+                        <div class="form-row">
+                            <label for="email" data-i18n="f_email">Email</label>
+                            <input id="email" name="email" type="email" placeholder="you@example.com" required />
+                        </div>
+
+                        <div class="form-row">
+                            <label for="message" data-i18n="f_msg">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."
+                                required></textarea>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit" data-i18n="send">Send Message</button>
+                        <p class="micro" data-i18n="form_note">This form is front-end only. Use WhatsApp or email for
+                            direct contact.</p>
+                    </form>
+
+                    <aside class="card reveal">
+                        <h3 data-i18n="direct_title">Direct Contact</h3>
+                        <div class="contact-actions">
+                            <a class="btn btn-secondary" href="https://wa.me/966549096646" target="_blank"
+                                rel="noopener">WhatsApp KSA</a>
+                            <a class="btn btn-ghost" href="mailto:hassankhalifaaboaly@gmail.com">Email</a>
+                            <a class="btn btn-ghost" href="assets/cv/Fathy-Khalifa-CV.pdf" download>Download CV</a>
+                        </div>
+
+                        <div class="divider" role="separator"></div>
+
+                        <h3 data-i18n="social_title">Social</h3>
+                        <div class="social-grid">
+                            <a class="social" href="https://www.linkedin.com/in/fathi-khalifa-mohammed-3922a7230"
+                                target="_blank" rel="noopener">LinkedIn</a>
+                            <a class="social" href="#" target="_blank" rel="noopener">YouTube</a>
+                            <a class="social" href="#" target="_blank" rel="noopener">GitHub</a>
+                            <a class="social" href="#" target="_blank" rel="noopener">Facebook</a>
+                        </div>
+                        <p class="micro" data-i18n="social_note">Replace placeholder social links when ready.</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© <span id="year"></span> <span data-i18n="footer_copy">Fathi Khalifa. All rights reserved.</span></p>
+            <a class="back-top" href="#hero" data-i18n="back_top">Back to top ↑</a>
         </div>
-        <div class="floating-stat">
-          <span class="stat-num">20+</span>
-          <span class="stat-text" data-i18n="projects_stat">مشروع ناجح</span>
-        </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <section id="experience" class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="section_exp">الخبرة العملية</h2>
-      <div class="timeline">
+    <script src="js/script.js"></script>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Jan 2025 - Apr 2025</div>
-          <div class="timeline-content">
-            <h3 data-i18n="job1_title">مهندس موقع وتخطيط</h3>
-            <h4 data-i18n="job1_company">شركة أبو عزام - الطائف، السعودية</h4>
-            <p data-i18n="job1_desc">الإشراف على الأعمال الإنشائية، إعداد التقارير اليومية، وتنسيق العمالة والمقاولين.
-            </p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Jun 2024 - Nov 2024</div>
-          <div class="timeline-content">
-            <h3 data-i18n="job2_title">مهندس تخطيط - طرق وبنية تحتية</h3>
-            <h4 data-i18n="job2_company">شركة الصقر الأبيض - مصر</h4>
-            <p data-i18n="job2_desc">إعداد جداول زمنية P6، تطوير لوحات Power BI، ومراقبة مؤشرات أداء المشروع.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Jan 2023 - Feb 2024</div>
-          <div class="timeline-content">
-            <h3 data-i18n="job3_title">مهندس تحكم بالمشروع</h3>
-            <h4 data-i18n="job3_company">شركة المقاولات العامة - مصر</h4>
-            <p data-i18n="job3_desc">تخطيط مشاريع الطرق، تحليل التأخيرات، إدارة BOQ، وتحليل البيانات بـ SQL Server.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-date">Apr 2021 - Dec 2022</div>
-          <div class="timeline-content">
-            <h3 data-i18n="job4_title">مهندس موقع</h3>
-            <h4 data-i18n="job4_company">مكتب المقاولات الهندسية - مصر</h4>
-            <p data-i18n="job4_desc">الإشراف على أعمال الخرسانة والتشطيبات وضمان الجودة في الموقع.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <section id="skills" class="section bg-alt">
-    <div class="container">
-      <h2 class="section-title" data-i18n="section_skills">المهارات التقنية</h2>
-      <div class="skills-grid">
-        <div class="skill-card"><i class="fas fa-calendar-alt"></i> Primavera P6</div>
-        <div class="skill-card"><i class="fas fa-chart-pie"></i> Power BI</div>
-        <div class="skill-card"><i class="fas fa-database"></i> SQL Server</div>
-        <div class="skill-card"><i class="fas fa-code"></i> Python Automation</div>
-        <div class="skill-card"><i class="fas fa-road"></i> AutoCAD Civil 3D</div>
-        <div class="skill-card"><i class="fas fa-file-invoice-dollar"></i> Cost Control</div>
-        <div class="skill-card"><i class="fas fa-file-excel"></i> Excel Advanced</div>
-        <div class="skill-card"><i class="fas fa-tasks"></i> Project Management</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="certificates" class="section">
-    <div class="container">
-      <h2 class="section-title" data-i18n="section_certs">الشهادات والدورات</h2>
-      <div class="certs-grid">
-
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-certificate"></i></div>
-          <h3 data-i18n="cert1_title">إدارة المشاريع (PM Foundations)</h3>
-          <p class="cert-issuer">University of California, Irvine (2026)</p>
-          <a href="#" class="cert-link" data-i18n="view_cert">عرض الشهادة <i class="fas fa-external-link-alt"></i></a>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-hard-hat"></i></div>
-          <h3 data-i18n="cert2_title">OSHA Standards</h3>
-          <p class="cert-issuer">Coursera (2026)</p>
-          <a href="#" class="cert-link" data-i18n="view_cert">عرض الشهادة <i class="fas fa-external-link-alt"></i></a>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-chart-line"></i></div>
-          <h3 data-i18n="cert3_title">إدارة القيمة المكتسبة (EVM)</h3>
-          <p class="cert-issuer">Politecnico di Milano (2026)</p>
-          <a href="#" class="cert-link" data-i18n="view_cert">عرض الشهادة <i class="fas fa-external-link-alt"></i></a>
-        </div>
-
-        <div class="cert-card">
-          <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3 data-i18n="cert4_title">بكالوريوس الهندسة المدنية</h3>
-          <p class="cert-issuer">أكاديمية القاهرة الجديدة (2021)</p>
-          <span class="cert-tag" data-i18n="grade_ex">تقدير: ممتاز</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact" class="site-footer">
-    <div class="container footer-content">
-      <h2 data-i18n="contact_title">جاهز للعمل على مشروعك القادم؟</h2>
-      <p data-i18n="contact_desc">تواصل معي لمناقشة الفرص الوظيفية أو المشاريع.</p>
-
-      <div class="contact-methods">
-        <a href="mailto:hassankhalifaaboaly@gmail.com" class="contact-box">
-          <i class="fas fa-envelope"></i>
-          <span>hassankhalifaaboaly@gmail.com</span>
-        </a>
-        <a href="tel:+966549096646" class="contact-box">
-          <i class="fas fa-phone"></i>
-          <span>+966 54 909 6646</span>
-        </a>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2026 Fathi Khalifa. All Rights Reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <!-- Floating Contact Button (Mobile) -->
+    <a href="#contact" class="floating-contact-btn" aria-label="Contact Me">💬</a>
 </body>
 
 </html>
