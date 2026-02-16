@@ -1,3736 +1,50 @@
+/* =========================================
+   1. GLOBAL VARIABLES & THEME (Corporate Navy)
+   ========================================= */
 :root {
-    --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    /* Fonts */
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-head: 'Cairo', system-ui, sans-serif;
+    /* للعربي */
 
-    /* Soft White */
-    --text-secondary: #AAB4C3;
-    /* Light Gray */
-    --border: #1E3A5F;
-    /* Subtle Border */
+    /* Colors: High Contrast Navy Theme */
+    --bg-body: #0B1120;
+    /* كحلي غامق جداً للخلفية */
+    --bg-surface: #151F32;
+    /* كحلي أفتح قليلاً للكروت */
+    --bg-surface-2: #1E293B;
+    /* لون التفاعل */
 
+    --border: #334155;
+    /* لون الحدود */
+    --accent: #10B981;
+    /* أخضر زمردي قوي */
+    --accent-glow: rgba(16, 185, 129, 0.2);
+
+    /* Text Colors */
+    --text-primary: #F8FAFC;
+    /* أبيض ناصع للعناوين */
+    --text-secondary: #94A3B8;
+    /* رمادي فضي للنصوص */
+    --text-muted: #64748B;
+
+    /* Layout */
     --container: 1120px;
     --header-h: 70px;
-    /* Reduced slightly */
-
-    --r-lg: 12px;
-    /* Tighter radius for executive feel */
-    --r-md: 8px;
-    --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
-    /* Smooth professional ease */
-
-    /* Theme Tokens */
-    --bg: var(--navy);
-    --surface: var(--navy-light);
-    --surface2: #153361;
-    /* Hover state */
-    --text: var(--text-primary);
-    --muted: var(--text-secondary);
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    /* Softer shadow */
-
-    --hero-overlay: linear-gradient(180deg, rgba(11, 30, 61, 0) 0%, rgba(11, 30, 61, 0.8) 100%);
+    --radius: 12px;
 }
 
-body.theme-light {
-    --bg: #F5F7FA;
-    --surface: #FFFFFF;
-    --surface2: #E8EEF5;
-    --text: #1A2B45;
-    --muted: #5E6C7F;
-    --border: #D1D9E6;
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    --navy: #1A2B45;
-    /* Invert for light mode accents */
-}
-
-* {
+/* =========================================
+   2. RESET & BASE STYLES
+   ========================================= */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 html {
     scroll-behavior: smooth;
-    font-size: 16px;
-    /* Base size */
-}
-
-body {
-    margin: 0;
-    font-family: var(--font);
-    background-color: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* Ensure light theme overrides */
-body.theme-light {
-    background-color: var(--bg);
-    color: var(--text);
-}
-
-a {
-    color: var(--text);
-    text-decoration: none
-}
-
-a:hover {
-    text-decoration: underline
-}
-
-.container {
-    width: min(var(--container), calc(100% - 2rem));
-    margin-inline: auto;
-}
-
-.section {
-    padding: clamp(3.5rem, 5vw, 5.5rem) 0;
-}
-
-.muted {
-    color: var(--muted)
-}
-
-.sr-only {
-    position: absolute;
-    left: -9999px;
-    width: 1px;
-    height: 1px;
-    overflow: hidden
-}
-
-.top-accent {
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--navy));
-    z-index: 9999;
-    opacity: .9;
-}
-
-/* Header */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: var(--header-h);
-    backdrop-filter: blur(12px);
-    background: rgba(11, 30, 61, 0.85);
-    /* Deep Navy with transparency */
-    border-bottom: 1px solid var(--border);
-    transition: all 0.3s var(--ease);
-}
-
-.header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* Ensure proper spacing */
-    height: var(--header-h);
-    gap: 1rem;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    text-decoration: none;
-}
-
-.brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 0.9rem;
-    background: var(--surface);
-    color: var(--accent);
-    border: 1px solid var(--border);
-}
-
-.brand-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    line-height: 1.2;
-}
-
-.brand-name {
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: -0.01em;
-    color: var(--text);
-}
-
-.brand-role {
-    font-size: 0.75rem;
-    color: var(--muted);
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-
-.nav {
-    margin-inline-start: auto;
-}
-
-.nav-menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 1.5rem;
-    /* Increased gap for better breathing room */
-    align-items: center;
-}
-
-.nav-menu a {
-    font-weight: 500;
-    font-size: 0.9rem;
-    color: var(--muted);
-    transition: color 0.3s var(--ease);
-    position: relative;
-    padding: 0.5rem 0;
-}
-
-.nav-menu a:hover,
-.nav-menu a.active {
-    color: var(--text);
-    text-decoration: none;
-}
-
-/* Subtle underscore for hover/active */
-.nav-menu a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: width 0.3s var(--ease);
-}
-
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-/* Remove the old nav-cta style button, make it a link or ghost */
-.nav-cta {
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
-}
-
-.header-actions {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    margin-left: 1rem;
-    padding-left: 1rem;
-    border-left: 1px solid var(--border);
-}
-
-.nav-toggle {
-    display: none;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: 8px;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    color: var(--text);
-}
-
-.nav-toggle-lines {
-    width: 18px;
-    height: 2px;
-    background: currentColor;
-    position: relative;
-    display: block;
-}
-
-.nav-toggle-lines::before,
-.nav-toggle-lines::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: currentColor;
-    transition: transform 0.3s var(--ease);
-}
-
-.nav-toggle-lines::before {
-    top: -6px;
-}
-
-.nav-toggle-lines::after {
-    top: 6px;
-}
-
-/* Buttons */
-.btn {
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-    padding: .75rem 1rem;
-    border-radius: 14px;
-    font-weight: 700;
-    display: inline-flex;
-    align-items: center;
-    gap: .55rem;
-    cursor: pointer;
-    transition: transform .35s var(--ease), background .35s var(--ease);
-    text-decoration: none !important;
-}
-
-/* Custom Overrides for Primary/Secondary Buttons */
-.btn-primary {
-    background: var(--accent) !important;
-    color: #FFFFFF !important;
-    border-color: var(--accent) !important;
-    box-shadow: 0 4px 12px rgba(31, 170, 89, 0.3);
-}
-
-.btn-primary:hover {
-    background: #16944A !important;
-    /* Darker emerald */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(31, 170, 89, 0.4);
-}
-
-.btn-secondary {
-    background: transparent !important;
-    border: 1px solid var(--border-dark) !important;
-    color: var(--text-light) !important;
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border-color: var(--text-muted) !important;
-    color: #FFFFFF !important;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    background: var(--surface2);
-}
-
-.btn:active {
-    transform: translateY(0);
-}
-
-.btn-primary {
-    border-color: rgba(31, 170, 89, .45);
-    background: linear-gradient(135deg, rgba(31, 170, 89, .28), rgba(31, 170, 89, .14));
-}
-
-.btn-secondary {
-    border-color: rgba(11, 60, 93, .55);
-    background: linear-gradient(135deg, rgba(11, 60, 93, .30), rgba(11, 60, 93, .12));
-}
-
-.btn-ghost {
-    background: transparent
-}
-
-.kicker {
-    color: var(--muted);
-    font-weight: 900;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    font-size: .82rem;
-    margin: 0 0 .75rem;
-}
-
-/* Hero */
-.hero {
-    position: relative;
-    padding-top: calc(var(--header-h) + 3rem);
-    padding-bottom: 4rem;
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-    background: var(--navy);
-    /* Subtle overlay gradient */
-    background-image:
-        radial-gradient(circle at 80% 20%, rgba(31, 170, 89, 0.08), transparent 40%),
-        linear-gradient(180deg, rgba(11, 30, 61, 0) 0%, rgba(11, 30, 61, 0.6) 100%);
-}
-
-.hero-container {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 4rem;
-    align-items: center;
-}
-
-.hero-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.kicker {
-    color: var(--accent);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    margin: 0;
-}
-
-.hero-name {
-    margin: 0;
-    font-weight: 800;
-    /* Reduced by ~15% for more refined look */
-    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
-    line-height: 1.15;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-}
-
-.hero-role {
-    margin: -0.25rem 0 0;
-    /* Tighter vertical rhythm */
-    font-weight: 500;
-    /* Slightly smaller, more controlled */
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--text-secondary);
-    letter-spacing: 0.01em;
-}
-
-.hero-tagline {
-    /* Responsive scaling for tagline */
-    font-size: clamp(1rem, 1.5vw, 1.1rem);
-    line-height: 1.6;
-    color: var(--text-secondary);
-    border-left: 3px solid var(--accent);
-    padding-left: 1rem;
-    max-width: 50ch;
-}
-
-.hero-bullets {
-    list-style: none;
-    padding: 0;
-    margin: 0.75rem 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    /* Slightly tighter gap */
-}
-
-.hero-bullets li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--text-primary);
-    font-weight: 500;
-    /* Refined size */
-    font-size: 0.95rem;
-    line-height: 1.4;
-}
-
-.hero-bullets li::before {
-    content: "■";
-    /* Square bullet for executive feel */
-    color: var(--accent);
-    font-size: 0.8rem;
-}
-
-.hero-actions {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-/* Profile Card Minimal */
-.profile-card-minimal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s var(--ease);
-}
-
-.profile-card-minimal:hover {
-    transform: translateY(-5px);
-}
-
-/* Profile Card Reset */
-.profile-card {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-}
-
-/* Responsive Profile Image */
-/* Responsive Profile Image - CLS Fix */
-.hero-image {
-    position: relative;
-    width: 240px;
-    height: 240px;
-    margin: 0 auto 2rem;
-    border-radius: 50%;
-    overflow: hidden;
-    background: transparent;
-    border: none;
-
-    /* Executive Styling - Minimal Redesign */
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
-    /* Soft shadow */
-    background: transparent;
-    border: none;
-
-    /* Structural stability for CLS */
-    aspect-ratio: 1 / 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-
-    /* Hardware acceleration to prevent paint flashing */
-    transform: translateZ(0);
-    will-change: transform;
-}
-
-.profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover;
-    object-position: center 18%;
-    /* Focused on face */
-    border-radius: 50%;
-    display: block;
-    transform: none;
-    /* Reset any potential transforms */
-}
-
-/* Hover Effect */
-.hero-image:hover {
-    transform: translateY(-4px);
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.25),
-        0 0 0 1px rgba(31, 170, 89, 0.3);
-    /* Subtle green rim on hover */
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-
-/* Mobile (≤ 768px): 200px */
-@media (max-width: 768px) {
-    .hero-image {
-        width: 200px;
-        height: 200px;
-        margin-top: 1rem;
-        margin-bottom: 2rem;
-    }
-}
-
-/* Desktop (≥ 1024px): Larger if needed, or keep 240px standard */
-@media (min-width: 1024px) {
-    .hero-image {
-        width: 280px;
-        height: 280px;
-    }
-}
-
-
-.profile-details {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-}
-
-.detail-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding-bottom: 0.5rem;
-}
-
-.detail-label {
-    color: var(--text-secondary);
-}
-
-.detail-value {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
-.profile-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.icon-link {
-    font-size: 1.2rem;
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    transition: all 0.2s;
-    text-decoration: none;
-}
-
-.icon-link:hover {
-    background: var(--accent);
-    color: #fff;
-}
-
-@media (max-width: 900px) {
-    .hero-container {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        text-align: center;
-    }
-
-    .hero-content {
-        align-items: center;
-    }
-
-    .hero-tagline {
-        border-left: none;
-        padding-left: 0;
-    }
-
-    .hero-bullets {
-        align-items: center;
-    }
-
-    .profile-card-minimal {
-        max-width: 400px;
-        margin: 0 auto;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-image img {
-        width: 180px;
-        height: 180px;
-    }
-
-    .hero-metrics {
-        grid-template-columns: 1fr;
-    }
-}
-
-.meta-mini {
-    margin: 0;
-    padding-left: 1.1rem;
-    color: var(--muted);
-}
-
-.meta-mini li {
-    margin: .35rem 0;
-}
-
-.quick-links {
-    margin-top: .85rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: .45rem;
-}
-
-.pill {
-    border: 1px solid var(--border);
-    background: var(--surface);
-    padding: .5rem .7rem;
-    border-radius: 999px;
-    font-weight: 900;
-    font-size: .86rem;
-    transition: transform .35s var(--ease), background .35s var(--ease);
-}
-
-.pill:hover {
-    transform: translateY(-2px);
-    background: var(--surface2);
-    text-decoration: none;
-}
-
-/* Section head */
-.section-head {
-    margin-bottom: 1.6rem;
-}
-
-.section-head h2 {
-    margin: 0 0 .5rem;
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
-    letter-spacing: -.02em;
-}
-
-.section-sub {
-    margin: 0;
-    color: var(--muted);
-    max-width: 75ch;
-}
-
-.actions {
-    display: flex;
-    gap: .7rem;
-    flex-wrap: wrap;
-    margin-top: .9rem;
-}
-
-/* Cards / grids */
-
-/* About & Vision */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1.25fr 0.85fr;
-    gap: 2rem;
-    align-items: start;
-}
-
-.about-card {
-    background: transparent;
-    border: none;
-    padding: 0;
-}
-
-.about-card p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-}
-
-.about-highlights {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.highlight {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    padding: 1rem;
-    text-align: center;
-}
-
-.highlight-title {
-    display: block;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 0.5rem;
-    font-size: 0.95rem;
-}
-
-.highlight-desc {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.4;
-}
-
-/* Vision Box */
-.vision-box {
-    background: linear-gradient(135deg, var(--surface), rgba(11, 30, 61, 0.4));
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--accent);
-    border-radius: var(--r-lg);
-    padding: 2rem;
-    box-shadow: var(--shadow);
-}
-
-.vision-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    margin: 0 0 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.vision-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-secondary);
-    font-style: italic;
-}
-
-.vision-subtitle {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin: 1.5rem 0 1rem;
-}
-
-.vision-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.vision-list li {
-    margin-bottom: 0.75rem;
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    display: flex;
-    gap: 0.5rem;
-}
-
-.vision-list li strong {
-    color: var(--accent);
-    font-weight: 600;
-}
-
-
-
-/* Skills Grid */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-.skill-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r-md);
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    transition: all 0.3s var(--ease);
-}
-
-.skill-card:hover {
-    background: var(--surface2);
-    transform: translateY(-3px);
-    border-color: rgba(31, 170, 89, 0.3);
-}
-
-.skill-icon {
-    font-size: 1.5rem;
-    padding: 8px;
-    background: rgba(31, 170, 89, 0.1);
-    border-radius: 8px;
-    line-height: 1;
-}
-
-.skill-info h3 {
-    margin: 0 0 0.25rem;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-.skill-info p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
-
-/* Generic Grid */
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
-}
-
-.chips {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: .45rem;
-}
-
-.chips li {
-    padding: .45rem .6rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--surface) 80%, transparent);
-    font-weight: 900;
-    font-size: .86rem;
-    color: var(--muted);
-}
-
-/* Timeline */
-.timeline {
-    position: relative;
-    margin-top: 1rem;
-    padding-left: 1.25rem;
-}
-
-html[dir="rtl"] .timeline {
-    padding-left: 0;
-    padding-right: 1.25rem;
-}
-
-.timeline::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 6px;
-    width: 2px;
-    background: var(--border);
-}
-
-html[dir="rtl"] .timeline::before {
-    left: auto;
-    right: 6px;
-}
-
-.timeline-item {
-    position: relative;
-    padding-bottom: 1.2rem;
-}
-
-.timeline-dot {
-    position: absolute;
-    left: 0;
-    top: 1.1rem;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--navy));
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--bg) 80%, transparent);
-}
-
-html[dir="rtl"] .timeline-dot {
-    left: auto;
-    right: 0;
-}
-
-.timeline-card {
-    margin-left: 1.2rem;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: var(--r-lg);
-    padding: 1rem 1.1rem;
-}
-
-html[dir="rtl"] .timeline-card {
-    margin-left: 0;
-    margin-right: 1.2rem;
-}
-
-.timeline-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: baseline;
-    flex-wrap: wrap;
-}
-
-.timeline-date {
-    color: var(--muted);
-    font-weight: 900;
-    font-size: .9rem;
-}
-
-.timeline-card ul {
-    margin: .7rem 0 0;
-    color: var(--muted);
-}
-
-.timeline-card li {
-    margin: .35rem 0;
-}
-
-/* PDF viewer */
-/* PDF viewer */
-.cv-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.pdf-viewer {
-    width: 100%;
-    /* Default mobile */
-    margin-top: 14px;
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--surface);
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4);
-    /* Premium shadow */
-}
-
-.pdf-viewer iframe {
-    width: 100%;
-    height: min(78vh, 860px);
-    border: 0;
-}
-
-/* Response Sizing for CV */
-@media (min-width: 1025px) {
-    .pdf-viewer {
-        width: 80%;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .pdf-viewer {
-        width: 90%;
-    }
-}
-
-@media (max-width: 768px) {
-    .pdf-viewer iframe {
-        height: 60vh;
-    }
-}
-
-.cert-cards .card h3 {
-    margin-top: 0;
-}
-
-.two-col {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .5rem 1.5rem;
-    padding-left: 1.1rem;
-}
-
-/* Contact */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1.05fr .95fr;
-    gap: 1rem;
-    align-items: start;
-}
-
-.form .form-row {
-    display: grid;
-    gap: .45rem;
-    margin-bottom: .85rem;
-}
-
-label {
-    font-weight: 950;
-    font-size: .92rem;
-}
-
-input,
-textarea {
-    border: 1px solid var(--border);
-    background: color-mix(in srgb, var(--surface) 80%, transparent);
-    border-radius: 14px;
-    padding: .85rem .9rem;
-    color: var(--text);
-    font: inherit;
-    outline: none;
-    transition: border-color .35s var(--ease), transform .35s var(--ease);
-}
-
-input:focus,
-textarea:focus {
-    border-color: rgba(31, 170, 89, .55);
-    transform: translateY(-1px);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.contact-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .6rem;
-}
-
-.social-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .6rem;
-}
-
-.social {
-    border: 1px solid var(--border);
-    background: color-mix(in srgb, var(--surface) 70%, transparent);
-    border-radius: 14px;
-    padding: .8rem;
-    text-align: center;
-    font-weight: 950;
-    transition: transform .35s var(--ease), background .35s var(--ease);
-    color: var(--text-main);
-    /* Dark text */
-}
-
-.social:hover {
-    transform: translateY(-3px);
-    background: var(--surface2);
-    /* Hover state */
-    color: var(--accent);
-    text-decoration: none;
-    border-color: var(--accent);
-}
-
-/* Footer */
-.site-footer {
-    border-top: 1px solid var(--border-dark);
-    padding: 1.4rem 0;
-    background: var(--secondary-bg);
-    /* Distinct dark footer */
-}
-
-.footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.back-top {
-    font-weight: 950;
-    color: var(--muted);
-}
-
-.back-top:hover {
-    color: var(--text);
-    text-decoration: none;
-}
-
-/* Reveal animation */
-.reveal {
-    opacity: 1;
-    /* Disabled animation (was 0) */
-    transform: none;
-    /* Disabled translation (was translateY(14px)) */
-    /* transition removed to prevent janky loading */
-}
-
-.reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive */
-@media (max-width:1024px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width:860px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-highlights {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-metrics {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .grid-3 {
-        grid-template-columns: 1fr;
-    }
-
-    .two-col {
-        grid-template-columns: 1fr;
-    }
-
-    .nav-toggle {
-        display: inline-grid;
-        place-items: center;
-    }
-
-    .nav-menu {
-        position: absolute;
-        top: calc(var(--header-h) + 10px);
-        right: 1rem;
-        left: 1rem;
-        display: none;
-        flex-direction: column;
-        gap: .25rem;
-        background: color-mix(in srgb, var(--bg) 92%, transparent);
-        border: 1px solid var(--border);
-        border-radius: var(--r-lg);
-        padding: .75rem;
-        box-shadow: var(--shadow);
-    }
-
-    .nav-menu.open {
-        display: flex;
-    }
-
-    .nav-menu a {
-        width: 100%;
-        padding: .65rem .75rem;
-    }
-
-    .brand {
-        min-width: unset;
-    }
-}
-
-@media (max-width:560px) {
-    .profile-card {
-        grid-template-columns: 1fr;
-    }
-
-    .profile-photo {
-        width: 76px;
-        height: 76px;
-    }
-}
-
-/* =========================================
-   REFINED MOBILE & DESKTOP PATCH (FINAL)
-   ========================================= */
-
-/* 1. Global Reset & Overflow Protection */
-html,
-body {
-    overflow-x: hidden;
-    width: 100%;
-    position: relative;
-}
-
-/* 2. Hero Structure: Stack Layout + Metrics Vertically */
-.hero-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    /* Space between Main Hero and Skill Cards */
-}
-
-/* Main Hero Grid: Text Left, Image Right */
-.hero-layout {
-    display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
-    gap: 2rem;
-    align-items: center;
-    width: 100%;
-}
-
-/* 3. Header Improvements */
-.header-inner {
-    display: flex;
-    flex-wrap: wrap;
-    /* Allow wrapping on small screens */
-    height: auto;
-    /* Allow height to grow */
-    min-height: var(--header-h);
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    gap: 1rem;
-}
-
-/* 4. Mobile Responsiveness (Tablets & Mobile <= 860px) */
-@media (max-width: 860px) {
-
-    /* --- HEADER --- */
-    .brand {
-        flex: 1 1 auto;
-        /* Allow growing/shrinking */
-        min-width: 0;
-        gap: 0.5rem;
-    }
-
-    .brand-mark {
-        width: 36px;
-        height: 36px;
-        flex-shrink: 0;
-    }
-
-    .brand-name {
-        font-size: 0.95rem;
-        line-height: 1.2;
-    }
-
-    .brand-role {
-        display: none;
-        /* Hide subtitle to save space */
-    }
-
-    .header-actions {
-        gap: 0.25rem;
-    }
-
-    .header-actions .btn {
-        padding: 0.5rem;
-        /* Smaller buttons */
-    }
-
-    .btn-text {
-        display: none;
-        /* Hide text, show icons only */
-    }
-
-    /* --- HERO LAYOUT --- */
-    .hero-layout {
-        grid-template-columns: 1fr;
-        /* Single Column */
-        text-align: center;
-        gap: 2rem;
-    }
-
-    .hero-left {
-        order: 1;
-        /* Text first */
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-right {
-        order: 3;
-        /* Profile Card last */
-        width: 100%;
-        display: flex;
-        justify-content: center;
-    }
-
-    .hero-actions {
-        order: 2;
-        /* Buttons in middle */
-        width: 100%;
-        flex-direction: column;
-        /* Stack buttons */
-        gap: 0.75rem;
-    }
-
-    .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .hero-image img {
-        width: 140px;
-        height: 140px;
-    }
-
-    .profile-card {
-        max-width: 100%;
-        margin-top: 0;
-    }
-
-    /* Ensure Metrics Stack Below */
-    .hero-metrics {
-        grid-template-columns: 1fr;
-        /* Stack skill cards */
-        width: 100%;
-    }
-
-    /* Reveal Animation Fix */
-    .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        visibility: visible !important;
-        transition: none !important;
-    }
-
-    /* Reduce Header Height Variable */
-    :root {
-        --header-h: auto;
-        /* Let content dictate height */
-    }
-}
-
-/* 5. RTL Fixes for Lists */
-
-/* =========================================
-   PORTFOLIO 2.0 UPGRADE STYLES
-   ========================================= */
-
-/* --- 1. HERO IMPROVEMENTS --- */
-
-/* Typing Effect */
-.typing-container {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid var(--accent);
-    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
-    max-width: 100%;
-}
-
-.typing-text {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    color: var(--accent);
-    font-weight: 700;
-    font-family: monospace;
-    /* Tech feel */
-}
-
-@keyframes typing {
-    from {
-        width: 0
-    }
-
-    to {
-        width: 100%
-    }
-}
-
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: var(--accent)
-    }
-}
-
-/* Gradient Divider */
-.hero-divider {
-    height: 4px;
-    width: 60px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    margin: 1rem 0;
-    border-radius: 2px;
-}
-
-/* Bullet Points */
-.hero-bullets {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0 2rem;
-}
-
-.hero-bullets li {
-    position: relative;
-    padding-left: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-    color: var(--muted);
-}
-
-.hero-bullets li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--accent);
-    font-weight: bold;
-}
-
-/* Profile Image Upgrade */
-.hero-image img {
-    border: none;
-    background: transparent;
-    border-radius: 50%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    object-position: center 35%;
-    /* Clean transition */
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
-}
-
-.hero-image:hover img {
-    transform: scale(1.05) rotate(2deg);
-}
-
-/* --- 2. KPI SECTION --- */
-.kpi-section {
-    padding: 2rem 0;
-    background: color-mix(in srgb, var(--surface) 50%, transparent);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 4rem;
-}
-
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-
-.kpi-card {
-    padding: 1rem;
-}
-
-.kpi-number {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--accent);
-    margin-bottom: 0.25rem;
-}
-
-.kpi-label {
-    font-size: 0.95rem;
-    color: var(--muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* --- 3. SERVICES SECTION --- */
-.service-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 2rem;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(31, 170, 89, 0.1);
-}
-
-.serv-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.service-card h3 {
-    margin-bottom: 0.75rem;
-    font-size: 1.25rem;
-}
-
-.service-card p {
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-/* --- 4. PROJECTS SECTION --- */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-    border-color: rgba(31, 170, 89, 0.4);
-}
-
-.proj-body {
-    padding: 2rem 2rem 1.5rem;
-    flex: 1;
-}
-
-.proj-title {
-    margin: 0 0 0.75rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-primary);
-}
-
-.proj-desc {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.proj-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.proj-label {
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-right: 0.5rem;
-}
-
-.proj-impact {
-    background: rgba(31, 170, 89, 0.08);
-    /* Very subtle green bg */
-    border-left: 2px solid var(--accent);
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-    color: var(--text-primary);
-    line-height: 1.5;
-    border-radius: 0 4px 4px 0;
-}
-
-.proj-footer {
-    padding: 1.25rem 2rem;
-    border-top: 1px solid var(--border);
-    background: rgba(0, 0, 0, 0.1);
-}
-
-.btn-link {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--accent);
-    text-decoration: none;
-    transition: gap 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-link:hover {
-    gap: 0.75rem;
-    text-decoration: none;
-}
-
-/* CSS cleanup */
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.proj-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.proj-content h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.2rem;
-}
-
-.proj-content p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    flex: 1;
-    /* Push bottom elements down */
-    margin-bottom: 1.2rem;
-}
-
-.proj-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
-}
-
-.proj-tags span {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
-    color: var(--accent);
-    font-weight: 700;
-}
-
-.btn-sm {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-    transition: 0.3s;
-    background: transparent;
-    color: var(--text);
-    align-self: flex-start;
-}
-
-.btn-sm:hover {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-    text-decoration: none;
-}
-
-/* --- 5. SKILLS PROGRESS BARS --- */
-.skill-bar-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-top: 1rem;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    color: var(--text);
-}
-
-/* --- 2. KPI SECTION --- */
-.kpi-section {
-    padding: 2rem 0;
-    background: rgba(30, 41, 59, 0.5);
-    /* Semi-transparent dark secondary */
-    border-top: 1px solid var(--border-dark);
-    border-bottom: 1px solid var(--border-dark);
-    margin-bottom: 4rem;
-}
-
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 2rem;
-    text-align: center;
-}
-
-.kpi-card {
-    padding: 1rem;
-    background: transparent !important;
-    /* KPI cards transparent on dark bar */
-    box-shadow: none !important;
-    border: none !important;
-}
-
-.kpi-number {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--accent);
-    margin-bottom: 0.25rem;
-}
-
-.kpi-label {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    /* Ensure this is visible on dark */
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* --- 3. SERVICES SECTION --- */
-.service-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    padding: 2rem;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    height: 100%;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: 0 10px 30px rgba(31, 170, 89, 0.1);
-}
-
-.serv-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: var(--text-main);
-}
-
-.service-card h3 {
-    margin-bottom: 0.75rem;
-    font-size: 1.25rem;
-    color: var(--text-main);
-}
-
-.service-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-/* --- 4. PROJECTS SECTION --- */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 2rem;
-}
-
-.project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow);
-    border-color: var(--accent);
-}
-
-.proj-body {
-    padding: 2rem 2rem 1.5rem;
-    flex: 1;
-}
-
-.proj-title {
-    margin: 0 0 0.75rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-main);
-}
-
-.proj-desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-}
-
-.proj-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--border);
-}
-
-.proj-label {
-    font-weight: 600;
-    color: var(--text-main);
-    margin-right: 0.5rem;
-}
-
-.proj-impact {
-    background: rgba(31, 170, 89, 0.08);
-    /* Very subtle green bg */
-    border-left: 2px solid var(--accent);
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-    color: var(--text-main);
-    line-height: 1.5;
-    border-radius: 0 4px 4px 0;
-}
-
-.proj-footer {
-    padding: 1.25rem 2rem;
-    border-top: 1px solid var(--border);
-    background: #F8FAFC;
-    /* Light gray footer for white card */
-}
-
-/* ... Cleaned up duplicate project card styles ... */
-
-.proj-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.proj-content h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.2rem;
-}
-
-.proj-content p {
-    color: var(--muted);
-    font-size: 0.9rem;
-    flex: 1;
-    /* Push bottom elements down */
-    margin-bottom: 1.2rem;
-}
-
-.proj-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.2rem;
-}
-
-.proj-tags span {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 4px;
-    background: color-mix(in srgb, var(--accent) 15%, transparent);
-    color: var(--accent);
-    font-weight: 700;
-}
-
-.btn-sm {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    text-align: center;
-    transition: 0.3s;
-    background: transparent;
-    color: var(--text-main);
-    align-self: flex-start;
-}
-
-.btn-sm:hover {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-    text-decoration: none;
-}
-
-/* --- 5. SKILLS PROGRESS BARS --- */
-.skill-bar-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    margin-top: 1rem;
-}
-
-.skill-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-bottom: 0.3rem;
-    color: var(--text-main) !important;
-    /* Force dark text on white card */
-}
-
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background: #E2E8F0;
-    /* Light gray track */
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 4px;
-    width: 0;
-    /* Animated later via JS or default width style */
-    transition: width 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-/* --- 6. FLOATING ACTIONS --- */
-.floating-contact-btn {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 60px;
-    height: 60px;
-    background: var(--accent);
-    color: #fff;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-size: 1.8rem;
-    box-shadow: 0 10px 20px rgba(31, 170, 89, 0.4);
-    z-index: 100;
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    text-decoration: none;
-}
-
-.floating-contact-btn:hover {
-    transform: scale(1.1) rotate(10deg);
-}
-
-@media (min-width: 769px) {
-    .floating-contact-btn {
-        display: none;
-        /* Mobile only feature */
-    }
-}
-
-/* --- 7. RESPONSIVE ADJUSTMENTS --- */
-@media (max-width: 768px) {
-    .hero-bullets {
-        text-align: left;
-        display: inline-block;
-    }
-
-    .kpi-grid {
-        grid-template-columns: 1fr 1fr;
-        /* 2x2 grid on mobile */
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ===== FIX: Desktop Hero Layout & Image ===== */
-@media (min-width: 1024px) {
-    .hero-container {
-        display: grid;
-        grid-template-columns: 1.2fr 0.8fr;
-        align-items: center;
-        gap: 4rem;
-    }
-
-    .hero-visual {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .profile-card-minimal {
-        width: 100%;
-        max-width: 400px;
-        /* Ensure card doesn't stretch too wide */
-    }
-
-    .profile-image-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .profile-img {
-        max-width: 300px !important;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 50%;
-        box-shadow:
-            0 10px 30px rgba(0, 0, 0, 0.35),
-            0 0 25px rgba(31, 170, 89, 0.08);
-    }
-}
-
-/* ===== FIX: Mobile Typography (≤ 768px) ===== */
-/* ===== FIX: Mobile Typography (Final Refinement) ===== */
-@media (max-width: 768px) {
-
-    /* Main Name */
-    .hero-name,
-    .hero-title {
-        font-size: clamp(1.6rem, 6vw, 2rem) !important;
-        line-height: 1.2;
-    }
-
-    /* Subtitle / Roles */
-    .hero-role,
-    .hero-subtitle {
-        font-size: clamp(1rem, 4.5vw, 1.2rem) !important;
-        letter-spacing: 0.5px;
-    }
-
-    /* Tagline / Description */
-    .hero-tagline,
-    .hero-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    /* Section Titles */
-    h2,
-    .section-title {
-        font-size: clamp(1.2rem, 5vw, 1.5rem);
-    }
-
-    /* Paragraph Text */
-    p,
-    .hero-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    /* Buttons */
-    .btn,
-    button {
-        font-size: 0.95rem;
-        padding: 10px 18px;
-    }
-}
-
-/* ===== FIX: Hero Image Sizing (Final Strict) ===== */
-html,
-body {
-    overflow-x: hidden;
-}
-
-/* 1) Global Reset for Profile Image */
-.hero-visual img,
-.profile-card-minimal img,
-.profile-img {
-    transform: none !important;
-    scale: 1 !important;
-    max-width: 100% !important;
-}
-
-/* 2) Desktop Rules (min-width: 992px) */
-@media (min-width: 992px) {
-
-    /* Override parent container heights */
-    .hero-visual,
-    .profile-card-minimal,
-    .profile-image-wrapper {
-        height: auto !important;
-        min-height: unset !important;
-        align-self: center !important;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Strict Image Limits */
-    .profile-img {
-        width: auto !important;
-        max-width: 380px !important;
-        max-height: 480px !important;
-        height: auto !important;
-        object-fit: cover;
-        border-radius: 16px;
-        display: block;
-        margin: 0 auto;
-    }
-}
-
-/* 3) Mobile Rules (max-width: 768px) */
-@media (max-width: 768px) {
-    .profile-img {
-        width: 200px;
-        max-width: 70vw;
-        height: auto;
-        margin: 14px auto 0;
-    }
-}
-
-/* Global safety */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-html,
-body {
-    overflow-x: hidden;
-}
-
-/* ===== HERO IMAGE FIX (Desktop) ===== */
-@media (min-width: 992px) {
-
-    /* Keep hero columns balanced */
-    .hero-layout {
-        display: grid !important;
-        grid-template-columns: 1.25fr 0.75fr !important;
-        align-items: center !important;
-        gap: 32px !important;
-    }
-
-    /* Do not let the right column grow too wide */
-    .hero-right {
-        justify-self: end !important;
-        width: 100% !important;
-        max-width: 460px !important;
-    }
-
-    /* IMPORTANT: lock the photo box size */
-    .profile-card .hero-image {
-        width: min(420px, 100%) !important;
-        aspect-ratio: 4 / 5 !important;
-        max-height: 520px !important;
-        overflow: hidden !important;
-        border-radius: 18px !important;
-        margin: 0 auto !important;
-    }
-
-    /* Make the image fill the box without becoming huge */
-    .profile-card .hero-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center top !important;
-        transform: none !important;
-    }
-}
-
-/* ===== HERO IMAGE FIX (Mobile) ===== */
-@media (max-width: 768px) {
-    .profile-card .hero-image {
-        width: 220px !important;
-        max-width: 70vw !important;
-        aspect-ratio: 1 / 1 !important;
-        overflow: hidden !important;
-        border-radius: 16px !important;
-        margin: 14px auto 0 !important;
-    }
-
-    .profile-card .hero-image img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center top !important;
-        transform: none !important;
-    }
-}
-
-/* =========================================
-   HERO IMAGE + MOBILE TYPO FIX (FINAL PATCH)
-   Put this at the VERY END of your CSS file
-   ========================================= */
-
-/* 1) Fix hero layout conflicts: keep hero-layout as the real grid */
-.hero-layout {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 32px;
-    align-items: center;
-    width: 100%;
-}
-
-/* 2) Profile card should not stretch */
-.hero-right .profile-card {
-    width: 100%;
-    max-width: 460px;
-    margin-left: auto;
-}
-
-/* 3) Control the IMAGE container */
-.hero-right .hero-image {
-    width: 100%;
-    max-width: 360px;
-    /* base desktop */
-    margin: 0 auto 16px;
-    aspect-ratio: 1 / 1;
-    /* مربع (لو عايز 4/5 قولّي) */
-    overflow: hidden;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-}
-
-/* 4) Make the image fill the box without growing */
-.hero-right .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transform: none !important;
-    /* يمنع أي تكبير غير مقصود */
-}
-
-/* ===== LAPTOP (992px - 1366px): الصورة كانت كبيرة هنا ===== */
-@media (min-width: 992px) and (max-width: 1366px) {
-
-    .hero-right .profile-card {
-        max-width: 400px;
-    }
-
-    .hero-right .hero-image {
-        max-width: 280px;
-        /* تصغير واضح على اللابتوب */
-    }
-}
-
-/* ===== BIG DESKTOP (>= 1367px) ===== */
-@media (min-width: 1367px) {
-    .hero-right .hero-image {
-        max-width: 320px;
-    }
-}
-
-/* ===== MOBILE STACK ===== */
-@media (max-width: 900px) {
-    .hero-layout {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-right .profile-card {
-        margin: 0 auto;
-        max-width: 420px;
-    }
-
-    .hero-right .hero-image {
-        max-width: 220px;
-        /* حجم مناسب للموبايل */
-        border-radius: 16px;
-    }
-}
-
-/* =========================================
-   MOBILE TYPO: Fix big text on phone
-   ========================================= */
-.hero-title {
-    margin: 0;
-    line-height: 1.15;
-}
-
-/* split lines */
-.hero-title .name {
-    display: block;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    font-size: clamp(2rem, 3.6vw, 3.1rem);
-    /* Desktop-safe */
-}
-
-.hero-title .title {
-    display: block;
-    margin-top: 10px;
-    font-weight: 600;
-    color: var(--muted);
-    font-size: clamp(1rem, 1.35vw, 1.25rem);
-    /* Desktop subtitle */
-    line-height: 1.4;
-}
-
-/* Subtitle paragraph */
-.hero-subtitle {
-    font-size: 1.02rem;
-    line-height: 1.75;
-    max-width: 68ch;
-}
-
-/* MOBILE TYPO OVERRIDES */
-@media (max-width: 768px) {
-
-    .hero-title .name {
-        font-size: 1.55rem;
-        /* كان كبير—ده مناسب */
-        line-height: 1.15;
-    }
-
-    .hero-title .title {
-        font-size: 0.95rem;
-        /* يخلي العنوان التاني متوازن */
-        line-height: 1.45;
-    }
-
-    .hero-subtitle {
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
-
-    .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-/* =========================================
-   HERO IMAGE + MOBILE TYPO FIX (FINAL PATCH)
-   Put this at the VERY END of your CSS file
-   ========================================= */
-
-/* 1) Fix hero layout conflicts: keep hero-layout as the real grid */
-.hero-layout {
-    display: grid;
-    grid-template-columns: 1.25fr 0.75fr;
-    gap: 32px;
-    align-items: center;
-    width: 100%;
-}
-
-/* 2) Profile card should not stretch */
-.hero-right .profile-card {
-    width: 100%;
-    max-width: 460px;
-    margin-left: auto;
-}
-
-/* 3) Control the IMAGE container */
-.hero-right .hero-image {
-    width: 100%;
-    max-width: 360px;
-    /* base desktop */
-    margin: 0 auto 16px;
-    aspect-ratio: 1 / 1;
-    /* مربع (لو عايز 4/5 قولّي) */
-    overflow: hidden;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-}
-
-/* 4) Make the image fill the box without growing */
-.hero-right .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transform: none !important;
-    /* يمنع أي تكبير غير مقصود */
-}
-
-/* ===== LAPTOP (992px - 1366px): الصورة كانت كبيرة هنا ===== */
-@media (min-width: 992px) and (max-width: 1366px) {
-
-    .hero-right .profile-card {
-        max-width: 400px;
-    }
-
-    .hero-right .hero-image {
-        max-width: 280px;
-        /* تصغير واضح على اللابتوب */
-    }
-}
-
-/* ===== BIG DESKTOP (>= 1367px) ===== */
-@media (min-width: 1367px) {
-    .hero-right .hero-image {
-        max-width: 320px;
-    }
-}
-
-/* ===== MOBILE STACK ===== */
-@media (max-width: 900px) {
-    .hero-layout {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .hero-left {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .hero-right .profile-card {
-        margin: 0 auto;
-        max-width: 420px;
-    }
-
-    .hero-right .hero-image {
-        max-width: 220px;
-        /* حجم مناسب للموبايل */
-        border-radius: 16px;
-    }
-}
-
-/* =========================================
-   MOBILE TYPO: Fix big text on phone
-   ========================================= */
-.hero-title {
-    margin: 0;
-    line-height: 1.15;
-}
-
-/* split lines */
-.hero-title .name {
-    display: block;
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    font-size: clamp(2rem, 3.6vw, 3.1rem);
-    /* Desktop-safe */
-}
-
-.hero-title .title {
-    display: block;
-    margin-top: 10px;
-    font-weight: 600;
-    color: var(--muted);
-    font-size: clamp(1rem, 1.35vw, 1.25rem);
-    /* Desktop subtitle */
-    line-height: 1.4;
-}
-
-/* Subtitle paragraph */
-.hero-subtitle {
-    font-size: 1.02rem;
-    line-height: 1.75;
-    max-width: 68ch;
-}
-
-/* MOBILE TYPO OVERRIDES */
-@media (max-width: 768px) {
-
-    .hero-title .name {
-        font-size: 1.55rem;
-        /* كان كبير—ده مناسب */
-        line-height: 1.15;
-    }
-
-    .hero-title .title {
-        font-size: 0.95rem;
-        /* يخلي العنوان التاني متوازن */
-        line-height: 1.45;
-    }
-
-    .hero-subtitle {
-        font-size: 0.95rem;
-        line-height: 1.7;
-    }
-
-    .hero-actions .btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* 1) خلى الصورة تيجي بعد العنوان مباشرة */
-    .hero-left {
-        order: 1;
-    }
-
-    .hero-right {
-        order: 2;
-    }
-
-    .hero-actions {
-        order: 3;
-    }
-
-    /* 2) قلل المسافات */
-    .hero {
-        padding-top: 100px;
-    }
-
-    .hero-left {
-        gap: 12px;
-    }
-
-    /* 3) خلي زرار واحد هو الأساسي */
-    .hero-actions .btn-primary {
-        width: 100%;
-    }
-
-    .hero-actions .btn-secondary,
-    .hero-actions .btn-ghost {
-        opacity: 0.85;
-    }
-
-    /* 4) قلل حجم الاسم شوية */
-    .hero-title .name {
-        font-size: 1.45rem;
-    }
-
-    /* 5) خلي Quick Info أقرب للصورة */
-    .profile-card {
-        margin-top: 10px;
-    }
-}
-
-/* ===== MOBILE NAV LIGHT STYLE ===== */
-@media (max-width: 860px) {
-
-    .nav-menu a {
-        color: rgba(230, 234, 240, 0.65);
-        /* لون هادي */
-        font-weight: 500;
-        transition: all 0.25s ease;
-    }
-
-    .nav-menu a:hover,
-    .nav-menu a.active {
-        color: var(--text);
-        /* يرجع أبيض عند التفاعل */
-    }
-
-    /* لو عايز تأثير أخف أكتر */
-    .nav-menu {
-        background: rgba(10, 25, 50, 0.95);
-    }
-}
-
-/* =========================================
-   NAV MENU COLORS (Desktop + Mobile)
-   Put at the VERY END of CSS
-   ========================================= */
-
-/* 1) Default nav links: soft + elegant */
-.nav-menu a {
-    color: rgba(230, 234, 240, 0.65);
-    /* هادي */
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    transition: color .25s ease, transform .25s ease;
-}
-
-/* 2) Hover: brighter (not neon) */
-.nav-menu a:hover {
-    color: rgba(230, 234, 240, 0.92);
-    transform: translateY(-1px);
-    text-decoration: none;
-}
-
-/* 3) Active section: subtle accent */
-.nav-menu a.active {
-    color: var(--accent);
-}
-
-/* 4) Remove strong underline if you want it cleaner */
-.nav-menu a::after {
-    background: rgba(31, 170, 89, 0.55);
-    /* أخضر هادي */
-}
-
-/* =========================================
-   MOBILE MENU PANEL COLORS
-   ========================================= */
-@media (max-width: 860px) {
-
-    .nav-menu {
-        background: rgba(10, 25, 50, 0.95);
-        /* لوحة هادية */
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(12px);
-    }
-
-    .nav-menu a {
-        padding: .75rem .9rem;
-        border-radius: 12px;
-    }
-
-    /* Hover/active background (soft highlight) */
-    .nav-menu a:hover {
-        background: rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-menu a.active {
-        background: rgba(31, 170, 89, 0.10);
-        color: rgba(230, 234, 240, 0.95);
-        /* أو خلّيها var(--accent) لو تحب */
-    }
-
-    /* underline off in mobile (optional cleaner) */
-    .nav-menu a::after {
-        display: none;
-    }
-}
-
-/* ===== NAV COLORS FORCE PATCH (works even if old CSS is strong) ===== */
-
-/* Desktop + Mobile links */
-.site-header .nav .nav-menu li a,
-.site-header .nav .nav-menu a {
-    color: rgba(230, 234, 240, 0.62) !important;
-    /* لون هادي */
-    font-weight: 500 !important;
-    text-decoration: none !important;
-}
-
-/* Hover */
-.site-header .nav .nav-menu li a:hover,
-.site-header .nav .nav-menu a:hover {
-    color: rgba(230, 234, 240, 0.92) !important;
-    background: rgba(255, 255, 255, 0.04) !important;
-    border-radius: 12px !important;
-}
-
-/* Active */
-.site-header .nav .nav-menu li a.active,
-.site-header .nav .nav-menu a.active {
-    color: var(--accent) !important;
-    background: rgba(31, 170, 89, 0.10) !important;
-    border-radius: 12px !important;
-}
-
-/* Underline off (optional clean look) */
-.site-header .nav .nav-menu a::after {
-    display: none !important;
-}
-
-/* =========================================
-   ABOUT & SKILLS REFINEMENT (EXECUTIVE LOOK)
-   ========================================= */
-
-/* --- ABOUT SECTION --- */
-/* 1. Vision/About Box Stronger Styling */
-.vision-box {
-    background: linear-gradient(145deg, var(--surface), rgba(10, 25, 50, 0.8));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    /* Subtle but solid */
-    border-left: 2px solid var(--accent);
-    /* Subtle accent line */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-    /* deepened shadow */
-    padding: 2.2rem;
-    border-radius: 12px;
-}
-
-.vision-text {
-    color: rgba(230, 234, 240, 0.9);
-    /* Better contrast */
-    font-size: 1.02rem;
-    line-height: 1.75;
-    font-weight: 400;
-}
-
-/* 2. Highlight Blocks Structure */
-.about-highlights {
-    gap: 1.25rem;
-}
-
-.highlight {
-    background: rgba(16, 41, 79, 0.6);
-    /* Deeper surface */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Stronger border */
-    padding: 1.25rem;
-    border-radius: 10px;
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.highlight:hover {
-    transform: translateY(-3px);
-    border-color: rgba(31, 170, 89, 0.35);
-    background: var(--surface);
-}
-
-.highlight-title {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--text-primary);
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-}
-
-.highlight-desc {
-    color: rgba(230, 234, 240, 0.7);
-    font-size: 0.85rem;
-}
-
-
-/* --- SKILLS SECTION --- */
-/* 1. Skill Cards Executive Feel */
-.skills-grid {
-    gap: 1.25rem;
-}
-
-.skill-card {
-    background: rgba(13, 29, 56, 1);
-    /* Slightly darker base */
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    /* Neutral gray border */
-    border-radius: 10px;
-    padding: 1.15rem 1.25rem;
-    align-items: center;
-    gap: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.skill-card:hover {
-    background: var(--surface);
-    transform: translateY(-2px);
-    border-color: rgba(255, 255, 255, 0.2);
-    /* Brighten border neutrally */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-/* 2. Icons: Framed & Professional */
-.skill-icon {
-    font-size: 1.4rem;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.03);
-    /* Very subtle bg */
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    /* Stronger gray frame */
-    border-radius: 8px;
-    color: var(--accent);
-    /* Keep accent color for icon itself */
-    flex-shrink: 0;
-}
-
-/* 3. Typography Hierarchy */
-.skill-info h3 {
-    font-size: 0.95rem;
-    font-weight: 800;
-    /* Stronger weight */
-    color: var(--text-primary);
-    margin-bottom: 0.15rem;
-    letter-spacing: 0.01em;
-}
-
-.skill-info p {
-    font-size: 0.8rem;
-    color: rgba(230, 234, 240, 0.55);
-    /* More muted description */
-    font-weight: 500;
-}
-
-/* =========================================
-   MOBILE TEXT CLIPPING & OVERFLOW FIX (STRICT)
-   ========================================= */
-
-@media (max-width: 768px) {
-
-    /* 1. Force Overflow Visible */
-    html,
-    body,
-    .hero,
-    .hero-container,
-    .hero-layout,
-    .hero-left,
-    .hero-content {
-        overflow-x: visible !important;
-        overflow: visible !important;
-    }
-
-    /* 2. Remove Fixed Widths & Constraints */
-    .hero-container,
-    .hero-layout,
-    .hero-left,
-    .hero-content {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-
-    /* 3. Text Wrapping & Safety */
-    .hero-title,
-    .hero-name,
-    .hero-role,
-    .hero-subtitle,
-    .hero-desc,
-    .hero-tagline,
-    .hero-bullets li,
-    .profile-details,
-    p,
-    h1,
-    h2,
-    h3,
-    span {
-        white-space: normal !important;
-        word-break: break-word !important;
-        overflow-wrap: anywhere !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 4. Horizontal Spacing (Prevent Edge Touching) */
-    .hero-container {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-
-    .hero-layout {
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* 5. Image & Grid Safety */
-    .hero-layout {
-        display: flex !important;
-        /* safer than grid for overflow on mobile */
-        flex-direction: column !important;
-    }
-
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-}
-
-body.theme-light p,
-body.theme-light li,
-body.theme-light .proj-desc,
-body.theme-light .hero-subtitle {
-    color: #1F2D3D !important;
-}
-
-/* ================================
-   GLOBAL THEME FIX (PUT AT THE END)
-   ================================ */
-
-/* 1) Define missing tokens (VERY IMPORTANT) */
-:root {
-    /* Base brand */
-    --accent: #1FAA59;
-
-    /* Dark palette */
-    --navy: #0B1E3D;
-    /* used in header/hero */
-    --navy-light: #10294F;
-    /* surface cards on dark */
-    --bg: #0F172A;
-    /* main page bg */
-    --surface: #1E293B;
-    /* cards on dark */
-    --surface2: #153361;
-    /* hover surface */
-
-    /* Text tokens (missing in your file) */
-    --text-primary: #F8FAFC;
-    --text-secondary: #CBD5E1;
-    --text-muted: #94A3B8;
-
-    /* Borders */
-    --border: rgba(255, 255, 255, .10);
-    --border-dark: rgba(255, 255, 255, .14);
-
-    /* Ensure theme mapping */
-    --text: var(--text-primary);
-    --muted: var(--text-muted);
-}
-
-/* 2) Kill low-contrast (no faded text) */
-body,
-p,
-li,
-.muted,
-.proj-desc,
-.hero-role,
-.hero-tagline {
-    opacity: 1 !important;
-    color: var(--text-secondary);
-}
-
-/* Headings always readable */
-h1,
-h2,
-h3,
-.hero-name,
-.brand-name,
-.detail-value,
-.proj-title {
-    color: var(--text-primary) !important;
-}
-
-/* 3) Surfaces consistency */
-.site-header {
-    background: rgba(11, 30, 61, 0.92) !important;
-    border-bottom: 1px solid var(--border-dark) !important;
-}
-
-.profile-card-minimal,
-.skill-card,
-.timeline-card,
-.vision-box {
-    background: color-mix(in srgb, var(--surface) 92%, transparent) !important;
-    border: 1px solid var(--border) !important;
-}
-
-/* 4) Light theme contrast fix */
-body.theme-light {
-    --bg: #F5F7FA;
-    --surface: #FFFFFF;
-    --surface2: #E8EEF5;
-    --text-primary: #0F172A;
-    --text-secondary: #1F2D3D;
-    --text-muted: #5E6C7F;
-    --border: #D1D9E6;
-    --border-dark: #C7D2E3;
-}
-
-body.theme-light,
-body.theme-light p,
-body.theme-light li {
-    color: var(--text-secondary) !important;
-}
-
-/* Fixed Avatar Styles - Removed Redundant Block */
-
-/* =========================================================
-   FINAL COLOR + CONTRAST PATCH (paste at END of style.css)
-   Goal: stable tokens + readable text (dark + light themes)
-   ========================================================= */
-
-/* 1) Define missing base tokens + unify theme mapping */
-:root {
-    /* Brand */
-    --accent: #1FAA59;
-    --accent-2: #16944A;
-
-    /* Core dark palette */
-    --navy: #0B1E3D;
-    --navy-light: #10294F;
-    --surface: #10294F;
-    /* default surface */
-    --surface2: #153361;
-    /* hover surface */
-    --bg: #0B1E3D;
-
-    /* Typography */
-    --text-primary: #F8FAFC;
-    --text-secondary: #C8D0DC;
-    --text: #F8FAFC;
-    --muted: #C8D0DC;
-
-    /* Borders / shadows */
-    --border: #1E3A5F;
-    --border-dark: #132B49;
-    --shadow: 0 8px 28px rgba(0, 0, 0, .28);
-
-    /* Light-card tokens (for sections/cards that are white) */
-    --card-bg: #FFFFFF;
-    --text-main: #0F172A;
-    --text-muted: #475569;
-}
-
-/* 2) Theme switch — keep it strict */
-body.theme-dark {
-    --bg: var(--navy);
-    --surface: var(--navy-light);
-    --surface2: #153361;
-
-    --text: var(--text-primary);
-    --muted: var(--text-secondary);
-
-    --border: var(--border);
-    --shadow: 0 8px 28px rgba(0, 0, 0, .30);
-    background: var(--bg);
-    color: var(--text);
-}
-
-body.theme-light {
-    --bg: #F5F7FA;
-    --surface: #FFFFFF;
-    --surface2: #E8EEF5;
-
-    --text: #0F172A;
-    --muted: #475569;
-
-    --border: #D1D9E6;
-    --shadow: 0 8px 24px rgba(15, 23, 42, .08);
-    background: var(--bg);
-    color: var(--text);
-}
-
-/* 3) Global readability guards (stop faded text) */
-p,
-li,
-.section-sub,
-.proj-desc,
-.hero-subtitle,
-.vision-text {
-    opacity: 1 !important;
-}
-
-/* 4) Header + nav readability */
-.site-header {
-    border-bottom: 1px solid var(--border);
-}
-
-.site-header .brand-name {
-    color: var(--text) !important;
-}
-
-.site-header .brand-role {
-    color: var(--muted) !important;
-}
-
-.nav-menu a {
-    color: color-mix(in srgb, var(--text) 70%, transparent) !important;
-}
-
-.nav-menu a:hover {
-    color: color-mix(in srgb, var(--text) 92%, transparent) !important;
-    text-decoration: none !important;
-}
-
-.nav-menu a.active {
-    color: var(--accent) !important;
-}
-
-/* 5) Buttons: ensure contrast always */
-.btn {
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-}
-
-.btn-primary {
-    background: var(--accent) !important;
-    border-color: var(--accent) !important;
-    color: #fff !important;
-    box-shadow: 0 10px 22px rgba(31, 170, 89, .22);
-}
-
-.btn-primary:hover {
-    background: var(--accent-2) !important;
-}
-
-.btn-secondary {
-    background: transparent !important;
-    color: var(--text) !important;
-    border-color: color-mix(in srgb, var(--text) 22%, transparent) !important;
-}
-
-.btn-secondary:hover {
-    background: color-mix(in srgb, var(--text) 6%, transparent) !important;
-}
-
-/* 6) HERO text clarity */
-.hero {
-    background: var(--bg);
-}
-
-.hero-title .name {
-    color: var(--text) !important;
-}
-
-.hero-title .title {
-    color: var(--muted) !important;
-}
-
-.hero-subtitle {
-    color: var(--muted) !important;
-}
-
-/* 7) Fix cards (IMPORTANT)
-   - Any element with .card OR your project/service cards should
-     automatically become readable in BOTH themes.
-*/
-.card,
-.project-card,
-.service-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    color: var(--text);
-}
-
-/* If you want white cards ONLY in light theme, keep them as surface (white anyway).
-   If you want some cards always white even in dark theme, keep below block enabled. */
-body.theme-dark .service-card,
-body.theme-dark .project-card {
-    /* keep them dark surfaces to match theme */
-    background: var(--surface);
-    color: var(--text);
-}
-
-/* Titles and text inside cards */
-.card h3,
-.project-card .proj-title,
-.service-card h3 {
-    color: var(--text) !important;
-}
-
-.card p,
-.card li,
-.project-card .proj-desc,
-.service-card p {
-    color: var(--muted) !important;
-}
-
-/* 8) Vision box (was getting washed out) */
-.vision-box {
-    background: linear-gradient(145deg, var(--surface), color-mix(in srgb, var(--surface) 65%, black)) !important;
-    border: 1px solid color-mix(in srgb, var(--border) 85%, transparent) !important;
-    border-left: 3px solid var(--accent) !important;
-}
-
-.vision-title,
-.vision-subtitle {
-    color: var(--text) !important;
-}
-
-.vision-text,
-.vision-list li {
-    color: var(--muted) !important;
-}
-
-.vision-list li strong {
-    color: var(--accent) !important;
-}
-
-/* 9) KPI bar and labels */
-.kpi-section {
-    background: color-mix(in srgb, var(--surface) 55%, transparent) !important;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-}
-
-.kpi-label {
-    color: var(--muted) !important;
-}
-
-/* 10) Social buttons (were forcing dark text on dark bg) */
-.social {
-    color: var(--text) !important;
-    background: color-mix(in srgb, var(--surface) 70%, transparent) !important;
-    border: 1px solid var(--border) !important;
-}
-
-.social:hover {
-    color: #fff !important;
-    background: var(--accent) !important;
-    border-color: var(--accent) !important;
-}
-
-/* 11) Quick info list (if you have it styled elsewhere, ensure readable) */
-.quick-info,
-.quick-info h2,
-.quick-info li {
-    color: var(--text) !important;
-}
-
-.quick-info a {
-    color: color-mix(in srgb, var(--text) 88%, transparent) !important;
-}
-
-/* 12) Mobile: stop extra fading and keep readable */
-@media (max-width: 768px) {
-
-    .section-sub,
-    p,
-    li {
-        color: var(--muted) !important;
-    }
-}
-
-
-/* =========================================================
-   FINAL CSS PATCH (FIXES: HEADER, MENU, PROFILE IMAGE)
-   Goal: Stable contrast, clear mobile menu, circular avatar.
-   ========================================================= */
-
-/* --- LIGHT HEADER FIX --- */
-body.theme-light .site-header {
-    background-color: #F8FAFC !important;
-    background: #F8FAFC !important;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.1) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-}
-
-body.theme-light .brand-name {
-    color: #0F172A !important;
-}
-
-body.theme-light .brand-role {
-    color: #475569 !important;
-}
-
-/* Light mode header buttons visibility */
-body.theme-light .btn-ghost,
-body.theme-light .nav-toggle {
-    background-color: #FFFFFF !important;
-    border: 1px solid rgba(15, 23, 42, 0.1) !important;
-    color: #0F172A !important;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
-}
-
-/* --- MOBILE MENU FIX --- */
-@media (max-width: 860px) {
-    .nav-menu {
-        transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
-    }
-
-    /* Light Theme Mobile Menu */
-    body.theme-light .nav-menu {
-        background-color: #FFFFFF !important;
-        background: #FFFFFF !important;
-        opacity: 1 !important;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
-        border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        padding-top: 2rem !important;
-    }
-
-    body.theme-light .nav-menu a {
-        color: #0F172A !important;
-        font-weight: 600 !important;
-        padding: 0.8rem 1.2rem !important;
-    }
-
-    body.theme-light .nav-menu a:hover,
-    body.theme-light .nav-menu a.active {
-        background: rgba(31, 170, 89, 0.1) !important;
-        color: #1FAA59 !important;
-    }
-
-    /* Dark Theme Mobile Menu */
-    body.theme-dark .nav-menu {
-        background-color: #0F172A !important;
-        background: #0F172A !important;
-        opacity: 1 !important;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
-        padding-top: 2rem !important;
-    }
-
-    body.theme-dark .nav-menu a {
-        color: #F8FAFC !important;
-        font-weight: 500 !important;
-    }
-}
-
-/* Fixed Profile Image - Removed Redundant Block */
-
-/* SCROLL EFFECT PATCH */
-.site-header.scrolled {
-    padding-top: 4px;
-    padding-bottom: 4px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-}
-
-.site-header.scrolled::after {
-    width: 100%;
-}
-
-/* Fixed Profile Image - Removed Redundant Block */
-
-/* Fixed Avatar Lock - Removed Redundant Block */
-
-/* Fixed Executive Avatar - Removed Redundant Block */
-
-body.theme-light .site-header .brand-name,
-body.theme-light .site-header .nav-menu a,
-body.theme-light .site-header .nav-toggle,
-body.theme-light .site-header .btn {
-    color: #0F172A !important;
-    /* أزرق داكن راقي */
-}
-
-/* =========================================
-   DARK MODE TEXT CONTRAST BOOST (FINAL)
-   Put at VERY END of CSS
-   ========================================= */
-
-body.theme-dark {
-    /* ارفع تباين النصوص الثانوية */
-    --text-secondary: #D7DEE9 !important;
-    --text-muted: #B9C6D8 !important;
-    --muted: var(--text-secondary) !important;
-}
-
-/* امنع أي نص مطفي بسبب opacity */
-body.theme-dark p,
-body.theme-dark li,
-body.theme-dark .muted,
-body.theme-dark .section-sub,
-body.theme-dark .hero-subtitle,
-body.theme-dark .proj-desc,
-body.theme-dark .proj-meta,
-body.theme-dark .detail-label,
-body.theme-dark .detail-row,
-body.theme-dark .vision-text,
-body.theme-dark .timeline-card ul,
-body.theme-dark .timeline-card li {
-    opacity: 1 !important;
-    color: var(--text-secondary) !important;
-}
-
-/* العناوين جوه الكروت تبقى أوضح */
-body.theme-dark .profile-card-minimal h1,
-body.theme-dark .profile-card-minimal h2,
-body.theme-dark .profile-card-minimal h3,
-body.theme-dark .project-card h3,
-body.theme-dark .service-card h3,
-body.theme-dark .timeline-card h3 {
-    color: var(--text-primary) !important;
-}
-
-/* كلمات زي: "الدور" و "الأدوات" غالبًا كانت باهتة */
-body.theme-dark strong,
-body.theme-dark .proj-label,
-body.theme-dark .detail-value {
-    color: var(--text-primary) !important;
-}
-
-/* لو عندك بلوك اقتباس/Impact داخل الكارد وكان غامق */
-body.theme-dark .proj-impact {
-    color: var(--text-primary) !important;
-}
-
-/* ================================
-   REMOVE SQUARE BACKGROUND
-   ================================ */
-
-/* امسح أي خلفية أو إطار حوالين الصورة */
-.hero-image {
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-
-    width: 240px !important;
-    height: 240px !important;
-
-    border-radius: 50% !important;
-    overflow: hidden !important;
-}
-
-/* الصورة نفسها */
-.hero-image img,
-.profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 6% !important;
-    border-radius: 50% !important;
-}
-
-/* =========================================
-   KILL THE SQUARE BACKPLATE BEHIND AVATAR
-   Put at VERY END of style.css
-   ========================================= */
-
-/* 1) Force the image wrapper to be clean */
-.hero-image,
-.hero-right .hero-image {
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-
-    width: 240px !important;
-    height: 240px !important;
-
-    border-radius: 50% !important;
-    overflow: hidden !important;
-}
-
-/* 2) Make sure the image fills the circle */
-.hero-image img,
-.hero-image .profile-img,
-.profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    display: block !important;
-
-    object-fit: cover !important;
-    object-position: center 6% !important;
-
-    border-radius: 50% !important;
-    transform: none !important;
-}
-
-/* 3) IMPORTANT: remove the square background from the PARENTS */
-.hero-right,
-.hero-visual,
-.profile-image-wrapper,
-.profile-card-minimal,
-.profile-card,
-.hero-right .profile-card,
-.hero-right .profile-card-minimal,
-.hero-right .profile-image-wrapper {
-    background: transparent !important;
-    border: 0 !important;
-    box-shadow: none !important;
-}
-
-/* 4) If there is padding making a "plate", kill it */
-.profile-image-wrapper,
-.hero-visual {
-    padding: 0 !important;
-    border-radius: 0 !important;
-}
-
-/* 5) Mobile sizing */
-@media (max-width: 768px) {
-
-    .hero-image,
-    .hero-right .hero-image {
-        width: 200px !important;
-        height: 200px !important;
-    }
-}
-
-/* =========================================
-   AUTO-REMOVE ANY SQUARE WRAPPER BEHIND AVATAR
-   Uses :has() to target the parent container
-   Put at VERY END of style.css
-   ========================================= */
-
-@supports selector(div:has(> img)) {
-
-    /* أي عنصر يحتوي .hero-image مباشرة: شيل الخلفية/الظل/الإطار */
-    *:has(> .hero-image),
-    *:has(.hero-image) {
-        background: transparent !important;
-        box-shadow: none !important;
-        border: 0 !important;
-    }
-
-    /* لو المشكلة بسبب padding عامل “لوح” خلف الصورة */
-    *:has(> .hero-image) {
-        padding: 0 !important;
-        border-radius: 0 !important;
-    }
-}
-
-/* تثبيت الدائرة نفسها */
-.hero-image {
-    width: 240px !important;
-    height: 240px !important;
-    border-radius: 50% !important;
-    overflow: hidden !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    border: 0 !important;
-}
-
-.hero-image img,
-.profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 6% !important;
-    border-radius: 50% !important;
-    display: block !important;
-    transform: none !important;
-}
-
-@media (max-width:768px) {
-    .hero-image {
-        width: 200px !important;
-        height: 200px !important;
-    }
-}
-
-/* ================================
-   FORCE PURE CIRCLE (NO SQUARE)
-   ================================ */
-
-/* 1️⃣ خلّي الصورة دائرة بالكامل */
-.profile-img {
-    width: 240px !important;
-    height: 240px !important;
-    object-fit: cover !important;
-    object-position: center 6% !important;
-
-    border-radius: 50% !important;
-    display: block !important;
-
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-}
-
-/* 2️⃣ أي عنصر شايل الصورة يشيل خلفيته */
-.profile-img {
-    position: relative;
-    z-index: 2;
-}
-
-/* أهم خطوة 👇 */
-.profile-img::before,
-.profile-img::after {
-    display: none !important;
-}
-
-/* =========================================
-   DARK MODE TEXT CONTRAST FIX (CLEAN)
-   ========================================= */
-
-body.theme-dark {
-    --text: #F8FAFC !important;
-    /* High contrast white */
-    --muted: #CBD5E1 !important;
-    /* Bright gray, legible */
-    --text-primary: #F8FAFC !important;
-    --text-secondary: #CBD5E1 !important;
-    --border: rgba(255, 255, 255, 0.15) !important;
-}
-
-/* Target specific text elements to ensure readability */
-body.theme-dark .hero-subtitle,
-body.theme-dark .section-sub,
-body.theme-dark p,
-body.theme-dark li,
-body.theme-dark .muted,
-body.theme-dark span,
-body.theme-dark a {
-    color: var(--muted) !important;
-    opacity: 1 !important;
-}
-
-/* Ensure headings and brands are pure white */
-body.theme-dark h1,
-body.theme-dark h2,
-body.theme-dark h3,
-body.theme-dark .brand-name,
-body.theme-dark .hero-name,
-body.theme-dark .proj-title,
-body.theme-dark strong {
-    color: var(--text) !important;
-}
-
-.hero,
-.hero * {
-    opacity: 1 !important;
-    filter: none !important;
-}
-
-.hero::before,
-.hero::after {
-    display: none !important;
-}
-
-/* ===== FIX HERO TEXT IN LIGHT MODE (PUT AT END) ===== */
-body.theme-light {
-    --text-primary: #0F172A;
-    --text-secondary: #334155;
-    --muted: #475569;
-    --text: #0F172A;
-}
-
-/* اجبار نصوص الهيرو تاخد الألوان الصحيحة في اللايت */
-body.theme-light .hero-name,
-body.theme-light .hero-title .name,
-body.theme-light .brand-name,
-body.theme-light h1,
-body.theme-light h2,
-body.theme-light h3 {
-    color: var(--text-primary) !important;
-}
-
-body.theme-light .hero-role,
-body.theme-light .hero-tagline,
-body.theme-light .hero-subtitle,
-body.theme-light p,
-body.theme-light li {
-    color: var(--text-secondary) !important;
-    opacity: 1 !important;
-}
-
-/* Default: ALWAYS visible (no global fading) */
-.reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-}
-
-/* Only animate when JS explicitly enables it */
-.js .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 650ms cubic-bezier(0.25, 0.1, 0.25, 1),
-        transform 650ms cubic-bezier(0.25, 0.1, 0.25, 1);
-}
-
-.js .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* أضف هذا الجزء للكود السابق لتحسين قائمة "معلومات سريعة" */
-
-.quick-info-list {
-    list-style: none;
-    /* إزالة النقاط التقليدية */
-    padding: 0;
-    margin: 1.5rem 0;
-}
-
-.quick-info-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--text-secondary);
-    /* لون رمادي مزرق */
-    font-size: 1.05rem;
-    margin-bottom: 1rem;
-    padding: 0.75rem 1rem;
-    background: rgba(255, 255, 255, 0.03);
-    /* خلفية شفافة خفيفة جداً */
-    border-radius: var(--radius-md);
-    border: 1px solid transparent;
-    transition: var(--transition);
-}
-
-.quick-info-list li:hover {
-    background: var(--bg-surface-2);
-    border-color: var(--accent);
-    /* حدود خضراء عند التمرير */
-    color: var(--text-primary);
-    /* النص يصبح أبيض */
-    transform: translateX(-5px);
-    /* حركة بسيطة لليسار (لأن الموقع عربي) */
-}
-
-/* إذا كنت تستخدم أيقونات (Icons) بجانب النص */
-.quick-info-list li i,
-.quick-info-list li svg {
-    color: var(--accent);
-    /* الأيقونة باللون الأخضر */
-    font-size: 1.2rem;
-}
-
-/* =========================================
-   1. SETUP & VARIABLES (THEME ENGINE)
-   ========================================= */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-:root {
-    /* --- TYPOGRAPHY SYSTEM --- */
-    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-
-    /* --- COLOR PALETTE (Corporate Infrastructure) --- */
-    /* Backgrounds */
-    --bg-body: #0B1120;
-    /* Deepest Navy: أساس الصفحة */
-    --bg-surface: #151F32;
-    /* Lighter Navy: للكروت والأقسام */
-    --bg-surface-2: #1E293B;
-    /* Hover States: عند التفاعل */
-
-    /* Borders */
-    --border-subtle: #1E293B;
-    /* حدود ناعمة جداً */
-    --border-accent: #334155;
-    /* حدود أوضح للعناصر المهمة */
-
-    /* Text Colors (High Contrast) */
-    --text-primary: #F8FAFC;
-    /* أبيض نقي للعناوين (Slate 50) */
-    --text-secondary: #94A3B8;
-    /* رمادي مزرق للنصوص (Slate 400) */
-    --text-muted: #64748B;
-    /* رمادي غامق للتفاصيل الثانوية */
-
-    /* Brand Identity (Signal Green) */
-    --accent: #10B981;
-    /* Emerald 500: لون حيوي وقوي */
-    --accent-hover: #059669;
-    /* Emerald 600: لون التفاعل */
-    --accent-glow: rgba(16, 185, 129, 0.15);
-    /* وهج خفيف */
-
-    /* --- LAYOUT TOKENS --- */
-    --radius-lg: 12px;
-    /* حواف ناعمة لكن هندسية */
-    --radius-md: 8px;
-    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* =========================================
-   2. GLOBAL RESET & BASE TYPOGRAPHY
-   ========================================= */
-* {
-    box-sizing: border-box;
 }
 
 body {
@@ -3738,209 +52,475 @@ body {
     font-family: var(--font-main);
     background-color: var(--bg-body);
     color: var(--text-secondary);
-    line-height: 1.7;
-    /* مسافة مريحة للقراءة */
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    /* خطوط حادة */
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Headings: Strong & White */
+/* Typography Overrides */
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.brand-name {
     color: var(--text-primary);
     font-weight: 700;
-    line-height: 1.2;
     margin-top: 0;
-    letter-spacing: -0.02em;
-    /* تضييق المسافات يعطي طابع عصري */
 }
 
-/* Paragraphs */
-p {
-    margin-bottom: 1.5rem;
-    font-weight: 400;
-}
-
-/* Links */
 a {
-    color: var(--text-primary);
     text-decoration: none;
-    transition: var(--transition);
+    color: var(--text-primary);
+    transition: 0.3s;
 }
 
 a:hover {
     color: var(--accent);
 }
 
-/* =========================================
-   3. COMPONENTS (REDESIGNED)
-   ========================================= */
-
-/* --- A. CARDS (Structure & Depth) --- */
-.card,
-.service-card,
-.project-card,
-.skill-card {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* Hover Effect: Lift & Glow */
-.card:hover,
-.service-card:hover,
-.project-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    /* حدود خضراء عند التفاعل */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-}
-
-/* --- B. TYPOGRAPHY HIERARCHY --- */
-.hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 800;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-    font-size: clamp(1.1rem, 2vw, 1.25rem);
-    color: var(--accent);
-    /* تمييز الوظيفة باللون الأخضر */
-    font-weight: 600;
-    margin-bottom: 2rem;
-    display: inline-block;
-    background: rgba(16, 185, 129, 0.1);
-    /* خلفية خفيفة جداً */
-    padding: 0.5rem 1rem;
-    border-radius: 99px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
-}
-
-.section-title {
-    font-size: 2rem;
-    border-left: 4px solid var(--accent);
-    /* خط أخضر بجانب العنوان */
-    padding-left: 1rem;
-    margin-bottom: 2rem;
-}
-
-/* --- C. BUTTONS (High Contrast CTA) --- */
-.btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--accent);
-    color: #022c22;
-    /* نص داكن جداً على الخلفية الخضراء لضمان القراءة */
-    font-weight: 700;
-    padding: 0.85rem 2rem;
-    border-radius: var(--radius-md);
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: var(--transition);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px var(--accent-glow);
-    color: #fff;
-    /* يتحول النص للأبيض عند التفاعل */
-}
-
-.btn-outline {
-    background: transparent;
-    border: 1px solid var(--border-accent);
-    color: var(--text-primary);
-    padding: 0.85rem 2rem;
-    border-radius: var(--radius-md);
-}
-
-.btn-outline:hover {
-    border-color: var(--text-primary);
-    background: var(--bg-surface-2);
-}
-
-/* --- D. STATS (Impact Numbers) --- */
-.stat-number {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    /* أبيض */
-    line-height: 1;
-    margin-bottom: 0.5rem;
-    display: block;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--accent);
-    /* أخضر */
-    font-weight: 600;
-}
-
-/* --- E. TAGS & SKILLS --- */
-.skill-tag {
-    background: var(--bg-surface-2);
-    color: var(--text-primary);
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid var(--border-subtle);
-    display: inline-block;
-    margin: 0.25rem;
-}
-
-/* =========================================
-   4. LAYOUT UTILITIES
-   ========================================= */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+    width: min(var(--container), 92%);
+    margin-inline: auto;
 }
 
 .section {
-    padding: 5rem 0;
-    border-bottom: 1px solid var(--border-subtle);
-    /* فواصل خفيفة بين الأقسام */
+    padding: 4rem 0;
+    border-bottom: 1px solid #1e293b;
 }
 
-/* Alternating Backgrounds for Rhythm */
-.section:nth-child(even) {
-    background-color: #0F1623;
-    /* لون أغمق قليلاً للتباين بين الأقسام */
+/* =========================================
+   3. HEADER & NAVIGATION
+   ========================================= */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 17, 32, 0.95);
+    /* خلفية داكنة */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
 }
 
-/* Navbar Adjustment */
-.navbar {
-    background: rgba(11, 17, 32, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-subtle);
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.brand-mark {
+    background: var(--accent);
+    color: #fff;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.brand-name {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+.brand-role {
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+}
+
+/* Navigation */
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-menu a {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.nav-menu a:hover {
+    color: var(--accent);
+}
+
+.nav-cta {
+    color: var(--accent) !important;
+    font-weight: bold !important;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Mobile Nav Toggle */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* =========================================
+   4. HERO SECTION (Fixed Layout)
+   ========================================= */
+.hero {
+    padding-top: 3rem;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05), transparent 40%);
+}
+
+.hero-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    /* Text left, Image right */
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Left Content */
+.kicker {
+    color: var(--accent);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.hero-title .name {
+    display: block;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.hero-title .title {
+    display: block;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+/* Buttons */
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #0F172A !important;
+    /* نص غامق على الزر الأخضر */
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -5px var(--accent-glow);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* --- RIGHT SIDE: PROFILE CARD (The Fix) --- */
+.profile-card {
+    background: var(--bg-surface);
+    /* خلفية كحلية */
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hero-image {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--bg-surface-2);
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Quick Info List (High Contrast Fix) */
+.profile-meta h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+.meta-mini li {
+    background: rgba(255, 255, 255, 0.03);
+    /* خلفية خفيفة لكل سطر */
+    margin-bottom: 0.8rem;
+    padding: 0.6rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    color: var(--text-primary);
+    /* نص أبيض */
+    text-align: left;
+    /* أو center حسب الرغبة */
+}
+
+.meta-mini strong {
+    color: var(--accent);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+
+.meta-mini a {
+    color: var(--text-secondary);
+}
+
+/* Hero Metrics (Bottom) */
+.hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.metric {
+    background: var(--bg-surface-2);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    text-align: center;
+}
+
+.metric-value {
+    display: block;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.3rem;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   5. CARDS & SECTIONS
+   ========================================= */
+.card,
+.timeline-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+/* Chips (Skills) */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.chips li {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -25px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--bg-body);
+}
+
+/* Grids */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+}
+
+/* Form */
+input,
+textarea {
+    width: 100%;
+    background: var(--bg-body);
+    border: 1px solid var(--border);
+    color: #fff;
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--accent);
 }
 
 /* Footer */
-footer {
-    background: #020617;
-    /* أسود تقريباً */
-    padding: 3rem 0;
+.site-footer {
     text-align: center;
-    border-top: 1px solid var(--border-accent);
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* =========================================
+   6. RESPONSIVE (Mobile)
+   ========================================= */
+@media (max-width: 860px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-left {
+        order: 2;
+    }
+
+    .hero-right {
+        order: 1;
+        margin-bottom: 2rem;
+    }
+
+    .header-actions .btn-text {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        /* يحتاج JS لتفعيله */
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meta-mini li {
+        text-align: center;
+    }
 }
