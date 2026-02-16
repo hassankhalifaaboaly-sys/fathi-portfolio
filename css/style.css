@@ -3454,3 +3454,55 @@ body.theme-dark .proj-impact {
         height: 200px !important;
     }
 }
+
+/* =========================================
+   AUTO-REMOVE ANY SQUARE WRAPPER BEHIND AVATAR
+   Uses :has() to target the parent container
+   Put at VERY END of style.css
+   ========================================= */
+
+@supports selector(div:has(> img)) {
+
+    /* أي عنصر يحتوي .hero-image مباشرة: شيل الخلفية/الظل/الإطار */
+    *:has(> .hero-image),
+    *:has(.hero-image) {
+        background: transparent !important;
+        box-shadow: none !important;
+        border: 0 !important;
+    }
+
+    /* لو المشكلة بسبب padding عامل “لوح” خلف الصورة */
+    *:has(> .hero-image) {
+        padding: 0 !important;
+        border-radius: 0 !important;
+    }
+}
+
+/* تثبيت الدائرة نفسها */
+.hero-image {
+    width: 240px !important;
+    height: 240px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+.hero-image img,
+.profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 6% !important;
+    border-radius: 50% !important;
+    display: block !important;
+    transform: none !important;
+}
+
+@media (max-width:768px) {
+    .hero-image {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
