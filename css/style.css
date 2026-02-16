@@ -3634,3 +3634,313 @@ body.theme-light li {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* أضف هذا الجزء للكود السابق لتحسين قائمة "معلومات سريعة" */
+
+.quick-info-list {
+    list-style: none;
+    /* إزالة النقاط التقليدية */
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.quick-info-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    /* لون رمادي مزرق */
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    /* خلفية شفافة خفيفة جداً */
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.quick-info-list li:hover {
+    background: var(--bg-surface-2);
+    border-color: var(--accent);
+    /* حدود خضراء عند التمرير */
+    color: var(--text-primary);
+    /* النص يصبح أبيض */
+    transform: translateX(-5px);
+    /* حركة بسيطة لليسار (لأن الموقع عربي) */
+}
+
+/* إذا كنت تستخدم أيقونات (Icons) بجانب النص */
+.quick-info-list li i,
+.quick-info-list li svg {
+    color: var(--accent);
+    /* الأيقونة باللون الأخضر */
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   1. SETUP & VARIABLES (THEME ENGINE)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* --- TYPOGRAPHY SYSTEM --- */
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* --- COLOR PALETTE (Corporate Infrastructure) --- */
+    /* Backgrounds */
+    --bg-body: #0B1120;
+    /* Deepest Navy: أساس الصفحة */
+    --bg-surface: #151F32;
+    /* Lighter Navy: للكروت والأقسام */
+    --bg-surface-2: #1E293B;
+    /* Hover States: عند التفاعل */
+
+    /* Borders */
+    --border-subtle: #1E293B;
+    /* حدود ناعمة جداً */
+    --border-accent: #334155;
+    /* حدود أوضح للعناصر المهمة */
+
+    /* Text Colors (High Contrast) */
+    --text-primary: #F8FAFC;
+    /* أبيض نقي للعناوين (Slate 50) */
+    --text-secondary: #94A3B8;
+    /* رمادي مزرق للنصوص (Slate 400) */
+    --text-muted: #64748B;
+    /* رمادي غامق للتفاصيل الثانوية */
+
+    /* Brand Identity (Signal Green) */
+    --accent: #10B981;
+    /* Emerald 500: لون حيوي وقوي */
+    --accent-hover: #059669;
+    /* Emerald 600: لون التفاعل */
+    --accent-glow: rgba(16, 185, 129, 0.15);
+    /* وهج خفيف */
+
+    /* --- LAYOUT TOKENS --- */
+    --radius-lg: 12px;
+    /* حواف ناعمة لكن هندسية */
+    --radius-md: 8px;
+    --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================
+   2. GLOBAL RESET & BASE TYPOGRAPHY
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-main);
+    background-color: var(--bg-body);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    /* مسافة مريحة للقراءة */
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    /* خطوط حادة */
+}
+
+/* Headings: Strong & White */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 0;
+    letter-spacing: -0.02em;
+    /* تضييق المسافات يعطي طابع عصري */
+}
+
+/* Paragraphs */
+p {
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+}
+
+/* Links */
+a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--accent);
+}
+
+/* =========================================
+   3. COMPONENTS (REDESIGNED)
+   ========================================= */
+
+/* --- A. CARDS (Structure & Depth) --- */
+.card,
+.service-card,
+.project-card,
+.skill-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover Effect: Lift & Glow */
+.card:hover,
+.service-card:hover,
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    /* حدود خضراء عند التفاعل */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* --- B. TYPOGRAPHY HIERARCHY --- */
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    color: var(--accent);
+    /* تمييز الوظيفة باللون الأخضر */
+    font-weight: 600;
+    margin-bottom: 2rem;
+    display: inline-block;
+    background: rgba(16, 185, 129, 0.1);
+    /* خلفية خفيفة جداً */
+    padding: 0.5rem 1rem;
+    border-radius: 99px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.section-title {
+    font-size: 2rem;
+    border-left: 4px solid var(--accent);
+    /* خط أخضر بجانب العنوان */
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- C. BUTTONS (High Contrast CTA) --- */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    color: #022c22;
+    /* نص داكن جداً على الخلفية الخضراء لضمان القراءة */
+    font-weight: 700;
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px var(--accent-glow);
+    color: #fff;
+    /* يتحول النص للأبيض عند التفاعل */
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    color: var(--text-primary);
+    padding: 0.85rem 2rem;
+    border-radius: var(--radius-md);
+}
+
+.btn-outline:hover {
+    border-color: var(--text-primary);
+    background: var(--bg-surface-2);
+}
+
+/* --- D. STATS (Impact Numbers) --- */
+.stat-number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    /* أبيض */
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    /* أخضر */
+    font-weight: 600;
+}
+
+/* --- E. TAGS & SKILLS --- */
+.skill-tag {
+    background: var(--bg-surface-2);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border-subtle);
+    display: inline-block;
+    margin: 0.25rem;
+}
+
+/* =========================================
+   4. LAYOUT UTILITIES
+   ========================================= */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section {
+    padding: 5rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    /* فواصل خفيفة بين الأقسام */
+}
+
+/* Alternating Backgrounds for Rhythm */
+.section:nth-child(even) {
+    background-color: #0F1623;
+    /* لون أغمق قليلاً للتباين بين الأقسام */
+}
+
+/* Navbar Adjustment */
+.navbar {
+    background: rgba(11, 17, 32, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Footer */
+footer {
+    background: #020617;
+    /* أسود تقريباً */
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border-accent);
+}
