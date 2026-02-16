@@ -2840,3 +2840,120 @@ body.theme-light .proj-desc,
 body.theme-light .hero-subtitle {
     color: #1F2D3D !important;
 }
+
+/* ================================
+   GLOBAL THEME FIX (PUT AT THE END)
+   ================================ */
+
+/* 1) Define missing tokens (VERY IMPORTANT) */
+:root {
+    /* Base brand */
+    --accent: #1FAA59;
+
+    /* Dark palette */
+    --navy: #0B1E3D;
+    /* used in header/hero */
+    --navy-light: #10294F;
+    /* surface cards on dark */
+    --bg: #0F172A;
+    /* main page bg */
+    --surface: #1E293B;
+    /* cards on dark */
+    --surface2: #153361;
+    /* hover surface */
+
+    /* Text tokens (missing in your file) */
+    --text-primary: #F8FAFC;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+
+    /* Borders */
+    --border: rgba(255, 255, 255, .10);
+    --border-dark: rgba(255, 255, 255, .14);
+
+    /* Ensure theme mapping */
+    --text: var(--text-primary);
+    --muted: var(--text-muted);
+}
+
+/* 2) Kill low-contrast (no faded text) */
+body,
+p,
+li,
+.muted,
+.proj-desc,
+.hero-role,
+.hero-tagline {
+    opacity: 1 !important;
+    color: var(--text-secondary);
+}
+
+/* Headings always readable */
+h1,
+h2,
+h3,
+.hero-name,
+.brand-name,
+.detail-value,
+.proj-title {
+    color: var(--text-primary) !important;
+}
+
+/* 3) Surfaces consistency */
+.site-header {
+    background: rgba(11, 30, 61, 0.92) !important;
+    border-bottom: 1px solid var(--border-dark) !important;
+}
+
+.profile-card-minimal,
+.skill-card,
+.timeline-card,
+.vision-box {
+    background: color-mix(in srgb, var(--surface) 92%, transparent) !important;
+    border: 1px solid var(--border) !important;
+}
+
+/* 4) Light theme contrast fix */
+body.theme-light {
+    --bg: #F5F7FA;
+    --surface: #FFFFFF;
+    --surface2: #E8EEF5;
+    --text-primary: #0F172A;
+    --text-secondary: #1F2D3D;
+    --text-muted: #5E6C7F;
+    --border: #D1D9E6;
+    --border-dark: #C7D2E3;
+}
+
+body.theme-light,
+body.theme-light p,
+body.theme-light li {
+    color: var(--text-secondary) !important;
+}
+
+/* ================================
+   AVATAR FIX (CIRCLE ALWAYS)
+   ================================ */
+
+/* لو بتستخدم .profile-img مباشرة */
+.profile-img {
+    border-radius: 50% !important;
+    background: transparent !important;
+}
+
+/* لو عندك كونتينر للصورة (hero-image) */
+.hero-right .hero-image {
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    border: 3px solid rgba(31, 170, 89, 0.35) !important;
+}
+
+.hero-right .hero-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
+    display: block !important;
+}
