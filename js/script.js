@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================= */
     const html = document.documentElement;
     const body = document.body;
+
+    // 0. PROGRESSIVE ENHANCEMENT (Enable animations only if JS runs)
+    document.documentElement.classList.add('js');
+
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.getElementById('navMenu');
     const themeToggle = document.getElementById('themeToggle');
