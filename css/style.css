@@ -2381,11 +2381,126 @@ body {
     display: none !important;
 }
 
-/* Mobile menu panel */
-@media (max-width: 860px) {
-    .site-header .nav .nav-menu {
-        background: rgba(10, 25, 50, 0.96) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        backdrop-filter: blur(12px) !important;
-    }
+/* =========================================
+   ABOUT & SKILLS REFINEMENT (EXECUTIVE LOOK)
+   ========================================= */
+
+/* --- ABOUT SECTION --- */
+/* 1. Vision/About Box Stronger Styling */
+.vision-box {
+    background: linear-gradient(145deg, var(--surface), rgba(10, 25, 50, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Subtle but solid */
+    border-left: 2px solid var(--accent);
+    /* Subtle accent line */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    /* deepened shadow */
+    padding: 2.2rem;
+    border-radius: 12px;
+}
+
+.vision-text {
+    color: rgba(230, 234, 240, 0.9);
+    /* Better contrast */
+    font-size: 1.02rem;
+    line-height: 1.75;
+    font-weight: 400;
+}
+
+/* 2. Highlight Blocks Structure */
+.about-highlights {
+    gap: 1.25rem;
+}
+
+.highlight {
+    background: rgba(16, 41, 79, 0.6);
+    /* Deeper surface */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Stronger border */
+    padding: 1.25rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.highlight:hover {
+    transform: translateY(-3px);
+    border-color: rgba(31, 170, 89, 0.35);
+    background: var(--surface);
+}
+
+.highlight-title {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.highlight-desc {
+    color: rgba(230, 234, 240, 0.7);
+    font-size: 0.85rem;
+}
+
+
+/* --- SKILLS SECTION --- */
+/* 1. Skill Cards Executive Feel */
+.skills-grid {
+    gap: 1.25rem;
+}
+
+.skill-card {
+    background: rgba(13, 29, 56, 1);
+    /* Slightly darker base */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Neutral gray border */
+    border-radius: 10px;
+    padding: 1.15rem 1.25rem;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.skill-card:hover {
+    background: var(--surface);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+    /* Brighten border neutrally */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* 2. Icons: Framed & Professional */
+.skill-icon {
+    font-size: 1.4rem;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.03);
+    /* Very subtle bg */
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    /* Stronger gray frame */
+    border-radius: 8px;
+    color: var(--accent);
+    /* Keep accent color for icon itself */
+    flex-shrink: 0;
+}
+
+/* 3. Typography Hierarchy */
+.skill-info h3 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    /* Stronger weight */
+    color: var(--text-primary);
+    margin-bottom: 0.15rem;
+    letter-spacing: 0.01em;
+}
+
+.skill-info p {
+    font-size: 0.8rem;
+    color: rgba(230, 234, 240, 0.55);
+    /* More muted description */
+    font-weight: 500;
 }
