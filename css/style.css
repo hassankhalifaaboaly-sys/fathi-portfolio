@@ -3388,3 +3388,69 @@ body.theme-dark .proj-impact {
     object-position: center 6% !important;
     border-radius: 50% !important;
 }
+
+/* =========================================
+   KILL THE SQUARE BACKPLATE BEHIND AVATAR
+   Put at VERY END of style.css
+   ========================================= */
+
+/* 1) Force the image wrapper to be clean */
+.hero-image,
+.hero-right .hero-image {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+
+    width: 240px !important;
+    height: 240px !important;
+
+    border-radius: 50% !important;
+    overflow: hidden !important;
+}
+
+/* 2) Make sure the image fills the circle */
+.hero-image img,
+.hero-image .profile-img,
+.profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+
+    object-fit: cover !important;
+    object-position: center 6% !important;
+
+    border-radius: 50% !important;
+    transform: none !important;
+}
+
+/* 3) IMPORTANT: remove the square background from the PARENTS */
+.hero-right,
+.hero-visual,
+.profile-image-wrapper,
+.profile-card-minimal,
+.profile-card,
+.hero-right .profile-card,
+.hero-right .profile-card-minimal,
+.hero-right .profile-image-wrapper {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+/* 4) If there is padding making a "plate", kill it */
+.profile-image-wrapper,
+.hero-visual {
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* 5) Mobile sizing */
+@media (max-width: 768px) {
+
+    .hero-image,
+    .hero-right .hero-image {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
