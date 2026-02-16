@@ -3430,3 +3430,56 @@ body.theme-light .nav-toggle {
         height: 200px !important;
     }
 }
+
+/* ================================
+   AVATAR – CLEAN EXECUTIVE STYLE
+   No green border – soft shadow only
+   ================================ */
+
+.hero-image,
+.hero-right .hero-image {
+    width: 240px !important;
+    height: 240px !important;
+    margin: 18px auto !important;
+
+    border-radius: 50% !important;
+    overflow: hidden !important;
+
+    border: none !important;
+    /* ❌ remove green border */
+    background: transparent !important;
+
+    /* subtle professional shadow */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.05) !important;
+}
+
+/* image inside */
+.hero-image img,
+.profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 18% !important;
+    border-radius: 50% !important;
+    transform: none !important;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+
+    .hero-image,
+    .hero-right .hero-image {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+body.theme-light .site-header .brand-name,
+body.theme-light .site-header .nav-menu a,
+body.theme-light .site-header .nav-toggle,
+body.theme-light .site-header .btn {
+    color: #0F172A !important;
+    /* أزرق داكن راقي */
+}
