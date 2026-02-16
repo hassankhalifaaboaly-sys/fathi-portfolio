@@ -466,55 +466,74 @@ a:hover {
 }
 
 /* Responsive Profile Image */
-.profile-image-wrapper {
-    width: 100%;
+/* Responsive Profile Image - CLS Fix */
+.hero-image {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+
+    /* Executive Styling */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+
+    /* Structural stability for CLS */
+    aspect-ratio: 1 / 1;
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    align-items: center;
+    flex-shrink: 0;
+
+    /* Hardware acceleration to prevent paint flashing */
+    transform: translateZ(0);
+    will-change: transform;
 }
 
 .profile-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    width: 100% !important;
+    height: 100% !important;
     object-fit: cover;
+    object-position: center 18%;
+    /* Focused on face */
     border-radius: 50%;
     display: block;
-    margin: 0 auto;
+    transform: none;
+    /* Reset any potential transforms */
+}
 
-    /* Base Mobile Style (≤ 767px): 160px-220px */
-    max-width: 220px;
-
-    /* Executive Styling */
-    border: 3px solid rgba(31, 170, 89, 0.25);
+/* Hover Effect */
+.hero-image:hover {
+    transform: translateY(-4px);
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.35),
-        0 0 25px rgba(31, 170, 89, 0.08);
-    /* Muted Emerald glow */
-
+        0 15px 35px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(31, 170, 89, 0.3);
+    /* Subtle green rim on hover */
     transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
-.profile-img:hover {
-    transform: translateY(-4px);
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(31, 170, 89, 0.15);
-}
-
-/* Tablet (768px - 1023px): 260px-320px */
-@media (min-width: 768px) {
-    .profile-img {
-        max-width: 320px;
+/* Mobile (≤ 768px): 200px */
+@media (max-width: 768px) {
+    .hero-image {
+        width: 200px;
+        height: 200px;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
     }
 }
 
-/* Desktop (≥ 1024px): 320px-380px */
+/* Desktop (≥ 1024px): Larger if needed, or keep 240px standard */
 @media (min-width: 1024px) {
-    .profile-img {
-        max-width: 380px;
+    .hero-image {
+        width: 280px;
+        height: 280px;
     }
 }
+
 
 .profile-details {
     width: 100%;
@@ -2931,32 +2950,7 @@ body.theme-light li {
     color: var(--text-secondary) !important;
 }
 
-/* ================================
-   AVATAR FIX (CIRCLE ALWAYS)
-   ================================ */
-
-/* لو بتستخدم .profile-img مباشرة */
-.profile-img {
-    border-radius: 50% !important;
-    background: transparent !important;
-}
-
-/* لو عندك كونتينر للصورة (hero-image) */
-.hero-right .hero-image {
-    aspect-ratio: 1 / 1 !important;
-    border-radius: 50% !important;
-    overflow: hidden !important;
-    background: transparent !important;
-    border: 3px solid rgba(31, 170, 89, 0.35) !important;
-}
-
-.hero-right .hero-image img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: 50% !important;
-    display: block !important;
-}
+/* Fixed Avatar Styles - Removed Redundant Block */
 
 /* =========================================================
    FINAL COLOR + CONTRAST PATCH (paste at END of style.css)
@@ -3282,45 +3276,7 @@ body.theme-light .nav-toggle {
     }
 }
 
-/* --- PROFILE IMAGE FIX --- */
-.hero-right .hero-image,
-.hero-image {
-    width: 240px !important;
-    height: 240px !important;
-    margin-inline: auto !important;
-    border-radius: 50% !important;
-    overflow: hidden !important;
-    border: 4px solid #1FAA59 !important;
-    /* Clean emerald green border */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
-    display: block !important;
-    position: relative !important;
-    background: #0F172A;
-    /* Fallback background */
-}
-
-.profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 15% !important;
-    /* Perfectly centered face crop */
-    display: block !important;
-    border-radius: 50% !important;
-    transition: transform 0.4s ease;
-}
-
-/* Mobile responsive sizing and centering */
-@media (max-width: 768px) {
-
-    .hero-right .hero-image,
-    .hero-image {
-        width: 200px !important;
-        height: 200px !important;
-        margin-top: 25px !important;
-        margin-bottom: 25px !important;
-    }
-}
+/* Fixed Profile Image - Removed Redundant Block */
 
 /* SCROLL EFFECT PATCH */
 .site-header.scrolled {
@@ -3333,148 +3289,11 @@ body.theme-light .nav-toggle {
     width: 100%;
 }
 
-/* ===============================
-   PROFILE IMAGE – FINAL CLEAN FIX
-   =============================== */
+/* Fixed Profile Image - Removed Redundant Block */
 
-/* Wrapper */
-.hero-image {
-    width: 240px !important;
-    height: 240px !important;
-    margin: 24px auto !important;
-    border-radius: 50% !important;
-    overflow: hidden !important;
+/* Fixed Avatar Lock - Removed Redundant Block */
 
-    border: 4px solid #1FAA59 !important;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, .20) !important;
-
-    display: grid !important;
-    place-items: center !important;
-    background: transparent !important;
-    /* مهم */
-}
-
-/* Actual image */
-.hero-image .profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 18% !important;
-    /* عدّل الرقم لو الوش مش متظبط */
-    border-radius: 50% !important;
-    display: block !important;
-}
-
-/* Mobile size */
-@media (max-width: 768px) {
-    .hero-image {
-        width: 200px !important;
-        height: 200px !important;
-    }
-}
-
-/* ================================
-   AVATAR (CIRCLE) – FINAL LOCK
-   Put at the VERY END of style.css
-   ================================ */
-
-.hero-image,
-.hero-right .hero-image,
-.profile-image-wrapper,
-.profile-card-minimal .profile-image-wrapper {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-}
-
-/* Circle wrapper */
-.hero-image,
-.hero-right .hero-image {
-    width: 240px !important;
-    height: 240px !important;
-    margin: 18px auto !important;
-
-    border-radius: 50% !important;
-    overflow: hidden !important;
-
-    border: 4px solid rgba(31, 170, 89, 0.55) !important;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, .20) !important;
-
-    background: transparent !important;
-}
-
-/* Image itself */
-.hero-image img,
-.hero-image .profile-img,
-.profile-img {
-    width: 100% !important;
-    height: 100% !important;
-
-    object-fit: cover !important;
-    object-position: center 18% !important;
-
-    border-radius: 50% !important;
-    display: block !important;
-
-    transform: none !important;
-    scale: 1 !important;
-    max-width: none !important;
-}
-
-/* Mobile size */
-@media (max-width: 768px) {
-
-    .hero-image,
-    .hero-right .hero-image {
-        width: 200px !important;
-        height: 200px !important;
-    }
-}
-
-/* ================================
-   AVATAR – CLEAN EXECUTIVE STYLE
-   No green border – soft shadow only
-   ================================ */
-
-.hero-image,
-.hero-right .hero-image {
-    width: 240px !important;
-    height: 240px !important;
-    margin: 18px auto !important;
-
-    border-radius: 50% !important;
-    overflow: hidden !important;
-
-    border: none !important;
-    /* ❌ remove green border */
-    background: transparent !important;
-
-    /* subtle professional shadow */
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.18),
-        0 0 0 1px rgba(255, 255, 255, 0.05) !important;
-}
-
-/* image inside */
-.hero-image img,
-.profile-img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 18% !important;
-    border-radius: 50% !important;
-    transform: none !important;
-}
-
-/* mobile */
-@media (max-width: 768px) {
-
-    .hero-image,
-    .hero-right .hero-image {
-        width: 200px !important;
-        height: 200px !important;
-    }
-}
+/* Fixed Executive Avatar - Removed Redundant Block */
 
 body.theme-light .site-header .brand-name,
 body.theme-light .site-header .nav-menu a,
