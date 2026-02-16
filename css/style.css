@@ -3332,3 +3332,43 @@ body.theme-light .nav-toggle {
 .site-header.scrolled::after {
     width: 100%;
 }
+
+/* ===============================
+   PROFILE IMAGE – FINAL CLEAN FIX
+   =============================== */
+
+/* Wrapper */
+.hero-image {
+    width: 240px !important;
+    height: 240px !important;
+    margin: 24px auto !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+
+    border: 4px solid #1FAA59 !important;
+    box-shadow: 0 14px 35px rgba(0, 0, 0, .20) !important;
+
+    display: grid !important;
+    place-items: center !important;
+    background: transparent !important;
+    /* مهم */
+}
+
+/* Actual image */
+.hero-image .profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 18% !important;
+    /* عدّل الرقم لو الوش مش متظبط */
+    border-radius: 50% !important;
+    display: block !important;
+}
+
+/* Mobile size */
+@media (max-width: 768px) {
+    .hero-image {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
