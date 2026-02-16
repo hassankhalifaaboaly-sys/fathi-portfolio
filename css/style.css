@@ -3506,3 +3506,34 @@ body.theme-dark .proj-impact {
         height: 200px !important;
     }
 }
+
+/* ================================
+   FORCE PURE CIRCLE (NO SQUARE)
+   ================================ */
+
+/* 1️⃣ خلّي الصورة دائرة بالكامل */
+.profile-img {
+    width: 240px !important;
+    height: 240px !important;
+    object-fit: cover !important;
+    object-position: center 6% !important;
+
+    border-radius: 50% !important;
+    display: block !important;
+
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* 2️⃣ أي عنصر شايل الصورة يشيل خلفيته */
+.profile-img {
+    position: relative;
+    z-index: 2;
+}
+
+/* أهم خطوة 👇 */
+.profile-img::before,
+.profile-img::after {
+    display: none !important;
+}
