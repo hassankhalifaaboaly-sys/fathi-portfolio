@@ -1114,9 +1114,11 @@ textarea {
 
 /* Reveal animation */
 .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 650ms var(--ease), transform 650ms var(--ease);
+    opacity: 1;
+    /* Disabled animation (was 0) */
+    transform: none;
+    /* Disabled translation (was translateY(14px)) */
+    /* transition removed to prevent janky loading */
 }
 
 .reveal.is-visible {
@@ -3613,16 +3615,22 @@ body.theme-light li {
     opacity: 1 !important;
 }
 
-/* ===== FIX: STOP FADED TEXT (Disable reveal effect) ===== */
+/* Default: ALWAYS visible (no global fading) */
 .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-    filter: none !important;
-    transition: none !important;
+    opacity: 1;
+    transform: none;
+    transition: none;
 }
 
-.reveal.is-visible {
-    opacity: 1 !important;
-    transform: none !important;
+/* Only animate when JS explicitly enables it */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 650ms cubic-bezier(0.25, 0.1, 0.25, 1),
+        transform 650ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.js .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
