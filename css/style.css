@@ -3612,3 +3612,17 @@ body.theme-light li {
     color: var(--text-secondary) !important;
     opacity: 1 !important;
 }
+
+/* ===== FIX: STOP FADED TEXT (Disable reveal effect) ===== */
+.reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    filter: none !important;
+    transition: none !important;
+}
+
+.reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+}
