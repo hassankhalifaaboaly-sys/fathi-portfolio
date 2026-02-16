@@ -2349,3 +2349,44 @@ body {
         display: none;
     }
 }
+
+/* ===== NAV COLORS FORCE PATCH (works even if old CSS is strong) ===== */
+
+/* Desktop + Mobile links */
+.site-header .nav .nav-menu li a,
+.site-header .nav .nav-menu a {
+    color: rgba(230, 234, 240, 0.62) !important;
+    /* لون هادي */
+    font-weight: 500 !important;
+    text-decoration: none !important;
+}
+
+/* Hover */
+.site-header .nav .nav-menu li a:hover,
+.site-header .nav .nav-menu a:hover {
+    color: rgba(230, 234, 240, 0.92) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    border-radius: 12px !important;
+}
+
+/* Active */
+.site-header .nav .nav-menu li a.active,
+.site-header .nav .nav-menu a.active {
+    color: var(--accent) !important;
+    background: rgba(31, 170, 89, 0.10) !important;
+    border-radius: 12px !important;
+}
+
+/* Underline off (optional clean look) */
+.site-header .nav .nav-menu a::after {
+    display: none !important;
+}
+
+/* Mobile menu panel */
+@media (max-width: 860px) {
+    .site-header .nav .nav-menu {
+        background: rgba(10, 25, 50, 0.96) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(12px) !important;
+    }
+}
