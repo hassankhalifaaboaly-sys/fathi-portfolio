@@ -465,6 +465,14 @@ a:hover {
     transform: translateY(-5px);
 }
 
+/* Profile Card Reset */
+.profile-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
 /* Responsive Profile Image */
 /* Responsive Profile Image - CLS Fix */
 .hero-image {
@@ -477,10 +485,11 @@ a:hover {
     background: transparent;
     border: none;
 
-    /* Executive Styling */
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.18),
-        0 0 0 1px rgba(255, 255, 255, 0.05);
+    /* Executive Styling - Minimal Redesign */
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    /* Soft shadow */
+    background: transparent;
+    border: none;
 
     /* Structural stability for CLS */
     aspect-ratio: 1 / 1;
@@ -1427,16 +1436,14 @@ body {
 
 /* Profile Image Upgrade */
 .hero-image img {
-    border: 3px solid transparent;
-    background: linear-gradient(to bottom right, var(--accent), var(--navy)) border-box;
-    /* Gradient Border Trick */
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    /* Fallback if mask doesn't work well, keep simple border */
-    box-shadow: 0 0 40px rgba(31, 170, 89, 0.2);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center 20%;
+    /* Clean transition */
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
 }
 
 .hero-image:hover img {
