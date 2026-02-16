@@ -3539,50 +3539,38 @@ body.theme-dark .proj-impact {
 }
 
 /* =========================================
-   FIX: Dark mode text is too faded (mobile)
-   Put at VERY END of CSS
+   DARK MODE TEXT CONTRAST FIX (CLEAN)
    ========================================= */
 
 body.theme-dark {
     --text: #F8FAFC !important;
-    /* main text */
-    --muted: #D6DEE9 !important;
-    /* secondary text */
+    /* High contrast white */
+    --muted: #CBD5E1 !important;
+    /* Bright gray, legible */
     --text-primary: #F8FAFC !important;
-    --text-secondary: #D6DEE9 !important;
+    --text-secondary: #CBD5E1 !important;
+    --border: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* منع أي بهتان بسبب opacity */
-body.theme-dark *,
+/* Target specific text elements to ensure readability */
+body.theme-dark .hero-subtitle,
+body.theme-dark .section-sub,
 body.theme-dark p,
 body.theme-dark li,
-body.theme-dark span,
-body.theme-dark small,
-body.theme-dark a,
-body.theme-dark h1,
-body.theme-dark h2,
-body.theme-dark h3,
 body.theme-dark .muted,
-body.theme-dark .section-sub,
-body.theme-dark .hero-subtitle,
-body.theme-dark .hero-tagline {
+body.theme-dark span,
+body.theme-dark a {
+    color: var(--muted) !important;
     opacity: 1 !important;
 }
 
-/* تأكيد ألوان النصوص */
-body.theme-dark p,
-body.theme-dark li,
-body.theme-dark .muted,
-body.theme-dark .section-sub,
-body.theme-dark .hero-subtitle,
-body.theme-dark .hero-tagline {
-    color: var(--muted) !important;
-}
-
+/* Ensure headings and brands are pure white */
 body.theme-dark h1,
 body.theme-dark h2,
 body.theme-dark h3,
+body.theme-dark .brand-name,
 body.theme-dark .hero-name,
-body.theme-dark .brand-name {
+body.theme-dark .proj-title,
+body.theme-dark strong {
     color: var(--text) !important;
 }
