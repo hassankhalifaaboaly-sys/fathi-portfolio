@@ -3206,3 +3206,107 @@ body.theme-dark .project-card {
         color: var(--muted) !important;
     }
 }
+
+/* =====================================================
+   EXECUTIVE HEADER UPGRADE – DARK + LIGHT + SCROLL BAR
+   Put this at the VERY END of style.css
+   ===================================================== */
+
+/* Base Header Layout */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.35s ease;
+    backdrop-filter: blur(14px);
+}
+
+/* =====================================================
+   🌙 DARK MODE HEADER
+   ===================================================== */
+body.theme-dark .site-header {
+    background: linear-gradient(90deg, #0F1E34, #132945);
+    border-bottom: 1px solid rgba(31, 170, 89, 0.25);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* Dark Text & Icons */
+body.theme-dark .site-header .brand-name,
+body.theme-dark .site-header .nav-menu a,
+body.theme-dark .site-header .btn-ghost,
+body.theme-dark .site-header .nav-toggle {
+    color: #E6EDF5 !important;
+}
+
+/* Dark Hover */
+body.theme-dark .site-header .btn-ghost:hover,
+body.theme-dark .site-header .nav-toggle:hover,
+body.theme-dark .site-header .nav-menu a:hover {
+    background: rgba(31, 170, 89, 0.12);
+    border-radius: 12px;
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   ☀️ LIGHT MODE HEADER
+   ===================================================== */
+body.theme-light .site-header {
+    background: #EEF3F8;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+}
+
+/* Light Text & Icons */
+body.theme-light .site-header .brand-name,
+body.theme-light .site-header .nav-menu a,
+body.theme-light .site-header .btn-ghost,
+body.theme-light .site-header .nav-toggle {
+    color: #1B2A41 !important;
+}
+
+/* Light Hover */
+body.theme-light .site-header .btn-ghost:hover,
+body.theme-light .site-header .nav-toggle:hover,
+body.theme-light .site-header .nav-menu a:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    transform: translateY(-2px);
+}
+
+/* =====================================================
+   ✨ Executive Icon Style
+   ===================================================== */
+.site-header .btn-ghost,
+.site-header .nav-toggle {
+    padding: 8px 10px;
+    border-radius: 12px;
+    transition: all 0.25s ease;
+}
+
+/* =====================================================
+   🔥 Animated Accent Line (Scroll Indicator)
+   ===================================================== */
+
+/* Top animated green bar */
+.site-header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, #1FAA59, #22C55E);
+    transition: width 0.3s ease;
+}
+
+/* When page is scrolled */
+.site-header.scrolled::after {
+    width: 100%;
+}
+
+/* Slight shrink effect on scroll */
+.site-header.scrolled {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
