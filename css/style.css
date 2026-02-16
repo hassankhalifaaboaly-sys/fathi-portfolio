@@ -3537,3 +3537,52 @@ body.theme-dark .proj-impact {
 .profile-img::after {
     display: none !important;
 }
+
+/* =========================================
+   FIX: Dark mode text is too faded (mobile)
+   Put at VERY END of CSS
+   ========================================= */
+
+body.theme-dark {
+    --text: #F8FAFC !important;
+    /* main text */
+    --muted: #D6DEE9 !important;
+    /* secondary text */
+    --text-primary: #F8FAFC !important;
+    --text-secondary: #D6DEE9 !important;
+}
+
+/* منع أي بهتان بسبب opacity */
+body.theme-dark *,
+body.theme-dark p,
+body.theme-dark li,
+body.theme-dark span,
+body.theme-dark small,
+body.theme-dark a,
+body.theme-dark h1,
+body.theme-dark h2,
+body.theme-dark h3,
+body.theme-dark .muted,
+body.theme-dark .section-sub,
+body.theme-dark .hero-subtitle,
+body.theme-dark .hero-tagline {
+    opacity: 1 !important;
+}
+
+/* تأكيد ألوان النصوص */
+body.theme-dark p,
+body.theme-dark li,
+body.theme-dark .muted,
+body.theme-dark .section-sub,
+body.theme-dark .hero-subtitle,
+body.theme-dark .hero-tagline {
+    color: var(--muted) !important;
+}
+
+body.theme-dark h1,
+body.theme-dark h2,
+body.theme-dark h3,
+body.theme-dark .hero-name,
+body.theme-dark .brand-name {
+    color: var(--text) !important;
+}
