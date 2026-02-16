@@ -3207,201 +3207,128 @@ body.theme-dark .project-card {
     }
 }
 
-/* =====================================================
-   EXECUTIVE HEADER UPGRADE – DARK + LIGHT + SCROLL BAR
-   Put this at the VERY END of style.css
-   ===================================================== */
 
-/* Base Header Layout */
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: all 0.35s ease;
-    backdrop-filter: blur(14px);
-}
+/* =========================================================
+   FINAL CSS PATCH (FIXES: HEADER, MENU, PROFILE IMAGE)
+   Goal: Stable contrast, clear mobile menu, circular avatar.
+   ========================================================= */
 
-/* =====================================================
-   🌙 DARK MODE HEADER
-   ===================================================== */
-body.theme-dark .site-header {
-    background: linear-gradient(90deg, #0F1E34, #132945);
-    border-bottom: 1px solid rgba(31, 170, 89, 0.25);
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
-}
-
-/* Dark Text & Icons */
-body.theme-dark .site-header .brand-name,
-body.theme-dark .site-header .nav-menu a,
-body.theme-dark .site-header .btn-ghost,
-body.theme-dark .site-header .nav-toggle {
-    color: #E6EDF5 !important;
-}
-
-/* Dark Hover */
-body.theme-dark .site-header .btn-ghost:hover,
-body.theme-dark .site-header .nav-toggle:hover,
-body.theme-dark .site-header .nav-menu a:hover {
-    background: rgba(31, 170, 89, 0.12);
-    border-radius: 12px;
-    transform: translateY(-2px);
-}
-
-/* =====================================================
-   ☀️ LIGHT MODE HEADER
-   ===================================================== */
+/* --- LIGHT HEADER FIX --- */
 body.theme-light .site-header {
-    background: #EEF3F8;
-    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    background-color: #F8FAFC !important;
+    background: #F8FAFC !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.1) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* Light Text & Icons */
-body.theme-light .site-header .brand-name,
-body.theme-light .site-header .nav-menu a,
-body.theme-light .site-header .btn-ghost,
-body.theme-light .site-header .nav-toggle {
-    color: #1B2A41 !important;
+body.theme-light .brand-name {
+    color: #0F172A !important;
 }
 
-/* Light Hover */
-body.theme-light .site-header .btn-ghost:hover,
-body.theme-light .site-header .nav-toggle:hover,
-body.theme-light .site-header .nav-menu a:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    transform: translateY(-2px);
+body.theme-light .brand-role {
+    color: #475569 !important;
 }
 
-/* =====================================================
-   ✨ Executive Icon Style
-   ===================================================== */
-.site-header .btn-ghost,
-.site-header .nav-toggle {
-    padding: 8px 10px;
-    border-radius: 12px;
-    transition: all 0.25s ease;
+/* Light mode header buttons visibility */
+body.theme-light .btn-ghost,
+body.theme-light .nav-toggle {
+    background-color: #FFFFFF !important;
+    border: 1px solid rgba(15, 23, 42, 0.1) !important;
+    color: #0F172A !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05) !important;
 }
 
-/* =====================================================
-   🔥 Animated Accent Line (Scroll Indicator)
-   ===================================================== */
+/* --- MOBILE MENU FIX --- */
+@media (max-width: 860px) {
+    .nav-menu {
+        transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+    }
 
-/* Top animated green bar */
-.site-header::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 0%;
-    background: linear-gradient(90deg, #1FAA59, #22C55E);
-    transition: width 0.3s ease;
+    /* Light Theme Mobile Menu */
+    body.theme-light .nav-menu {
+        background-color: #FFFFFF !important;
+        background: #FFFFFF !important;
+        opacity: 1 !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        padding-top: 2rem !important;
+    }
+
+    body.theme-light .nav-menu a {
+        color: #0F172A !important;
+        font-weight: 600 !important;
+        padding: 0.8rem 1.2rem !important;
+    }
+
+    body.theme-light .nav-menu a:hover,
+    body.theme-light .nav-menu a.active {
+        background: rgba(31, 170, 89, 0.1) !important;
+        color: #1FAA59 !important;
+    }
+
+    /* Dark Theme Mobile Menu */
+    body.theme-dark .nav-menu {
+        background-color: #0F172A !important;
+        background: #0F172A !important;
+        opacity: 1 !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        padding-top: 2rem !important;
+    }
+
+    body.theme-dark .nav-menu a {
+        color: #F8FAFC !important;
+        font-weight: 500 !important;
+    }
 }
 
-/* When page is scrolled */
-.site-header.scrolled::after {
-    width: 100%;
+/* --- PROFILE IMAGE FIX --- */
+.hero-right .hero-image,
+.hero-image {
+    width: 240px !important;
+    height: 240px !important;
+    margin-inline: auto !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    border: 4px solid #1FAA59 !important;
+    /* Clean emerald green border */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
+    display: block !important;
+    position: relative !important;
+    background: #0F172A;
+    /* Fallback background */
 }
 
-/* Slight shrink effect on scroll */
+.profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 15% !important;
+    /* Perfectly centered face crop */
+    display: block !important;
+    border-radius: 50% !important;
+    transition: transform 0.4s ease;
+}
+
+/* Mobile responsive sizing and centering */
+@media (max-width: 768px) {
+
+    .hero-right .hero-image,
+    .hero-image {
+        width: 200px !important;
+        height: 200px !important;
+        margin-top: 25px !important;
+        margin-bottom: 25px !important;
+    }
+}
+
+/* SCROLL EFFECT PATCH */
 .site-header.scrolled {
     padding-top: 4px;
     padding-bottom: 4px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
-/* =========================
-   HEADER FIX (LIGHT + DARK)
-   ========================= */
-
-/* ---------- DARK MODE ---------- */
-body.theme-dark .site-header {
-    background: linear-gradient(90deg, #0F172A, #0B1C33);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-body.theme-dark .site-header .brand-name,
-body.theme-dark .site-header .brand-role,
-body.theme-dark .nav-menu a {
-    color: #E6EDF5;
-}
-
-body.theme-dark .site-header .btn-ghost,
-body.theme-dark .nav-toggle {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: #E6EDF5;
-}
-
-
-/* ---------- LIGHT MODE ---------- */
-body.theme-light .site-header {
-    background: linear-gradient(90deg, #F6F9FC, #EEF3F8);
-    border-bottom: 1px solid rgba(15, 23, 42, 0.10);
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
-}
-
-body.theme-light .site-header .brand-name {
-    color: #0F172A;
-}
-
-body.theme-light .site-header .brand-role {
-    color: #334155;
-}
-
-body.theme-light .nav-menu a {
-    color: #0F172A;
-}
-
-body.theme-light .site-header .btn-ghost,
-body.theme-light .nav-toggle {
-    background: rgba(15, 23, 42, 0.05);
-    border: 1px solid rgba(15, 23, 42, 0.10);
-    color: #0F172A;
-}
-
-
-/* ---------- Mobile Menu Overlay ---------- */
-body.theme-dark .nav-menu {
-    background: rgba(10, 20, 38, 0.95);
-}
-
-body.theme-light .nav-menu {
-    background: rgba(246, 249, 252, 0.98);
-}
-
-/* =========================
-   PROFILE IMAGE FIX
-   ========================= */
-
-.hero-image {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto;
-    position: relative;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-    outline: 4px solid rgba(31, 170, 89, 0.25);
-    outline-offset: 6px;
-}
-
-.profile-img {
+.site-header.scrolled::after {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* أهم سطر */
-    object-position: center 20%;
-    /* عدل الرقم لو عايز ترفع/تنزل الصورة */
-    border-radius: 50%;
-    display: block;
-}
-
-/* موبايل */
-@media (max-width: 480px) {
-    .hero-image {
-        width: 200px;
-        height: 200px;
-    }
 }
